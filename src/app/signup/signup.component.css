@@ -1,0 +1,230 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
+
+
+.container {
+	font-family: Raleway, sans-serif;
+	margin-top: 50px;
+	margin-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+}
+
+
+
+.screen {		
+	background: linear-gradient(90deg,#93e9be , #0E8D60);	
+		
+	position: relative;	
+	min-height: 600px;
+	width: 560px;	
+	box-shadow: 0px 0px 24px grey;
+	
+}
+
+.screen__content {
+	z-index: 1;
+	position: relative;	
+	height: 100%;
+}
+
+.screen__background {		
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 0;
+	-webkit-clip-path: inset(0 0 0 0);
+	clip-path: inset(0 0 0 0);
+	overflow: hidden;	
+}
+
+.screen__background__shape {
+	transform: rotate(45deg);
+	position: absolute;
+}
+
+.screen__background__shape1 {
+	height: 520px;
+	width: 520px;
+	background: #FFF;	
+	top: -50px;
+	right: 120px;	
+	border-radius: 0 72px 0 0;
+}
+
+.screen__background__shape2 {
+	height: 220px;
+	width: 220px;
+	background: #3eb489;	
+	top: -172px;
+	right: 0;	
+	border-radius: 32px;
+}
+
+.screen__background__shape3 {
+	height: 540px;
+	width: 190px;
+	background: linear-gradient(270deg, #B0EACF, #3eb489);
+	top: -24px;
+	right: 0;	
+	border-radius: 32px;
+}
+
+.screen__background__shape4 {
+	height: 400px;
+	width: 200px;
+	background: #8ABDB0;	
+	top: 420px;
+	right: 50px;	
+	border-radius: 60px;
+}
+
+.login {
+	width: 320px;
+	padding: 30px;
+	padding-top: 156px;
+}
+
+.login__field {
+	padding: 20px 0px;	
+	position: relative;	
+}
+
+.login__icon {
+	position: absolute;
+	top: 30px;
+	color: #8ABDB0;
+}
+
+.login__input {
+	border: none;
+	border-bottom: 2px solid #D1D1D4;
+	background: none;
+	padding: 10px;
+	padding-left: 24px;
+	font-weight: 700;
+	width: 220px;
+	transition: .2s;
+}
+
+.login__input:active,
+.login__input:focus,
+.login__input:hover {
+	outline: none;
+	border-bottom-color: #8ABDB0;
+}
+
+.login__submit {
+	background: #fff;
+	font-size: 14px;
+	margin-top: 30px;
+	padding: 16px 20px;
+	border-radius: 26px;
+	border: 1px solid #D4D3E8;
+	text-transform: uppercase;
+	font-weight: 700;
+	display: flex;
+	align-items: center;
+	width: 100%;
+	color: #8ABDB0;
+	box-shadow: 0px 2px 2px green;
+	cursor: pointer;
+	transition: .2s;
+}
+
+.login__submit:active,
+.login__submit:focus,
+.login__submit:hover {
+	border-color: #8ABDB0;
+	outline: none;
+}
+
+.button__icon {
+	font-size: 24px;
+	margin-left: auto;
+	color: green;
+}
+
+.social-login {	
+	position: absolute;
+	height: 140px;
+	width: 160px;
+	text-align: center;
+	bottom: 0px;
+	right: 0px;
+	color: #fff;
+}
+
+.social-icons {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.social-login__icon {
+	padding: 20px 10px;
+	color: #fff;
+	text-decoration: none;	
+	text-shadow: 0px 0px 8px #8ABDB0;
+}
+
+.social-login__icon:hover {
+	transform: scale(1.5);	
+}
+
+select {
+    padding: 10px;
+	padding-left: 24px;
+	font-weight: 700;
+	width: 75%;
+    border: 1px solid #ccc; /* Default border color */
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #fff; /* Default background color */
+    cursor: pointer;
+    appearance: none; /* Remove default dropdown styling */
+  }
+  
+  /* Style the arrow inside the select */
+  select::-ms-expand { /* For Internet Explorer */
+    display: none;
+  }
+  
+  select::after {
+    content: "\25BC"; /* Downward facing triangle character */
+    font-size: 12px;
+    color: #999;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  
+  /* Green theme styles */
+  select:focus {
+    border-color: #4CAF50; /* Green border on focus */
+    outline: none; /* Remove default outline */
+  }
+  
+  select option {
+    background-color: #fff; /* Option background color */
+    color: #333; /* Option text color */
+  }
+  .fields {
+    display: flex;
+    gap  : 20px ;
+    width: inherit;
+}
+
+
+.agreed {
+    display: flex;
+    align-items: center;
+    gap : 5px ;
+    font-weight: 800;
+    width: 400px;
+}

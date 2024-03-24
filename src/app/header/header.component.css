@@ -1,0 +1,61 @@
+nav {
+    background-image: linear-gradient( 174.2deg,  rgba(255,244,228,1) 7.1%, rgba(240,246,238,1) 67.4% );
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 20px;
+    height: 11vh;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    transition: background-color 0.5s ease;
+    
+}
+
+nav.scrolled {
+   background-color: gainsboro ;
+   opacity: 0.6;
+ }
+ 
+
+.logo {
+   width: 100px ;
+   height: 160px;
+}
+
+.navItems {
+    display: flex;
+    gap : 25px ;
+    align-items: center;
+    list-style: none;
+ }
+
+ .navItems > li > a {
+    text-decoration: none;
+    color :teal ;
+ }
+
+ .nav-link {
+   position: relative; /* Needed for positioning the underline */
+   display: flex;
+   align-items: center;
+   gap : 5px ;
+  padding-bottom: 3px;
+ }
+ 
+ .nav-link:after {
+   content: ""; /* Empty content for the underline element */
+   position: absolute;
+   left : 50% ;
+   transform: translateX(-50%);
+   width: 0; /* Initial width for animation */
+   bottom: -5px; /* Position the underline below the text */
+   height: 2px; /* Adjust underline height */
+   background-color: green ; /* Underline color */
+   transition: width 0.3s ease; /* Smooth animation */
+ }
+ 
+ .nav-link:hover:after {
+   width: 100%; /* Animate width on hover */
+ }
+ 

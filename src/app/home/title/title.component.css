@@ -1,0 +1,17 @@
+.mainTitle {
+    text-align: center;
+    margin-top: 50px;
+    color: var(--primary-green) ;
+    display: inline-block;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+.typer {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+ span {
+    font-weight: 900;
+   font-style: italic;
+}

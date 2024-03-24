@@ -1,0 +1,63 @@
+
+<div class="container">
+	<div class="screen">
+		<div class="screen__content">
+			<form class="login" (ngSubmit)="onSubmit()">
+                <div class="fields">
+                <div>
+                <div class="login__field">
+					<i class="login__icon fa-solid fa-circle-user"></i>
+					<input type="text" class="login__input" [(ngModel)]="firstname" name="firstname"  placeholder="First name" required>
+				</div>
+                <div class="login__field">
+					<i class="login__icon fa-solid fa-circle-user"></i>
+					<input type="text" class="login__input" [(ngModel)]="lastname"  name="lastname" placeholder="Last name" required>
+				</div>
+				<div class="login__field">
+					<i class="login__icon fas fa-user"></i>
+					<input type="text" class="login__input" [(ngModel)]="email"  name="email"  placeholder="Email" required>
+				</div>
+                <div class="login__field">
+                <select [(ngModel)]="role" required  name="role" >
+                    <option value="" disabled selected>Your Profession</option>
+                    <option value="FARMER">Farmer</option>
+                    <option value="FISHER">Fisher</option>
+                </select>
+               </div>
+            </div>
+            <div>
+               <div class="login__field">
+                <i class="login__icon fas fa-lock"></i>
+                <input type="password" class="login__input"  name="password"  [(ngModel)]="password" placeholder="Password" required>
+            </div>
+            <div class="login__field">
+                <i class="login__icon fas fa-lock"></i>
+                <input type="password" class="login__input"  name="repeatPassword"  [(ngModel)]="repeatPassword" placeholder="Repeat your password" required>
+            </div>
+            </div>
+           </div>
+           <div class="agreed">
+            <p>I agrre to the terms of FarmEase</p>
+            <div class="checkbox-wrapper-55">
+                <label class="rocker rocker-small">
+                  <input type="checkbox">
+                  <span class="switch-left">Yes</span>
+                  <span class="switch-right">No</span>
+                </label>
+              </div>
+        </div>
+				<button class="button login__submit" [ariaChecked]="agree">
+					<span class="button__text">Register</span>
+					<i class="button__icon fas fa-chevron-right"></i>
+				</button>				
+			</form>
+		</div>
+		<div class="screen__background">
+			<span class="screen__background__shape screen__background__shape4"></span>
+			<span class="screen__background__shape screen__background__shape3"></span>		
+			<span class="screen__background__shape screen__background__shape2"></span>
+			<span class="screen__background__shape screen__background__shape1"></span>
+		</div>		
+	</div>
+   
+</div>
