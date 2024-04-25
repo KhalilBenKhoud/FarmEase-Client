@@ -17,7 +17,7 @@ import { FormsModule } from '@angular/forms';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { MortgageComponent } from './mortgage/mortgage.component';
 import { AuthGuard } from './auth.guard';
-import { ButtonModule } from 'primeng/button';
+
 
 @NgModule({
   declarations: [
@@ -37,8 +37,7 @@ import { ButtonModule } from 'primeng/button';
     AppRoutingModule,
     NgxTypedJsModule,
     HttpClientModule,
-    FormsModule,
-    ButtonModule
+    FormsModule
   ],
   providers: [    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } , AuthGuard ],
   bootstrap: [AppComponent]
