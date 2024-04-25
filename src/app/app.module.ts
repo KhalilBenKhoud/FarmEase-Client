@@ -17,6 +17,9 @@ import { FormsModule } from '@angular/forms';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { MortgageComponent } from './mortgage/mortgage.component';
 import { AuthGuard } from './auth.guard';
+import { ButtonModule } from 'primeng/button';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AccordionModule } from 'primeng/accordion';
 
 
 @NgModule({
@@ -37,7 +40,10 @@ import { AuthGuard } from './auth.guard';
     AppRoutingModule,
     NgxTypedJsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ButtonModule,
+    BrowserAnimationsModule,
+    AccordionModule
   ],
   providers: [    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } , AuthGuard ],
   bootstrap: [AppComponent]
