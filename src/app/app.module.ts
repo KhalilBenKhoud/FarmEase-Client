@@ -20,6 +20,7 @@ import { AuthGuard } from './auth.guard';
 import { ButtonModule } from 'primeng/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AccordionModule } from 'primeng/accordion';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { AccordionModule } from 'primeng/accordion';
     FormsModule,
     ButtonModule,
     BrowserAnimationsModule,
-    AccordionModule
+    AccordionModule,
+    NgbModule
   ],
   providers: [    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } , AuthGuard ],
   bootstrap: [AppComponent]

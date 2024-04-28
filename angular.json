@@ -25,10 +25,11 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css",
               "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
               "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
-              "node_modules/primeng/resources/primeng.min.css" 
+              "node_modules/primeng/resources/primeng.min.css"
             ],
             "scripts": [
               "node_modules/@fortawesome/fontawesome-free/js/all.min.js" 
@@ -71,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "farmease:build:production"
+              "browserTarget": "farmease:build:production"
             },
             "development": {
-              "buildTarget": "farmease:build:development"
+              "browserTarget": "farmease:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -82,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "farmease:build"
+            "browserTarget": "farmease:build"
           }
         },
         "test": {

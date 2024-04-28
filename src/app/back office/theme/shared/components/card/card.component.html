@@ -1,0 +1,10 @@
+<div class="card" [ngClass]="cardClass">
+  @if (!hidHeader) {
+    <div class="card-header" [ngClass]="headerClass">
+      <h5>{{ cardTitle }}</h5>
+    </div>
+  }
+  <div class="card-block" [ngClass]="blockClass">
+    <ng-content></ng-content>
+  </div>
+</div>

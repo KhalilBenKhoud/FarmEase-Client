@@ -52,14 +52,60 @@
       </div>
       
     </div>
-     <div class="accordion">
-    <div class="flex mb-3 gap-2 justify-content-end">
-        <p-button (click)="activeIndex = 0" rounded="true" label="1" styleClass="w-2rem h-2rem p-0" [outlined]="activeIndex !== 0"></p-button>
-        <p-button (click)="activeIndex = 1" rounded="true" label="2" styleClass="w-2rem h-2rem p-0" [outlined]="activeIndex !== 1"></p-button>
-        <p-button (click)="activeIndex = 2" rounded="true" label="3" styleClass="w-2rem h-2rem p-0" [outlined]="activeIndex !== 2"></p-button>
+
+    <h1>Our partners : </h1>
+      
+    <div class="slidesContainer">
+        <div class="logo-slides">
+        <img src="../../assets/logos/3m.svg" alt="">
+        <img src="../../assets/logos/barstool-store.svg" alt="">
+        <img src="../../assets/logos/budweiser.svg" alt="">
+        <img src="../../assets/logos/buzzfeed.svg" alt="">
+        <img src="../../assets/logos/forbes.svg" alt="">
+        <img src="../../assets/logos/macys.svg" alt="">
+        <img src="../../assets/logos/menshealth.svg" alt="">
+        <img src="../../assets/logos/mrbeast.svg" alt="">
+       
+        </div>
+        <div class="logo-slides">
+            <img src="../../assets/logos/3m.svg" alt="">
+            <img src="../../assets/logos/barstool-store.svg" alt="">
+            <img src="../../assets/logos/budweiser.svg" alt="">
+            <img src="../../assets/logos/buzzfeed.svg" alt="">
+            <img src="../../assets/logos/forbes.svg" alt="">
+            <img src="../../assets/logos/macys.svg" alt="">
+            <img src="../../assets/logos/menshealth.svg" alt="">
+            <img src="../../assets/logos/mrbeast.svg" alt="">
+           
+            </div>
+        
+     
+        </div>
+          <h1>Trusted by thousands like you</h1>
+          <div class="testimonials">
+          <div class="testimonial">
+            <img src="../../assets/testimonials.png" alt="" class="testimonialIcon">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum id blanditiis qui velit corporis explicabo voluptatem, officiis delectus harum veniam labore, rerum vero nihil eum.</p>
+            <div class="person">
+                <span><b>Amine, private consultant</b></span>
+                <img src="../../assets/amine.png" alt="">
+            </div>
+        </div>
+
+        <div class="testimonial">
+            <img src="../../assets/testimonials.png" alt="" class="testimonialIcon">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum id blanditiis qui velit corporis explicabo voluptatem, officiis delectus harum veniam labore, rerum vero nihil eum.</p>
+            <div class="person">
+                <span><b>Hamza, Mobile developer</b></span>
+                <img src="../../assets/hamza.png" alt="">
+            </div>
+        </div>
     </div>
-    <p-accordion [activeIndex]="activeIndex">
-        <p-accordionTab header="Header I">
+
+     <div >
+      <h1 class="accordionTitle">have questions ?</h1>
+    <p-accordion [activeIndex]="activeIndex" class="accordion">
+        <p-accordionTab header="Header I" class="accordionItem" >
             <p class="m-0">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
                 consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -78,7 +124,9 @@
             </p>
         </p-accordionTab>
     </p-accordion>
+</div> 
+
 </div>
-</div>
+
 
 
