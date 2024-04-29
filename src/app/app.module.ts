@@ -21,6 +21,11 @@ import { ButtonModule } from 'primeng/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AccordionModule } from 'primeng/accordion';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BackOfficeComponent } from './back-office/back-office.component';
+import { SpinnerComponent } from './back-office/shared/spinner.component';
+import { FullComponent } from './back-office/layouts/full/full.component';
+import { NavigationComponent } from './back-office/shared/header/navigation.component';
+import { SidebarComponent } from './back-office/shared/sidebar/sidebar.component';
 
 
 @NgModule({
@@ -34,7 +39,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LoginComponent,
     SignupComponent,
     ProfileComponent,
-    MortgageComponent
+    MortgageComponent,
+    BackOfficeComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +52,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ButtonModule,
     BrowserAnimationsModule,
     AccordionModule,
-    NgbModule
+    NgbModule,
+    FullComponent,
+    NavigationComponent,
+    SidebarComponent,
   ],
   providers: [    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } , AuthGuard ],
   bootstrap: [AppComponent]

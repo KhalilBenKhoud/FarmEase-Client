@@ -20,6 +20,10 @@ export class LoginComponent {
      this.auth.login({email : this.email, password : this.password}).subscribe(
       (data :any) => { console.log(data) ;
       localStorage.setItem('accessToken', data.access_token);
+      if(this.email == 'khalil@farmEase.com') {
+        this.router.navigate(['/dashboard']);
+      }
+      else
       this.router.navigate(['/profile']);
      
       },

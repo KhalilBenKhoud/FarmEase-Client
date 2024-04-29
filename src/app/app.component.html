@@ -1,7 +1,7 @@
 <section>
-  <app-header></app-header>
-  <div class="content">
+  <app-header *ngIf="frontOrBack.frontOffice"></app-header>
+  <div [ngClass] = "{ 'content' : frontOrBack.frontOffice }">
       <router-outlet></router-outlet>
   </div>
-  <app-footer></app-footer>
+  <app-footer *ngIf="frontOrBack.frontOffice"></app-footer>
   </section>
