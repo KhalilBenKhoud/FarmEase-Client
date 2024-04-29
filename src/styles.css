@@ -18,6 +18,14 @@
     --bayern-green : #aecc07 ;
   }
 
+  .card {
+    background: var(--surface-card);
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+    
+
 .button-8 {
   background-color: #e1ecf4;
   border-radius: 3px;

@@ -26,6 +26,9 @@ import { SpinnerComponent } from './back-office/shared/spinner.component';
 import { FullComponent } from './back-office/layouts/full/full.component';
 import { NavigationComponent } from './back-office/shared/header/navigation.component';
 import { SidebarComponent } from './back-office/shared/sidebar/sidebar.component';
+import { ToastModule } from 'primeng/toast';
+import { MessagesModule } from 'primeng/messages';
+
 
 
 @NgModule({
@@ -41,7 +44,8 @@ import { SidebarComponent } from './back-office/shared/sidebar/sidebar.component
     ProfileComponent,
     MortgageComponent,
     BackOfficeComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -56,6 +60,8 @@ import { SidebarComponent } from './back-office/shared/sidebar/sidebar.component
     FullComponent,
     NavigationComponent,
     SidebarComponent,
+    ToastModule,
+    MessagesModule
   ],
   providers: [    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } , AuthGuard ],
   bootstrap: [AppComponent]
