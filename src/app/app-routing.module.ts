@@ -12,6 +12,14 @@ import { FullComponent } from './back-office/layouts/full/full.component';
 import { FrontOrBackService } from './services/front-or-back.service';
 import { AdminResolver } from './admin.resolver';
 
+
+import { ApplyLoanComponent } from './Loan/Apply For Home/loan form/Applyloan.component';
+import { GarantorComponent } from './Loan/Apply For Home/Garantor Form/Garantor.component';
+import { SimulatorComponent } from './Loan/Simulator/Simulator.component';
+import { uploadComponent } from './Loan/Apply For Home/upload Form/upload.component';
+import { packComponent } from './Loan/PackLoan/pack.component';
+
+
 const routes: Routes = [
   {path : "", component: HomeComponent, pathMatch: 'full' },
   {path : "home", component: HomeComponent },
@@ -19,6 +27,12 @@ const routes: Routes = [
   {path : "signup" , component : SignupComponent},
   {path : "profile" , component : ProfileComponent, canActivate: [AuthGuard]},
   {path : "mortgage" , component : MortgageComponent , canActivate: [AuthGuard]} ,
+  {path : "ApplyLoan" , component : ApplyLoanComponent , canActivate: [AuthGuard]} ,
+  {path : "Garantor" , component : GarantorComponent , canActivate: [AuthGuard]} ,
+  {path : "Simulator" , component : SimulatorComponent , canActivate: [AuthGuard]} ,
+  {path : "upload" , component : uploadComponent , canActivate: [AuthGuard]}, 
+  {path : "PackLoan" , component : packComponent , canActivate: [AuthGuard]},
+  
   {path : "" , component : FullComponent , canActivate: [AuthGuard] ,children : [
     
         {

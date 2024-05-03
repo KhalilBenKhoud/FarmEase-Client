@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garantor Form</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./Garantor.component.css">
+</head>
+<body>
+    <div class="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 mr-auto">
+                    <h3 class="mb-3">Get your loan instantly</h3>
+                    <p>Our specialized loan programs are tailored to meet the unique needs of farmers and fishermen like you. Whether you're aiming to boost productivity, upgrade facilities, or explore new markets, our flexible loan options offer competitive rates and personalized repayment plans</p>
+                    
+                    <p> Take the next step towards achieving your goals and securing the future of your agricultural or fishing enterprise. Apply now and unlock the financial support you need to thrive in your industry!"</p>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="box">
+                        <h3 class="heading">Garantor Information</h3>
+                        <form [formGroup]="GarantorForm" (ngSubmit)="onSubmit()" class="mb-5" method="post" id="garantorForm" name="garantorForm">
+                            <div class="row">
+                                
+                                <div class="row">
+                                    <div class="col-md-6 form-group">
+                                        <label for="nameGarantor" class="col-form-label">Garantor Name *</label>
+                                        <input type="text" class="form-control" formControlName="nameGarantor" id="nameGarantor" placeholder="Garantor Name">
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label for="secondnameGarantor" class="col-form-label">Garantor Second Name *</label>
+                                        <input type="text" class="form-control" formControlName="secondnameGarantor" id="secondnameGarantor" placeholder="Garantor Second Name">
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-6 form-group">
+                                        <label for="salaryGarantor" class="col-form-label">Garantor Salary *</label>
+                                        <input type="text" class="form-control" formControlName="salaryGarantor" id="salaryGarantor" placeholder="Garantor Salary">
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label for="workGarantor" class="col-form-label">Garantor Work *</label>
+                                        <input type="text" class="form-control" formControlName="workGarantor" id="workGarantor" placeholder="Garantor Work">
+                                    </div>
+                                </div>
+                                
+                                <!-- Ajoutez ici les autres champs du formulaire -->
+                                <div class="row mt-3"> <!-- Ajout de la classe "mt-3" pour l'espacement -->
+                                    <div class="col-md-6">
+                                        <input type="submit" value="Submit" class="btn btn-block btn-primary rounded-0 py-2 px-4">
+                                        <span class="submitting"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <div id="form-message-warning mt-4"></div> 
+                        <div id="form-message-success">
+                            Your message was sent, thank you!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+ <!-- Section après le formulaire -->
+ <div class="row justify-content-center after-form">
+    <div class="col-md-6">
+        <h3>Predict Your Chance to Get Your Loan</h3>
+        <p>Unlock the door to financial empowerment with our revolutionary tool - 'Predict Your Chance to Get Your Loan'. Say goodbye to uncertainty and embrace confidence as you navigate your financial journey. Our cutting-edge platform utilizes advanced algorithms to assess your unique financial profile, providing you with valuable insights into your loan eligibility. </p>
+           <p> Whether you're dreaming of purchasing your dream home, starting a new business venture, or pursuing higher education, our tool empowers you to take control of your future. Don't let doubt hold you back; take the first step towards your financial goals today and predict your chance to get your loan!</p>
+           <a href="http://localhost:5000/" class="btn btn-primary">Predict Now</a>
+        </div>
+    <div class="col-md-4">
+        <img src="../../../../assets/robot.jpg" alt="robot" >
+    </div>
+</div>
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -3,7 +3,17 @@
     <ul class="navItems">
         <li class="nav-link"><i class="fa-solid fa-house fa-bounce" style="color: green;"></i> <a routerLink="/">Home</a></li>
         <li class="nav-link" *ngIf="authService.isAuthenticated()"> <a routerLink="/profile">Profile</a></li>
-        <li class="nav-link"  *ngIf="authService.isAuthenticated()" > <a routerLink="/mortgage">Mortgage</a></li>
+        <li class="nav-link" *ngIf="authService.isAuthenticated()">Loan</li>
+        <ul class="loan-categories">
+            <li class="sub-nav-item"><a routerLink="/ApplyLoan" *ngIf="authService.isAuthenticated()">Apply for Loan</a></li>
+            <li class="sub-nav-item"><a href="http://localhost:5000/" target="_blank">Check your eligibility</a></li>
+            <!-- Ajoutez d'autres sous-catégories ici -->
+        </ul>
+ 
+    <li class="nav-link" *ngIf="authService.isAuthenticated()"> <a routerLink="/mortgage">Mortgage</a></li>
+    <li class="nav-link" *ngIf="authService.isAuthenticated()"> <a routerLink="/PackLoan">Pack</a></li>
+    <li class="nav-link" *ngIf="authService.isAuthenticated()"> <a routerLink="/Simulator">Simulator</a></li>
+  
         <li><button *ngIf="authService.isAuthenticated()" class="button-33" role="button" (click)="logout()">Log out</button> </li>
         <li><button *ngIf="!authService.isAuthenticated()" class="button-33" role="button"  routerLink="/signup">Sign up</button></li>
         <li><button *ngIf="!authService.isAuthenticated()" class="button-33" role="button"  routerLink="/login">Sign in</button> </li>

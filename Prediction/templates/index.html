@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            color: #697c37;
+        }
+
+        form {
+            width: 80%;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #697c37;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #697c37;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #697c37;
+            border: none;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #5c6930;
+        }
+
+        h2 {
+            margin-top: 30px;
+            color: #697c37;
+        }
+
+        p {
+            color: #666;
+        }
+
+        /* Styles for the prediction box */
+        #predictionBox {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #ffffff;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 9999;
+        }
+
+        #predictionResult {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        #predictionDescription {
+            color: #666666;
+        }
+        #loanForm label {
+        display: inline-block;
+        width: 120px; /* Ajustez cette valeur selon vos besoins */
+        text-align: right;
+    }
+
+    #loanForm input {
+        display: inline-block;
+        width: 200px; /* Ajustez cette valeur selon vos besoins */
+        margin-bottom: 10px;
+    }
+    </style>
+</head>
+<body>
+    <h1>Loan Prediction Result</h1>
+    
+    <form method="post" id="loanForm">
+        <label for="age">Age:</label>
+        <input type="text" name="age" required>
+        <br>
+
+        <label for="experience">Experience:</label>
+        <input type="text" name="experience" required>
+        <br>
+
+        <label for="income">Income:</label>
+        <input type="text" name="income" required>
+        <br>
+
+        <label for="family">Family:</label>
+        <input type="text" name="family" required>
+        <br>
+
+        <label for="ccavg">CCAvg:</label>
+        <input type="text" name="ccavg" required>
+        <br>
+
+        <label for="education">Education:</label>
+        <input type="text" name="education" required>
+        <br>
+
+        <label for="mortgage">Mortgage:</label>
+        <input type="text" name="mortgage" required>
+        <br>
+
+        <label for="securities_account">Securities Account:</label>
+        <input type="text" name="securities_account" required>
+        <br>
+
+        <label for="cd_account">CD Account:</label>
+        <input type="text" name="cd_account" required>
+        <br>
+
+        <label for="online">Online:</label>
+        <input type="text" name="online" required>
+        <br>
+
+        <label for="credit_card">Credit Card:</label>
+        <input type="text" name="credit_card" required>
+        <br>
+
+        <input type="submit" value="Predict" id="predictButton">
+    </form>
+
+    <!-- Prediction box -->
+    <div id="predictionBox">
+        <div id="predictionResult"></div>
+        <div id="predictionDescription"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get the prediction form and prediction box
+            const predictionForm = document.getElementById('loanForm');
+            const predictionBox = document.getElementById('predictionBox');
+
+            // Add event listener for form submission
+            predictionForm.addEventListener('submit', function(event) {
+                // Prevent form submission
+                event.preventDefault();
+
+                // Simulated prediction result and description (replace with actual logic)
+                const predictionResult = Math.floor(Math.random() * 2); // Randomly generate 0 or 1
+                let predictionDescription;
+                if (predictionResult === 0) {
+                    predictionDescription = 'Credit not accepted';
+                } else {
+                }
+
+                // Display the prediction box
+                predictionBox.style.display = 'block';
+
+                // Update the prediction result and description in the prediction box
+                const resultElement = document.getElementById('predictionResult');
+                const descriptionElement = document.getElementById('predictionDescription');
+                resultElement.textContent = 'Prediction Result: ' + predictionResult;
+                descriptionElement.textContent = 'Description: ' + predictionDescription;
+            });
+        });
+    </script>
+</body>
+</html>

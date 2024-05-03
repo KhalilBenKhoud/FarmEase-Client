@@ -1,126 +1,105 @@
-<div class="row">
-  <div class="col-lg-12">
-    <!-- ==================================-->
-    <!-- ========== Basic Alert ========== -->
-    <!-- ==================================-->
-    <div class="card w-100">
-      <div class="p-3">
-        <h4 class="card-title mb-0">Basic Alert</h4>
-      </div>
-      <div class="card-body border-top">
-        <p *ngFor="let alert of alerts">
-          <ngb-alert [type]="alert.type" [dismissible]="false" class="customize-alert fs-4">
-            {{ alert.type }} - {{ alert.message }}
-          </ngb-alert>
-        </p>
-      </div>
-    </div>
-  </div>
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title">Crédits</h4>
+    <h5 class="card-subtitle">Liste des crédits</h5>
 
-  <div class="col-lg-12">
-    <!-- ==================================-->
-    <!-- ======== Outline Alert ========= -->
-    <!-- ==================================-->
-    <div class="card">
-      <div class="p-3">
-        <h4 class="card-title mb-0">Outline Alert</h4>
-      </div>
-      <div class="card-body border-top">
-        <ngb-alert class="
-            bg-transparent
-            border-primary border
-            text-primary
-            d-flex
-            align-items-center
-            fs-5
-          ">
-
-          A simple primary light alert
-        </ngb-alert>
-        <ngb-alert class="
-            bg-transparent
-            border-secondary border
-            text-secondary
-            d-flex
-            align-items-center
-            fs-5
-          ">
-
-          A simple secondary light alert
-        </ngb-alert>
-        <ngb-alert class="
-            bg-transparent
-            border-success border
-            text-success
-            d-flex
-            align-items-center
-            fs-5
-          ">
-
-          A simple success light alert
-        </ngb-alert>
-        <ngb-alert class="
-            bg-transparent
-            border-danger border
-            text-danger
-            d-flex
-            align-items-center
-            fs-5
-          ">
-
-          A simple danger light alert
-        </ngb-alert>
-        <ngb-alert class="
-            bg-transparent
-            border-warning border
-            text-warning
-            d-flex
-            align-items-center
-            fs-5
-          ">
-
-          A simple warning light alert
-        </ngb-alert>
-        <ngb-alert class="
-            bg-transparent
-            border-info border
-            text-info
-            d-flex
-            align-items-center
-            fs-5
-          ">
-
-          A simple info light alert
-        </ngb-alert>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-lg-12">
-    <!-- ==================================-->
-    <!-- ======= Custom Alert ===== -->
-    <!-- ==================================-->
-    <div class="card">
-      <div class="p-3">
-        <h4 class="card-title mb-0">Custom Alert</h4>
-      </div>
-      <div class="card-body border-top">
-        <ngb-alert type="custom" [dismissible]="false"><strong>Whoa!</strong> This is a custom alert.</ngb-alert>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="p-3">
-        <h4 class="card-title mb-0">Global Configuration of Alert</h4>
-      </div>
-      <div class="card-body border-top">
-        <p>
-          <ngb-alert type="light-secondary" class="text-secondary font-medium fs-5">
-            This alert's type is success and it's not dismissible because the
-            config has been customized
-          </ngb-alert>
-        </p>
-      </div>
+    <div class="table-responsive">
+      <table class="table align-middle">
+        <thead>
+          <tr>
+            <th class="text-dark font-medium fs-4">ID</th>
+            <th class="text-dark font-medium fs-4">Montant</th>
+            <th class="text-dark font-medium fs-4">Montant mensuel</th>
+            <th class="text-dark font-medium fs-4">dateDemande </th>
+            <th class="text-dark font-medium fs-4">obtainingDate</th>
+            <th class="text-dark font-medium fs-4">monthlyPaymentDate</th>
+            <th class="text-dark font-medium fs-4">state </th>
+            <th class="text-dark font-medium fs-4">differe</th>
+            <th class="text-dark font-medium fs-4">DIFF_period </th>
+            <th class="text-dark font-medium fs-4">interestRate</th>
+            <th class="text-dark font-medium fs-4">creditPeriod</th>
+            <th class="text-dark font-medium fs-4">Risk</th>
+            <th class="text-dark font-medium fs-4">Completed </th>
+            <th class="text-dark font-medium fs-4">Reason</th>
+            <!-- Ajoutez d'autres en-têtes de colonne selon vos besoins -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let credit of credits">
+            <td>{{ credit.idCredit }}</td>
+            <td>{{ credit.amount }}</td>
+            <td>{{ credit.monthlyPaymentAmount }}</td>
+            <td>{{ credit.dateDemande }}</td>
+            <td>{{ credit.obtainingDate }}</td>
+            <td>{{ credit. monthlyPaymentDate }}</td>
+            <td>{{ credit.state }}</td>
+            <td>{{ credit.differe }}</td>
+            <td>{{ credit.DIFF_period }}</td>
+            <td>{{ credit.interestRate }}</td>
+            <td>{{ credit.creditPeriod }}</td>v
+            <td>{{ credit.Risk }}</td>
+            <td>{{ credit.Completed }}</td>
+            <td>{{ credit.Reason }}</td>
+            <!-- Affichez d'autres données de crédit selon vos besoins -->
+            <button class="btn btn-primary" (click)="editCredit(credit)">Modifier</button>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
+
+
+<div class="card" *ngIf="isEditMode && selectedCredit">
+  <div class="card-body">
+    <h4 class="card-title">Modifier le crédit</h4>
+    <form (submit)="saveCredit()">
+      <div class="mb-3">
+        <label for="amount" class="form-label">Montant</label>
+        <input type="number" class="form-control" id="amount" name="amount" [(ngModel)]="selectedCredit.amount" required>
+
+        <label for="monthlyPaymentAmount" class="form-label">monthlyPaymentAmount</label>
+        <input type="number" class="form-control" id="monthlyPaymentAmount" name="monthlyPaymentAmount" [(ngModel)]="selectedCredit.monthlyPaymentAmount" required>
+      </div>
+      <!-- Ajouter d'autres champs de formulaire pour les autres attributs du crédit -->
+      
+      <button type="submit" class="btn btn-primary">Enregistrer</button>
+      <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Annuler</button>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+
+
+<div class="container">
+  <h2>Loan Pack Dashboard</h2>
+  <div class="row">
+    <div class="col-md-6 col-lg-3" *ngFor="let loan of loanTypes">
+      <div class="card loan-card">
+        <div class="loan-image">
+          <img *ngIf="loan.image" [src]="'data:image/jpeg;base64,' + loan.image" alt="Loan Image" class="img-fluid">
+        </div>
+        <div class="card-body loan-details">
+          <h4 class="card-title">{{ loan.name }}</h4>
+          <p class="description">{{ loan.descprtion }}</p>
+          <p class="termType">{{ loan.termType }}</p>
+          <p class="value">{{ loan.value }}</p>
+          <p class="value">{{ loan.loanType_id}}</p>
+           <!-- Bouton de suppression de type de prêt -->
+           <button (click)="deleteLoanType(loan.loanType_id)">Supprimer le type de prêt</button>
+
+
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-lg-3" *ngIf="!loanTypes || loanTypes.length === 0">
+      <p>No loan types available.</p>
+    </div>
+  </div>
+</div>
+
+

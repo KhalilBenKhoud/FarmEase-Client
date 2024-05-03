@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form with Teachable Machine Image Model</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./Applyloan.component.css">
+    
+      
+</head>
+<body>
+    <div class="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 mr-auto">
+                    <h3 class="mb-3">Get your loan instantly</h3>
+                    <p>Our specialized loan programs are tailored to meet the unique needs of farmers and fishermen like you. Whether you're aiming to boost productivity, upgrade facilities, or explore new markets, our flexible loan options offer competitive rates and personalized repayment plans</p>
+                    
+                    <p> Take the next step towards achieving your goals and securing the future of your agricultural or fishing enterprise. Apply now and unlock the financial support you need to thrive in your industry!"</p>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="box">
+                        <h3 class="heading">Apply now to get your Loan</h3>
+                        <form [formGroup]="loanForm" (ngSubmit)="onSubmit()" class="mb-5" method="post" id="contactForm" name="contactForm">
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <label for="amount" class="col-form-label">Amount *</label>
+                                    <input type="text" class="form-control" formControlName="amount" id="amount" placeholder="Loan amount">
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label for="dateDemande" class="col-form-label">Date Demand *</label>
+                                    <input type="date" class="form-control" formControlName="dateDemande" id="dateDemande" placeholder="YYYY-MM-DD" min="YYYY-MM-DD">
+                                </div>
+                                
+                            </div>
+                       
+                        
+                                
+                        
+                            <div class="row">
+                                <div class="col-md-6 form-group">
+                                    <label for="differe" class="col-form-label">Differe *</label>
+                                    <input type="text" class="form-control" formControlName="differe" id="differe" placeholder="Differe">
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <label for="creditPeriod" class="col-form-label">Credit Period *</label>
+                                    <input type="text" class="form-control" formControlName="creditPeriod" id="creditPeriod" placeholder="Credit period">
+                                </div>
+                            </div>
+                            
+                                
+                    
+                            <div class="row">
+                                <div class="col-md-12 form-group">
+                                    <label for="Reason" class="col-form-label">Reason *</label>
+                                    <input type="text" class="form-control" formControlName="Reason" id="Reason" placeholder="Reason" style="margin-bottom: 10px;">
+                                </div>
+                            </div>
+                            <!-- Bouton de soumission -->
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <input type="submit" value="Send Message" class="btn btn-block btn-primary rounded-0 py-2 px-4">
+                                    <span class="submitting"></span>
+                                </div>
+                            </div>
+                            
+                        </form>
+                        <div id="form-message-warning mt-4"></div> 
+                        <div id="form-message-success">
+                            Your message was sent, thank you!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row justify-content-center after-form">
+        <div class="col-md-6">
+            <h3>Predict Your Chance to Get Your Loan</h3>
+            <p>Unlock the door to financial empowerment with our revolutionary tool - 'Predict Your Chance to Get Your Loan'. Say goodbye to uncertainty and embrace confidence as you navigate your financial journey. Our cutting-edge platform utilizes advanced algorithms to assess your unique financial profile, providing you with valuable insights into your loan eligibility.</p>
+            <p>Whether you're dreaming of purchasing your dream home, starting a new business venture, or pursuing higher education, our tool empowers you to take control of your future. Don't let doubt hold you back; take the first step towards your financial goals today and predict your chance to get your loan!</p>
+            <!-- Bouton pour rediriger vers une autre page -->
+            <a href="http://localhost:5000/" class="btn btn-primary">Predict Now</a>
+        </div>
+        <div class="col-md-4">
+            <img src="../../../../assets/robot.jpg" alt="robot">
+        </div>
+    </div>
+        
+           
+
+    <!-- Include TensorFlow and Teachable Machine script -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+    <script>
+        // JavaScript code for your Teachable Machine Image Model
+        // Ajoutez votre code JavaScript ici
+    </script>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
