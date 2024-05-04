@@ -1,0 +1,39 @@
+<div class="card">
+    <p-carousel 
+        [value]="insurances" 
+        [numVisible]="3" 
+        [numScroll]="3" 
+        [circular]="false" 
+        >
+            <ng-template let-product pTemplate="item">
+                <div class="border-1 surface-border border-round m-2 p-3">
+                    <div class="mb-3">
+                        <div class="relative mx-auto">
+                            <img 
+                                style="width : 100px;height : 100px ;"
+                                [src]="product.status == 'ACTIVE' ?  '../../../assets/activeInsurance.png' : '../../../assets/expiredInsurance.png'" 
+                                [alt]="product.status" 
+                                class="w-full border-round" />
+                            <p-tag 
+                                [value]="product.premium" 
+                          
+                                class="absolute" 
+                                [ngStyle]="{ 'left.px': 5, 'top.px': 5 }" />
+                        </div>
+                    </div>
+                    <div class="mb-3 font-medium">
+                        {{ product.start_date + " "}}
+                      <p> Due : {{ product.end_date}}</p> 
+                    </div>
+                    <div class="flex justify-content-between align-items-center">
+                    <div class="mt-0 font-semibold text-xl">
+                        {{ '$' + product.coverage_amount }}
+                    </div>
+                        <span>
+                          <button class="button-33">Report sinister</button>
+                        </span>
+                    </div>
+                </div>
+            </ng-template>
+    </p-carousel>
+</div>

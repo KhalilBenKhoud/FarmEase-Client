@@ -1,0 +1,44 @@
+<p-toast position="top-center" />
+<div class="container">
+	<!-- code here -->
+	<div class="card">
+		<div class="card-image">	
+			<h2 class="card-heading">
+				Get started
+				<small>Let us create your insurance</small>
+			</h2>
+		</div>
+		<form class="card-form" (ngSubmit)="onSubmit()">
+			<div class="input">
+				<input type="number" class="input-field" name="coverage"  [(ngModel)]="coverage"  required/>
+				<label class="input-label">Coverage Amount</label>
+			</div>
+				
+            <div class="card flex justify-content-center">
+               <p>Type :</p>
+                <p-selectButton 
+                    [options]="stateOptions" 
+                    [(ngModel)]="type" 
+					name="type"
+                    optionLabel="label" 
+                    optionValue="value" />
+            </div>
+            <div class="card flex justify-content-center">
+                <p>Duration :</p>
+                <p-selectButton 
+                    [options]="durationOptions" 
+                    [(ngModel)]="duration" 
+					name="duration"
+                    optionLabel="name" 
+                    optionValue="value" />
+            </div>
+				<h3>your premium is : {{premium}}$</h3>
+			<div class="action">
+				<button class="action-button">Get started</button>
+			</div>
+		</form>
+		<div class="card-info">
+			<p>By signing up you are agreeing to our <a href="#">Terms and Conditions</a></p>
+		</div>
+	</div>
+</div>

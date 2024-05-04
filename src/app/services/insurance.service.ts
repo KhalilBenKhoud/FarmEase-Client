@@ -12,11 +12,15 @@ export class InsuranceService {
 
   constructor(private http: HttpClient) { }
 
-  addInsurance(data: any): Observable<any> {
+  addInsurance(data: any, duration : number): Observable<any> {
     console.log(data);
     
-    return this.http.post<any>(`${environment.BaseApiUrl}/insurances/add`, data);
+    return this.http.post<any>(`${environment.BaseApiUrl}/insurances/add/${duration}`, data);
 
+}
+
+getCurrentInsurances(): Observable<Insurance[]> {
+  return this.http.get<Insurance[]>(`${environment.BaseApiUrl}/insurances/insurancesByUser`);
 }
 
 

@@ -28,7 +28,13 @@ import { NavigationComponent } from './back-office/shared/header/navigation.comp
 import { SidebarComponent } from './back-office/shared/sidebar/sidebar.component';
 import { ToastModule } from 'primeng/toast';
 import { MessagesModule } from 'primeng/messages';
-
+import { InsuranceComponent } from './insurance/insurance.component';
+import { AddInsuranceComponent } from './insurance/add-insurance/add-insurance.component';
+import { ViewInsuranceComponent } from './insurance/view-insurance/view-insurance.component';
+import { SelectButtonModule } from 'primeng/selectbutton';
+import { DataViewModule } from 'primeng/dataview';
+import { TagModule } from 'primeng/tag';
+import { CarouselModule } from 'primeng/carousel';
 
 
 @NgModule({
@@ -45,6 +51,10 @@ import { MessagesModule } from 'primeng/messages';
     MortgageComponent,
     BackOfficeComponent,
     SpinnerComponent,
+    InsuranceComponent,
+    AddInsuranceComponent,
+    ViewInsuranceComponent
+
     
   ],
   imports: [
@@ -61,7 +71,11 @@ import { MessagesModule } from 'primeng/messages';
     NavigationComponent,
     SidebarComponent,
     ToastModule,
-    MessagesModule
+    MessagesModule,
+    SelectButtonModule,
+    DataViewModule,
+    TagModule,
+    CarouselModule
   ],
   providers: [    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } , AuthGuard ],
   bootstrap: [AppComponent]
