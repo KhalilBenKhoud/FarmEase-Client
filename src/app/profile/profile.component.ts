@@ -13,7 +13,7 @@ export class ProfileComponent implements OnInit{
   
   ngOnInit() {
     this.profileService.getProfile().subscribe(
-      data => {this.profile = data ; console.log(data) ; },
+      data => {this.profile = data ; console.log(data.constructor) ; },
       error => alert(error.error.message)
     )
   }

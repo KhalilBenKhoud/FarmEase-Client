@@ -17,6 +17,10 @@ import { FormsModule } from '@angular/forms';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { MortgageComponent } from './mortgage/mortgage.component';
 import { AuthGuard } from './auth.guard';
+import { InsuranceComponent } from './insurance/insurance.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { InsuranceListComponent } from './insurance-list/insurance-list.component';
+
 
 @NgModule({
   declarations: [
@@ -29,14 +33,17 @@ import { AuthGuard } from './auth.guard';
     LoginComponent,
     SignupComponent,
     ProfileComponent,
-    MortgageComponent
+    MortgageComponent,
+    InsuranceComponent,
+    InsuranceListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgxTypedJsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } , AuthGuard ],
   bootstrap: [AppComponent]

@@ -7,6 +7,8 @@ import { SignupComponent } from './signup/signup.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MortgageComponent } from './mortgage/mortgage.component';
 import { AuthGuard } from './auth.guard';
+import { InsuranceComponent } from './insurance/insurance.component';
+import { InsuranceListComponent } from './insurance-list/insurance-list.component';
 
 const routes: Routes = [
   {path : "", component: HomeComponent, pathMatch: 'full' },
@@ -15,6 +17,7 @@ const routes: Routes = [
   {path : "signup" , component : SignupComponent},
   {path : "profile" , component : ProfileComponent, canActivate: [AuthGuard]},
   {path : "mortgage" , component : MortgageComponent , canActivate: [AuthGuard]} ,
+  {path : "insurance" , component : InsuranceListComponent , canActivate: [AuthGuard]} ,
   {path: "**", component: NotFoundComponent }
  
 ];
