@@ -1,7 +1,7 @@
 <nav [ngClass]="{ 'scrolled': isScrolled }">
-    <img src="../../assets/logo (2).png" alt="logo" class="logo">
+    <img src="../../assets/logo3.png" alt="logo" class="logo">
     <ul class="navItems">
-        <li class="nav-link"><i class="fa-solid fa-house fa-beat-fade" style="color: #63E6BE;"></i> <a routerLink="/">Home</a></li>
+        <li class="nav-link"><i class="fa-solid fa-house fa-bounce" style="color: green;"></i> <a routerLink="/">Home</a></li>
         <li class="nav-link" *ngIf="authService.isAuthenticated()"> <a routerLink="/profile">Profile</a></li>
         <li class="nav-link"  *ngIf="authService.isAuthenticated()" > <a routerLink="/mortgage">Mortgage</a></li>
         <li class="nav-link"  *ngIf="authService.isAuthenticated()" > <a routerLink="/insurance">Insurance</a></li>

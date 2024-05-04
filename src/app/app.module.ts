@@ -17,9 +17,18 @@ import { FormsModule } from '@angular/forms';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { MortgageComponent } from './mortgage/mortgage.component';
 import { AuthGuard } from './auth.guard';
-import { InsuranceComponent } from './insurance/insurance.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { InsuranceListComponent } from './insurance-list/insurance-list.component';
+import { ButtonModule } from 'primeng/button';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AccordionModule } from 'primeng/accordion';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BackOfficeComponent } from './back-office/back-office.component';
+import { SpinnerComponent } from './back-office/shared/spinner.component';
+import { FullComponent } from './back-office/layouts/full/full.component';
+import { NavigationComponent } from './back-office/shared/header/navigation.component';
+import { SidebarComponent } from './back-office/shared/sidebar/sidebar.component';
+import { ToastModule } from 'primeng/toast';
+import { MessagesModule } from 'primeng/messages';
+
 
 
 @NgModule({
@@ -34,8 +43,9 @@ import { InsuranceListComponent } from './insurance-list/insurance-list.componen
     SignupComponent,
     ProfileComponent,
     MortgageComponent,
-    InsuranceComponent,
-    InsuranceListComponent
+    BackOfficeComponent,
+    SpinnerComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -43,7 +53,15 @@ import { InsuranceListComponent } from './insurance-list/insurance-list.componen
     NgxTypedJsModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ButtonModule,
+    BrowserAnimationsModule,
+    AccordionModule,
+    NgbModule,
+    FullComponent,
+    NavigationComponent,
+    SidebarComponent,
+    ToastModule,
+    MessagesModule
   ],
   providers: [    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } , AuthGuard ],
   bootstrap: [AppComponent]

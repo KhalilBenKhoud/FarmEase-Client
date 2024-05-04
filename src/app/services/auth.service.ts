@@ -10,6 +10,8 @@ export class AuthService {
     'Content-Type': 'application/json'   
   });
 
+   
+
   constructor(private http : HttpClient) { }
 
   isAuthenticated() {
@@ -25,7 +27,8 @@ export class AuthService {
   }
 
   logout() {
-    return this.http.post(`${environment.BaseApiUrl}/auth/logout`,{ headers : this.headers , withCredentials: true  })
+    
+    return this.http.post(`${environment.BaseApiUrl}/auth/logout`,{ headers : this.headers , withCredentials: true  }) 
   }
 
   register(requestBody :any) {

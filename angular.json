@@ -24,9 +24,19 @@
               "src/favicon.ico",
               "src/assets"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/assets/scss/style.scss"
+              ]
+            },
+      
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css",
-              "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
+              "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "src/assets/scss/style.scss"
             ],
             "scripts": [
               "node_modules/@fortawesome/fontawesome-free/js/all.min.js" 
@@ -82,6 +92,7 @@
           "options": {
             "browserTarget": "farmease:build"
           }
+          
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",

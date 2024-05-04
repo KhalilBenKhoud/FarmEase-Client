@@ -7,8 +7,10 @@ import { SignupComponent } from './signup/signup.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MortgageComponent } from './mortgage/mortgage.component';
 import { AuthGuard } from './auth.guard';
-import { InsuranceComponent } from './insurance/insurance.component';
-import { InsuranceListComponent } from './insurance-list/insurance-list.component';
+import { BackOfficeComponent } from './back-office/back-office.component';
+import { FullComponent } from './back-office/layouts/full/full.component';
+import { FrontOrBackService } from './services/front-or-back.service';
+import { AdminResolver } from './admin.resolver';
 
 const routes: Routes = [
   {path : "", component: HomeComponent, pathMatch: 'full' },
@@ -17,13 +19,25 @@ const routes: Routes = [
   {path : "signup" , component : SignupComponent},
   {path : "profile" , component : ProfileComponent, canActivate: [AuthGuard]},
   {path : "mortgage" , component : MortgageComponent , canActivate: [AuthGuard]} ,
-  {path : "insurance" , component : InsuranceListComponent , canActivate: [AuthGuard]} ,
+  {path : "" , component : FullComponent , canActivate: [AuthGuard] ,children : [
+    
+        {
+          path: 'dashboard',
+          loadChildren: () => import('./back-office/dashboard/dashboard.module').then(m => m.DashboardModule),
+          resolve : {data : AdminResolver }
+        },
+        {
+          path: 'component',
+          loadChildren: () => import('./back-office/component/component.module').then(m => m.ComponentsModule)
+        }
+      ]}
+ ,
   {path: "**", component: NotFoundComponent }
- 
+   
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
