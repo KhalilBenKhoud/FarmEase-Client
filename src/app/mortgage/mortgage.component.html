@@ -1,1 +1,34 @@
 <p>mortgage works!</p>
+<div class="container">
+  <h2>Mortgages</h2>
+  <h3>Mortgage List</h3>
+  <div *ngFor="let mortgage of mortgages" class="mortgage">
+    <p>Description: {{ mortgage.description_mortgage }}</p>
+    <p>Duration: {{ mortgage.duration_mortgage }}</p>
+    <p>Prize: {{ mortgage.prize_mortgage }}</p>
+    <p>Month Payment: {{ mortgage.month_payment.toFixed(2) }}</p>
+    <p>Category: {{ mortgage.category_mortgage }}</p>
+    <p>Type: {{ mortgage.type_mortgage }}</p>
+    <button (click)="showApplyForm()">Apply</button>
+    <div *ngIf="showApplyFormFlag">
+      <h3>Apply</h3>
+      <div class="form-group">
+        <label for="nom_application">Nom:</label>
+        <input type="text" class="form-control" id="nom_application" name="nom_application" [(ngModel)]="newapplication.nom_application" required>
+      </div>
+      <div class="form-group">
+        <label for="prenom_application">Prénom:</label>
+        <input type="text" class="form-control" id="prenom_application" name="prenom_application" [(ngModel)]="newapplication.prenom_application" required>
+      </div>
+      <div class="form-group">
+        <label for="interesting_rate_application">Taux d'intérêt:</label>
+        <input type="number" class="form-control" id="interesting_rate_application" name="interesting_rate_application" [(ngModel)]="newapplication.interesting_rate_application" required>
+      </div>
+      <div class="form-group">
+        <label for="description_application">Description:</label>
+        <input type="text" class="form-control" id="description_application" name="description_application" [(ngModel)]="newapplication.description_application" required>
+      </div>
+      <button (click)="submitApplication(mortgage.id_mortgage)">Submit</button>
+    </div>
+  </div>
+</div>

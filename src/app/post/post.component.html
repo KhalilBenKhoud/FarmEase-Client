@@ -1,0 +1,89 @@
+<p>post works!</p>
+<div class="post-container">
+    <h2>Add New</h2>
+    <form *ngIf="showFields" (ngSubmit)="addPostOrPool()" #form="ngForm">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" name="title" [(ngModel)]="post.title_Post" required>
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" id="description" name="description" [(ngModel)]="post.description_Post" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="category">Category</label>
+        <select class="form-control" id="category" name="category" [(ngModel)]="post.category_post" required>
+          <option value="" disabled selected>Select category</option>
+          <option value="farmer">Farmer</option>
+          <option value="fisherman">Fisherman</option>
+        </select>
+      </div>
+      
+      <!-- Afficher les champs supplémentaires uniquement si c'est pour un "Pool" -->
+      <div *ngIf="isPool">
+        <div class="form-group">
+          <label for="sondage1">Sondage 1</label>
+          <input type="text" class="form-control" id="sondage1" name="sondage1" [(ngModel)]="post.sondage1">
+        </div>
+        <div class="form-group">
+          <label for="sondage2">Sondage 2</label>
+          <input type="text" class="form-control" id="sondage2" name="sondage2" [(ngModel)]="post.sondage2">
+        </div>
+      </div>
+      
+      <!-- Bouton de soumission du formulaire -->
+      <button type="submit" class="btn btn-primary" [disabled]="form.invalid">{{ isPool ? 'add pool' : 'Add post' }}</button>
+    </form>
+  
+    <!-- Bouton "Post" pour afficher les champs du formulaire -->
+    <button type="button" class="btn btn-primary" (click)="showFields = true; isPool = false">Post</button>
+  
+    <!-- Bouton "Pool" pour afficher les champs du formulaire -->
+    <button type="button" class="btn btn-primary" (click)="showFields = true; isPool = true">Pool</button>
+  </div>
+  
+  <div class="container">
+    <h2>Posts</h2>
+    <div *ngFor="let post of posts" class="post">
+      <h3>{{ post.title_Post }}</h3>
+      <p>{{ post.description_Post }}</p>
+      <div *ngIf="post.sondage1 !== '' || post.sondage2 !== ''">
+        <p>
+          <strong>sujet 1:</strong> {{ post.sondage1 }} | 
+          <strong>pourcentage:</strong> {{ ((post.stat1 * 100) / (post.stat1 + post.stat2)).toFixed(2) }}% 
+          <button (click)="vote1(post)">Vote</button>
+        </p>
+        <p>
+          <strong>sujet 2:</strong> {{ post.sondage2 }} | 
+          <strong>pourcentage :</strong> {{ ((post.stat2 * 100) / (post.stat1 + post.stat2)).toFixed(2) }}% 
+          <button (click)="vote2(post)">Vote</button>
+        </p>
+      </div>
+      <p><strong>Date:</strong> {{ post.date_Post }}</p>
+      <p><strong>Number of Likes:</strong> {{ post.nbr_like_post }} <button (click)="likePost(post)">Like</button></p>
+      <p><strong>Number of Signals:</strong> {{ post.nbr_signal_post }} <button (click)="signalpost(post)">signal</button></p>
+      <p><strong>Category:</strong> {{ post.category_post }}</p>
+      <button (click)="toggleComments()">Show Comments</button>
+
+      <div *ngIf="showComments">
+        <h4>Comments:</h4>
+        <div *ngFor="let comment of post.comment">
+          <p><strong>Description:</strong> {{ comment.description_comment }}</p>
+          <p><strong>Date:</strong> {{ comment.date_Comment }}</p>
+          
+        </div>
+      </div>
+
+
+      
+      
+
+
+    
+      <button (click)="deletePost(post.id_Post)">Delete</button>
+      <button (click)="toggleComment(post)">Comment</button>
+      <div *ngIf="post.showCommentField">
+        <input type="text" name="description" [(ngModel)]="description">
+        <button (click)="addComment(post.id_Post)">Add Comment</button>
+      </div>
+    </div>

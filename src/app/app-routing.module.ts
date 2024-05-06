@@ -11,6 +11,7 @@ import { BackOfficeComponent } from './back-office/back-office.component';
 import { FullComponent } from './back-office/layouts/full/full.component';
 import { FrontOrBackService } from './services/front-or-back.service';
 import { AdminResolver } from './admin.resolver';
+import { PostComponent } from './post/post.component';
 
 const routes: Routes = [
   {path : "", component: HomeComponent, pathMatch: 'full' },
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path : "signup" , component : SignupComponent},
   {path : "profile" , component : ProfileComponent, canActivate: [AuthGuard]},
   {path : "mortgage" , component : MortgageComponent , canActivate: [AuthGuard]} ,
+  {path : "post" , component : PostComponent , canActivate: [AuthGuard]} ,
   {path : "" , component : FullComponent , canActivate: [AuthGuard] ,children : [
     
         {

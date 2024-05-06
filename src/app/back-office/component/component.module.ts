@@ -12,8 +12,11 @@ import { InvestmentComponent } from './investment/investment.component';
 import { CardsComponent } from './card/card.component';
 import { LoanComponent } from './loan/loan.component';
 import { MarketplaceComponent } from './marketplace/marketplace.component';
+import { BrowserModule } from '@angular/platform-browser';
 
+import { MortgagebackComponent } from './mortgageback/mortgageback.component';
 @NgModule({
+ 
   imports: [
     CommonModule,
     RouterModule.forChild(ComponentsRoutes),
@@ -26,8 +29,11 @@ import { MarketplaceComponent } from './marketplace/marketplace.component';
     NgbdnavBasicComponent,
     InvestmentComponent,
     CardsComponent,
-    MarketplaceComponent
-   
+    MortgagebackComponent,
+    MarketplaceComponent,
+    BrowserModule,
+  
+    
   ],
 })
 export class ComponentsModule { }

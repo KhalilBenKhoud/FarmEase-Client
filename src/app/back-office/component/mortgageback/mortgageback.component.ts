@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { MortgageService } from '../services/mortgage.service';
-import { ApplicationService } from '../services/application.service';
+import { MortgageService } from 'src/app/services/mortgage.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-mortgage',
-  templateUrl: './mortgage.component.html',
-  styleUrls: ['./mortgage.component.css']
+  selector: 'app-mortgageback',
+  templateUrl: './mortgageback.component.html',
+  standalone:true
 })
-export class MortgageComponent implements OnInit {
-  showApplyFormFlag: boolean = false;
+
+export class MortgagebackComponent implements OnInit {
   mortgages: any[] = [];
   newMortgage: any = {
     description_mortgage: '',
@@ -20,18 +20,12 @@ export class MortgageComponent implements OnInit {
     price_mortgage: null
   };
   updatingMortgage: any = null; // To store the mortgage being updated
-  newapplication :any = {
-    nom_application: '',
-    prenom_application: '',
-    interesting_rate_application: 0,
-    description_application: ''
-  };
-  constructor(private mortgageService: MortgageService,private ApplicationService : ApplicationService) { }
+
+  constructor(private mortgageService: MortgageService) { }
 
   ngOnInit(): void {
     this.fetchMortgages();
   }
-  
 
   fetchMortgages() {
     this.mortgageService.getAllMortgages().subscribe(
@@ -40,21 +34,6 @@ export class MortgageComponent implements OnInit {
       },
       (error) => {
         console.error('Error fetching mortgages:', error);
-      }
-    );
-  }
-  submitApplication(mortgageId: number) {
-
-
-    console.log(this.newapplication);
-
-    this.ApplicationService.addApplication(this.newapplication, mortgageId).subscribe(
-      (response) => {
-        console.log('Application added successfully:', response);
-        // Add any additional logic after successful submission
-      },
-      (error) => {
-        console.error('Error adding application:', error);
       }
     );
   }
@@ -71,7 +50,7 @@ export class MortgageComponent implements OnInit {
       }
     );
   }
- 
+
   resetNewMortgage() {
     this.newMortgage = {
       description_mortgage: '',
@@ -93,10 +72,6 @@ export class MortgageComponent implements OnInit {
   // Method to cancel updating the mortgage
   cancelUpdate() {
     this.updatingMortgage = null;
-  }
-
-  showApplyForm() {
-    this.showApplyFormFlag = !this.showApplyFormFlag;
   }
 
   // Method to finalize updating the mortgage

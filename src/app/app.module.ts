@@ -28,6 +28,7 @@ import { NavigationComponent } from './back-office/shared/header/navigation.comp
 import { SidebarComponent } from './back-office/shared/sidebar/sidebar.component';
 import { ToastModule } from 'primeng/toast';
 import { MessagesModule } from 'primeng/messages';
+import { PostComponent } from './post/post.component';
 
 
 
@@ -45,6 +46,7 @@ import { MessagesModule } from 'primeng/messages';
     MortgageComponent,
     BackOfficeComponent,
     SpinnerComponent,
+    PostComponent,
     
   ],
   imports: [
