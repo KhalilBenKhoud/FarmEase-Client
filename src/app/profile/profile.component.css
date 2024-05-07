@@ -1,0 +1,136 @@
+
+
+.profileContainer {
+
+}
+
+.bannerContainer {
+   
+    position: relative;
+    top: 0  ;
+    height: 250px;
+    width: 100%;
+    background-image: url("../../assets/street.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+   
+} 
+
+.box {
+  padding: 10px;
+  padding-top: 60px;
+  height : 380px ;
+  width: 220px;
+  position: absolute;
+  left : 200px ;
+  bottom : 0% ;
+  transform: translateY(50%);
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  
+}
+
+.box > * {
+    margin-bottom: 8px;
+}
+.settings {
+    display: flex;
+    align-items: center;
+    gap : 15px ;
+}
+
+.gray {
+    color : gray ;
+    font-weight: 700;
+}
+.info {
+    color : #63E6BE ;
+    display: flex;
+    align-items: center;
+    gap : 7px ;
+}
+
+.avatar {
+    width: 110px;
+    height: 110px;
+    position: absolute;
+    top : 0 ;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    border: 2px solid black;
+}
+
+.settings {
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+
+.walletContainer {
+    position: absolute;
+    bottom : 30% ;
+    left : 50% ;
+    transform: translateX(-50%);
+    width: 600px !important;
+  
+}
+
+.walletIll {
+    position: absolute;
+    width: 80px;
+    height: 80px ;
+    right : 10px ;
+    top : 0 ;
+ 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* styled file input */
+
+  
+  .custom-file-input {
+    font-family: calibri;
+    width: 120px;
+    padding: 10px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border: 1px dashed #BBB;
+    text-align: center;
+    background-color: #DDD;
+    cursor: pointer;
+  
+  }
+
+  input[type="file"]::file-selector-button {
+    /* Standard file selector button */
+    display: none;
+  }
+  
+
+  
+  /* Styling for the browse button text */
+  

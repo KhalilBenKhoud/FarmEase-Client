@@ -2,6 +2,7 @@ import { Component, AfterViewInit, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbDropdownModule, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from 'src/app/services/auth.service';
+import { FrontOrBackService } from 'src/app/services/front-or-back.service';
 
 declare var $: any;
 
@@ -16,7 +17,7 @@ export class NavigationComponent implements AfterViewInit {
 
   public showSearch = false;
 
-  constructor(private modalService: NgbModal, private authService : AuthService , private router: Router) {
+  constructor(private modalService: NgbModal, private frontOrBack : FrontOrBackService , private authService : AuthService , private router: Router) {
   }
 
   // This is for Notifications
@@ -115,7 +116,9 @@ export class NavigationComponent implements AfterViewInit {
   logout() {
     this.authService.logout().subscribe(
       (data : any) => { localStorage.removeItem('accessToken') ;
-      this.router.navigate(["/home"])},
+      this.router.navigate(["/home"])
+       this.frontOrBack.set(true) ;
+      },
       error => {  console.log(error) ;}
     )
   }

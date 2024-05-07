@@ -1,0 +1,56 @@
+<p-dialog 
+(onHide) = "closeModal"
+[(visible)]="visible" 
+[modal]="true"
+(visibleChange)="closeModal()"
+[style]="{ width: '25rem' }">
+    <ng-template pTemplate="header">
+        <div style="display : flex; align-items : center; gap : 10px;">
+            <p-avatar 
+                [image]="profileImage || '../../assets/account-avatar-profile-user-11.svg' "
+                shape="circle" />
+            <span >
+               <b>{{profile.firstname + " " + profile.lastname}}</b>
+            </span>
+        </div>
+        
+    </ng-template>
+    <span class="p-text-secondary block mb-5">Update your information.</span>
+    <div class="flex align-items-center gap-3 mb-3 mt-3">
+        <label for="firstname" class="font-semibold w-6rem" style="margin-right : 1rem ;">
+            First name
+        </label>
+        <input [(ngModel)]="newFirstname" pInputText id="firstname" class="form-control" autocomplete="off" />
+    </div>
+    <div class="flex align-items-center gap-3 mb-3 mt-3">
+        <label for="lastname" class="font-semibold w-6rem" style="margin-right : 1rem ;">
+            Last name
+        </label>
+        <input pInputText [(ngModel)]="newLastName" id="lastname" class="form-control" autocomplete="off" />
+    </div>
+    <div class="flex align-items-center gap-3 mb-3 mt-3">
+        <label for="email" class="font-semibold w-6rem" style="margin-right : 1rem ;">
+            Email
+        </label>
+        <input [(ngModel)]="newEmail" pInputText id="email" class="form-control" />
+    </div>
+    <div >
+        <p>Profession :</p>
+        <p-selectButton 
+            [options]="stateOptions" 
+            [(ngModel)]="value" 
+            optionLabel="label" 
+            optionValue="value" />
+    </div>
+    <ng-template pTemplate="footer">
+        <p-button 
+            label="Cancel" 
+            severity="secondary" 
+            (click)="closeModal()" />
+        <p-button 
+            label="Save" 
+            severity="secondary" 
+            (click)="updateProfile()  ; closeModal()" 
+          />
+    </ng-template>
+</p-dialog>

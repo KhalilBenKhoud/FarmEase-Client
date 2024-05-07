@@ -28,7 +28,13 @@ import { NavigationComponent } from './back-office/shared/header/navigation.comp
 import { SidebarComponent } from './back-office/shared/sidebar/sidebar.component';
 import { ToastModule } from 'primeng/toast';
 import { MessagesModule } from 'primeng/messages';
-
+import { NonauthGuard } from './nonauth.guard';
+import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
+import { DialogModule } from 'primeng/dialog';
+import { InputTextModule } from 'primeng/inputtext';
+import { AvatarModule } from 'primeng/avatar';
+import { SelectButtonModule } from 'primeng/selectbutton';
+import { TabViewModule } from 'primeng/tabview';
 
 
 @NgModule({
@@ -45,6 +51,7 @@ import { MessagesModule } from 'primeng/messages';
     MortgageComponent,
     BackOfficeComponent,
     SpinnerComponent,
+    EditProfileComponent,
     
   ],
   imports: [
@@ -61,9 +68,14 @@ import { MessagesModule } from 'primeng/messages';
     NavigationComponent,
     SidebarComponent,
     ToastModule,
-    MessagesModule
+    MessagesModule,
+    DialogModule,
+    InputTextModule,
+    AvatarModule,
+    SelectButtonModule,
+    TabViewModule
   ],
-  providers: [    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } , AuthGuard ],
+  providers: [    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } , AuthGuard , NonauthGuard ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
