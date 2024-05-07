@@ -1,0 +1,49 @@
+
+
+<p>add-sinister for insurance {{myParam}}!</p>
+<p-toast position="top-center" />
+<div class="container">
+	
+	<div class="card">
+		<div class="card-image">	
+			<h2 class="card-heading">
+				Get started
+				<small>Let us report your sinister</small>
+			</h2>
+		</div>
+		<form class="card-form" (ngSubmit)="onSubmit()" >
+			<div class="input">
+				<input type="text" class="input-field" name="description" [(ngModel)] = "description"   required/>
+				<label class="input-label">Description</label>
+			</div>
+            <div class="input">
+				<input type="number" class="input-field" name="amount" [(ngModel)] = "amount"   required/>
+				<label class="input-label">Amount</label>
+			</div>
+            <div class="input">  
+             
+            <p-calendar [(ngModel)]="date" [showIcon]="true" name="date"
+            [showOnFocus]="false"  />
+            <p style="margin-bottom: 15px !important; ">Date : </p>
+            </div>
+				
+            <div class="card flex justify-content-center">
+               <p>Type :</p>
+                <p-selectButton 
+                    [options]="stateOptions" 
+                    [(ngModel)]="type" 
+					name="type"
+                    optionLabel="label" 
+                    optionValue="value" />
+            </div>
+     
+				
+			<div class="action">
+				<button class="action-button">Report sinister</button>
+			</div>
+		</form>
+		<div class="card-info">
+			<p>By providing this information you are agreeing to our <a href="#">Terms and Conditions</a></p>
+		</div>
+	</div>
+</div>

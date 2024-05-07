@@ -28,4 +28,15 @@ getAllInsurances(): Observable<Insurance[]> {
   return this.http.get<Insurance[]>(`${environment.BaseApiUrl}/insurances/getAll`);
 }
 
+assignSinister(id : number, data : any) {
+  return this.http.post<any>(`${environment.BaseApiUrl}/sinisters/add/${id}`, data);
+  
+}
+
+getSinistersByInsurance(id : number) {
+    return this.http.get<any[]>(`${environment.BaseApiUrl}/sinisters/byInsurance/${id}`);
+
+  }
+
+
 }

@@ -35,6 +35,11 @@ import { SelectButtonModule } from 'primeng/selectbutton';
 import { DataViewModule } from 'primeng/dataview';
 import { TagModule } from 'primeng/tag';
 import { CarouselModule } from 'primeng/carousel';
+import { CurrencyComponent } from './currency/currency.component';
+import { AddSinisterComponent } from './insurance/view-insurance/add-sinister/add-sinister.component';
+import { ViewSinisterComponent } from './insurance/view-insurance/view-sinister/view-sinister.component';
+import { CalendarModule } from 'primeng/calendar';
+import { TableModule } from 'primeng/table';
 
 
 @NgModule({
@@ -53,7 +58,10 @@ import { CarouselModule } from 'primeng/carousel';
     SpinnerComponent,
     InsuranceComponent,
     AddInsuranceComponent,
-    ViewInsuranceComponent
+    ViewInsuranceComponent,
+    CurrencyComponent,
+    AddSinisterComponent,
+    ViewSinisterComponent
 
     
   ],
@@ -75,7 +83,9 @@ import { CarouselModule } from 'primeng/carousel';
     SelectButtonModule,
     DataViewModule,
     TagModule,
-    CarouselModule
+    CarouselModule,
+    CalendarModule,
+    TableModule
   ],
   providers: [    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } , AuthGuard ],
   bootstrap: [AppComponent]

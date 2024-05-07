@@ -14,6 +14,8 @@ import { AdminResolver } from './admin.resolver';
 import { InsuranceComponent } from './insurance/insurance.component';
 import { AddInsuranceComponent } from './insurance/add-insurance/add-insurance.component';
 import { ViewInsuranceComponent } from './insurance/view-insurance/view-insurance.component';
+import { AddSinisterComponent } from './insurance/view-insurance/add-sinister/add-sinister.component';
+import { ViewSinisterComponent } from './insurance/view-insurance/view-sinister/view-sinister.component';
 
 const routes: Routes = [
   {path : "", component: HomeComponent, pathMatch: 'full' },
@@ -25,6 +27,8 @@ const routes: Routes = [
   {path : "insurance" , component : InsuranceComponent , canActivate: [AuthGuard]} ,
   {path : "addInsurance" , component : AddInsuranceComponent , canActivate: [AuthGuard]} ,
   {path : "viewInsurance" , component : ViewInsuranceComponent , canActivate: [AuthGuard]} ,
+  {path : "addSinister/:id" , component : AddSinisterComponent , canActivate: [AuthGuard]} ,
+  {path : "viewSinister/:id" , component : ViewSinisterComponent , canActivate: [AuthGuard]} ,
   {path : "" , component : FullComponent , canActivate: [AuthGuard] ,children : [
     
         {
