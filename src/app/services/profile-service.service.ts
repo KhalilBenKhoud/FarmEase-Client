@@ -33,4 +33,9 @@ export class ProfileServiceService {
       return this.http.put(`${environment.BaseApiUrl}/user/current/image`,image) ;
     }
 
+    encodePassword(password : string) {
+      return this.http.post(`${environment.BaseApiUrl}/user/encodePaasword`,password) ;
+
+    }
+
 }

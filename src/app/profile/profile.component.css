@@ -20,11 +20,11 @@
 .box {
   padding: 10px;
   padding-top: 60px;
-  height : 380px ;
+  height : 420px ;
   width: 220px;
   position: absolute;
   left : 200px ;
-  bottom : 0% ;
+  bottom : -10% ;
   transform: translateY(50%);
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -94,10 +94,9 @@ p {
 }
 
 
-
-
-
-
+.tabContainer {
+    min-height: 80px;
+}
 
 
 

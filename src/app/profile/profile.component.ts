@@ -17,8 +17,11 @@ export class ProfileComponent implements OnInit{
   selectedFile !: File ;
   imageInput !: any ;
   showEdit : boolean = false ;
+  showChangePassword : boolean = false ;
   ngOnInit() {
+   
     setInterval(() => {
+      if(this.auth.isAuthenticated())
       this.fetchProfile()
     },5000)
   
@@ -30,8 +33,19 @@ export class ProfileComponent implements OnInit{
     
   }
 
+  showPasswordModal() {
+    this.showChangePassword = true;
+  }
+
     closeModal() {
     this.showEdit = false ; 
+    setTimeout(() => {
+      this.fetchProfile() ;
+    },500) 
+  }
+
+  closePasswordModal() {
+    this.showChangePassword = false ; 
     setTimeout(() => {
       this.fetchProfile() ;
     },500) 

@@ -35,6 +35,10 @@ import { InputTextModule } from 'primeng/inputtext';
 import { AvatarModule } from 'primeng/avatar';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { TabViewModule } from 'primeng/tabview';
+import { ChnagePasswordComponent } from './profile/chnage-password/chnage-password.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { ReactiveFormsModule} from '@angular/forms';
+
 
 
 @NgModule({
@@ -52,6 +56,8 @@ import { TabViewModule } from 'primeng/tabview';
     BackOfficeComponent,
     SpinnerComponent,
     EditProfileComponent,
+    ChnagePasswordComponent,
+    ForgetPasswordComponent,
     
   ],
   imports: [
@@ -73,7 +79,8 @@ import { TabViewModule } from 'primeng/tabview';
     InputTextModule,
     AvatarModule,
     SelectButtonModule,
-    TabViewModule
+    TabViewModule,
+    ReactiveFormsModule
   ],
   providers: [    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } , AuthGuard , NonauthGuard ],
   bootstrap: [AppComponent]
