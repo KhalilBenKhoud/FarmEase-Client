@@ -11,6 +11,11 @@ import { BackOfficeComponent } from './back-office/back-office.component';
 import { FullComponent } from './back-office/layouts/full/full.component';
 import { FrontOrBackService } from './services/front-or-back.service';
 import { AdminResolver } from './admin.resolver';
+import { ProjectComponent } from './investment/project/project.component';
+import { ProjectDetailsComponent } from './investment/project-details/project-details.component';
+import { ShowProjectComponent } from './investment/show-project/show-project.component';
+import { AddProjectFormComponent } from './investment/add-project-form/add-project-form.component';
+import { CreateProjectComponent } from './investment/create-project/create-project.component';
 
 const routes: Routes = [
   {path : "", component: HomeComponent, pathMatch: 'full' },
@@ -18,6 +23,10 @@ const routes: Routes = [
   {path : "login" , component : LoginComponent },
   {path : "signup" , component : SignupComponent},
   {path : "profile" , component : ProfileComponent, canActivate: [AuthGuard]},
+  {path : "projects" , component : ProjectComponent, canActivate: [AuthGuard]},
+  {path : "createproject" , component : AddProjectFormComponent, canActivate: [AuthGuard]},
+  {path : "details/:id" , component : ProjectDetailsComponent, canActivate: [AuthGuard]},
+  {path : "projects2" , component : ShowProjectComponent, canActivate: [AuthGuard]},
   {path : "mortgage" , component : MortgageComponent , canActivate: [AuthGuard]} ,
   {path : "" , component : FullComponent , canActivate: [AuthGuard] ,children : [
     

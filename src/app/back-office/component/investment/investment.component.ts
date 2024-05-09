@@ -1,72 +1,55 @@
 import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
+import { Project } from 'src/app/models/Project';
+import { ProjectService } from 'src/app/services/project.service';
+import { ButtonModule } from 'primeng/button';
+import { NgbPagination, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 
-interface buttonsData {
-  btn: string;
-  icon: string;
-}
 
 @Component({
   selector: 'app-ngbd-buttons',
   standalone: true,
   templateUrl: 'investment.component.html',
   imports: [
-    FormsModule, ReactiveFormsModule , NgFor
+    FormsModule, ReactiveFormsModule , NgFor, NgIf,NgbPaginationModule,ButtonModule
   ]
 })
 export class InvestmentComponent implements OnInit {
-  public checkboxGroupForm: UntypedFormGroup = Object.create(null);
+  projects: Project[] = [];
+  currentPage: number = 1;
+  pageSize: number = 5; // Number of projects per page
+  totalProjects: number = 0;
 
-  public radioGroupForm: UntypedFormGroup = Object.create(null);
-
-  constructor(private formBuilder: UntypedFormBuilder) {}
-
-  buttonsdata: buttonsData[] = [
-    {
-      btn: 'primary',
-      icon: 'check',
-    },
-    {
-      btn: 'secondary',
-      icon: 'heart',
-    },
-    {
-      btn: 'success',
-      icon: 'send',
-    },
-    {
-      btn: 'info',
-      icon: 'envelope',
-    },
-    {
-      btn: 'warning',
-      icon: 'inbox',
-    },
-    {
-      btn: 'danger',
-      icon: 'bell',
-    },
-  ];
-
-  model = {
-    left: true,
-    middle: false,
-    right: false,
-  };
-
-  model1 = 1;
+  constructor(private projectService: ProjectService) {}
 
   ngOnInit() {
-    this.checkboxGroupForm = this.formBuilder.group({
-      left: true,
-      middle: false,
-      right: false,
-    });
-
-    this.radioGroupForm = this.formBuilder.group({
-      model: 1,
-    });
+      this.projectService.getAllProjects().subscribe(projects => {
+        this.projects = projects;
+        this.projects.forEach(project => {
+          project.imageUrl = 'http://localhost:8080/images/' + project.imageUrl;
+        });
+        this.totalProjects = this.projects.length;
+      });
+  }
+  deleteProject(projectId: number) {
+    this.projectService.deleteProject(projectId).subscribe(
+      () => {
+        // Remove the deleted project from the projects array
+        this.projects = this.projects.filter(project => project.id !== projectId);
+        console.log('Project deleted successfully!');
+      },
+      error => {
+        console.error('Error deleting project:', error);
+        // Handle error appropriately
+      }
+    );
+  }
+  
+  get pagedProjects() {
+    const startIndex = (this.currentPage - 1) * this.pageSize;
+    const endIndex = Math.min(startIndex + this.pageSize, this.totalProjects);
+    return this.projects.slice(startIndex, endIndex);
   }
 }

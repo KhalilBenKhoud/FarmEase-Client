@@ -1,0 +1,118 @@
+<body>
+  <div class="body" role="main">
+    <div class="container">
+      <div class="masthead trim">
+        <h1 class="heading">Discover</h1>
+        <h4 class="subheading">Crowdfunding Projects by Farmease</h4>
+      </div>
+      <hr>
+      <div>
+        <button (click)="filterByCategory('')">All</button>
+        <button (click)="filterByCategory('FARM')">Farm</button>
+        <button (click)="filterByCategory('PHISHING_BOAT')">Fishing boat</button>
+        <!-- Add more buttons for other categories -->
+      </div>
+      <hr />
+      <div class="summary__list columns columns--x1 columns--x2-md columns--x3-lg">
+        <div class="column" *ngFor="let project of projects">
+          <div class="card">
+            <a
+              [routerLink]="['/details', project.id]"
+              class="card-header trim"
+            >
+            <span
+                  *ngIf="project.projectStatus === 'FUNDED'"
+                  class="badge bg-success text-white"
+                >
+                  Funded
+                </span>
+                <span
+                  *ngIf="project.projectStatus === 'PENDING'"
+                  class="badge bg-warning text-dark"
+                >
+                  Pending
+                </span>
+                <span
+                  *ngIf="project.projectStatus === 'PLEDGED'"
+                  class="badge bg-primary text-white"
+                >
+                  Pledged
+                </span>
+                <hr>
+              <span class="card-img-top">
+                <img
+                  class="img-fluid"
+                  *ngIf="project.imageUrl !== null"
+                  [src]="project.imageUrl"
+                  alt="land image"
+                />
+                
+              </span>
+              <h4 style="font-size: 16px" class="card-title">
+                {{ project.title }}
+              </h4>
+              <h6 style="font-size: 12px" class="card-subtitle mb-2 text-muted">
+                <i
+                  class="fa-solid fa-location-crosshairs"
+                  style="color: #457e35"
+                ></i>
+                {{ project.address }}
+              </h6>
+              <p style="font-size: 12px" class="card-text">
+                {{ project.projectCategory }}
+              </p>
+            </a>
+            <div class="card-body">
+              <p-progressBar
+                [value]="
+                  calculateProgress(project.totalInvestment, project.goalAmount)
+                "
+              >
+                <ng-template pTemplate="content" let-value>
+                  <span>{{ value }}%</span>
+                </ng-template>
+              </p-progressBar>
+              <hr />
+              <div class="card-text d-flex justify-content-between">
+                <h6 style="font-size: 15px">
+                  <i class="fa-solid fa-circle-dollar-to-slot" style="color: #457e35"></i>
+                  {{ project.totalInvestment }}$
+                </h6>
+                <h6 style="font-size: 15px">
+                  <i class="fa-regular fa-clock" style="color: #457e35"></i>
+                  {{ project.deadline }}
+                </h6>
+              </div>
+              <div class="card-footer">
+                <p-button
+                  (click)="op.toggle($event)"
+                  icon="pi pi-share-alt"
+                  label="Weather"
+                >
+                  <i class="fa-solid fa-temperature-high" style="margin-left: 5px"></i>
+                </p-button>
+                <p-overlayPanel #op>
+                  <div *ngIf="project.weather">
+                    <p style="text-align: center">Date: {{ project.weather.date }}</p>
+                    <p>
+                      <i class="fa-regular fa-sun" style="color: #457e35"></i> Daily
+                      Temperature: {{ project.weather.daily }}°C
+                    </p>
+                    <p>
+                      <i class="fa-regular fa-moon" style="color: #457e35"></i>
+                      Nightly Temperature: {{ project.weather.nightly }}°C
+                    </p>
+                    <p>
+                      <i class="fa-solid fa-wind" style="color: #457e35"></i>
+                      Pressure: {{ project.weather.pressure }}
+                    </p>
+                  </div>
+                </p-overlayPanel>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

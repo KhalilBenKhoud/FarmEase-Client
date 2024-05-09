@@ -26,7 +26,7 @@ import { MarketplaceComponent } from './marketplace/marketplace.component';
     NgbdnavBasicComponent,
     InvestmentComponent,
     CardsComponent,
-    MarketplaceComponent
+    MarketplaceComponent,
    
   ],
 })

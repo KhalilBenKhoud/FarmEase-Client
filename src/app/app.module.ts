@@ -13,7 +13,7 @@ import  { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { ProfileComponent } from './profile/profile.component'
-import { FormsModule } from '@angular/forms';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { MortgageComponent } from './mortgage/mortgage.component';
 import { AuthGuard } from './auth.guard';
@@ -28,8 +28,17 @@ import { NavigationComponent } from './back-office/shared/header/navigation.comp
 import { SidebarComponent } from './back-office/shared/sidebar/sidebar.component';
 import { ToastModule } from 'primeng/toast';
 import { MessagesModule } from 'primeng/messages';
-
-
+import { InvestmentComponent } from './investment/investment.component';
+import { ProjectComponent } from './investment/project/project.component';
+import { ProjectDetailsComponent } from './investment/project-details/project-details.component';
+import { ShowProjectComponent } from './investment/show-project/show-project.component';
+import { AddProjectFormComponent } from './investment/add-project-form/add-project-form.component';
+import { CreateProjectComponent } from './investment/create-project/create-project.component';
+import { InvestFormComponent } from './investment/invest-form/invest-form.component';
+import { ProgressBarModule } from 'primeng/progressbar';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { TimelineModule } from 'primeng/timeline';
+import { CardModule } from 'primeng/card';
 
 @NgModule({
   declarations: [
@@ -45,7 +54,13 @@ import { MessagesModule } from 'primeng/messages';
     MortgageComponent,
     BackOfficeComponent,
     SpinnerComponent,
-    
+    InvestmentComponent,
+    ProjectComponent,
+    ProjectDetailsComponent,
+    ShowProjectComponent,
+    AddProjectFormComponent,
+    CreateProjectComponent,
+    InvestFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,7 +76,12 @@ import { MessagesModule } from 'primeng/messages';
     NavigationComponent,
     SidebarComponent,
     ToastModule,
-    MessagesModule
+    MessagesModule,
+    ReactiveFormsModule,
+    ProgressBarModule,
+    OverlayPanelModule,
+    TimelineModule,
+    CardModule,
   ],
   providers: [    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } , AuthGuard ],
   bootstrap: [AppComponent]
