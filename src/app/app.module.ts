@@ -59,7 +59,7 @@ import { ReactiveFormsModule} from '@angular/forms';
     ChnagePasswordComponent,
     ForgetPasswordComponent,
     
-  ],
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
