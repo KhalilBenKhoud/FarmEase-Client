@@ -12,6 +12,7 @@ import { InvestmentComponent } from './investment/investment.component';
 import { CardsComponent } from './card/card.component';
 import { LoanComponent } from './loan/loan.component';
 import { MarketplaceComponent } from './marketplace/marketplace.component';
+import { MortgageComponent } from './mortgage/mortgage';
 
 @NgModule({
   imports: [
@@ -27,7 +28,7 @@ import { MarketplaceComponent } from './marketplace/marketplace.component';
     InvestmentComponent,
     CardsComponent,
     MarketplaceComponent,
-   
+     
   ],
 })
 export class ComponentsModule { }

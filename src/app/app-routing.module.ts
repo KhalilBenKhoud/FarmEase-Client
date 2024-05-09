@@ -7,21 +7,22 @@ import { SignupComponent } from './signup/signup.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MortgageComponent } from './mortgage/mortgage.component';
 import { AuthGuard } from './auth.guard';
-import { BackOfficeComponent } from './back-office/back-office.component';
 import { FullComponent } from './back-office/layouts/full/full.component';
-import { FrontOrBackService } from './services/front-or-back.service';
 import { AdminResolver } from './admin.resolver';
 import { ProjectComponent } from './investment/project/project.component';
 import { ProjectDetailsComponent } from './investment/project-details/project-details.component';
 import { ShowProjectComponent } from './investment/show-project/show-project.component';
 import { AddProjectFormComponent } from './investment/add-project-form/add-project-form.component';
 import { CreateProjectComponent } from './investment/create-project/create-project.component';
+import { NonauthGuard } from './nonauth.guard';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 
 const routes: Routes = [
   {path : "", component: HomeComponent, pathMatch: 'full' },
   {path : "home", component: HomeComponent },
-  {path : "login" , component : LoginComponent },
-  {path : "signup" , component : SignupComponent},
+  {path : "login" , component : LoginComponent , canActivate: [NonauthGuard] },
+  {path : "signup" , component : SignupComponent,  canActivate: [NonauthGuard]},
+  {path : "forgetPassword" , component : ForgetPasswordComponent,  canActivate: [NonauthGuard]},
   {path : "profile" , component : ProfileComponent, canActivate: [AuthGuard]},
   {path : "projects" , component : ProjectComponent, canActivate: [AuthGuard]},
   {path : "createproject" , component : AddProjectFormComponent, canActivate: [AuthGuard]},

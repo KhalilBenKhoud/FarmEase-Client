@@ -39,6 +39,17 @@ import { ProgressBarModule } from 'primeng/progressbar';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { TimelineModule } from 'primeng/timeline';
 import { CardModule } from 'primeng/card';
+import { NonauthGuard } from './nonauth.guard';
+import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
+import { DialogModule } from 'primeng/dialog';
+import { InputTextModule } from 'primeng/inputtext';
+import { AvatarModule } from 'primeng/avatar';
+import { SelectButtonModule } from 'primeng/selectbutton';
+import { TabViewModule } from 'primeng/tabview';
+import { ChnagePasswordComponent } from './profile/chnage-password/chnage-password.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+
+
 
 @NgModule({
   declarations: [
@@ -61,7 +72,11 @@ import { CardModule } from 'primeng/card';
     AddProjectFormComponent,
     CreateProjectComponent,
     InvestFormComponent,
-  ],
+    EditProfileComponent,
+    ChnagePasswordComponent,
+    ForgetPasswordComponent,
+    
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -82,8 +97,14 @@ import { CardModule } from 'primeng/card';
     OverlayPanelModule,
     TimelineModule,
     CardModule,
+    DialogModule,
+    InputTextModule,
+    AvatarModule,
+    SelectButtonModule,
+    TabViewModule,
+    ReactiveFormsModule
   ],
-  providers: [    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } , AuthGuard ],
+  providers: [    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } , AuthGuard , NonauthGuard ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

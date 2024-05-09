@@ -1,3 +1,5 @@
+<p-toast position="top-center"></p-toast>
+
 
 <div class="container">
 	<div class="screen">
@@ -18,11 +20,15 @@
 					<input type="text" class="login__input" [(ngModel)]="email"  name="email"  placeholder="Email" required>
 				</div>
                 <div class="login__field">
-                <select [(ngModel)]="role" required  name="role" >
-                    <option value="" disabled selected>Your Profession</option>
-                    <option value="FARMER">Farmer</option>
-                    <option value="FISHER">Fisher</option>
-                </select>
+                  <p><b> Your profession :</b></p>
+                  <p-selectButton 
+                  [options]="stateOptions" 
+                  [(ngModel)]="role" 
+                  optionLabel="label" 
+                  optionValue="value"
+                  name="role"
+                  />
+                
                </div>
             </div>
             <div>
@@ -40,15 +46,14 @@
             <p>I agrre to the terms of FarmEase</p>
             <div class="checkbox-wrapper-55">
                 <label class="rocker rocker-small">
-                  <input type="checkbox">
+                  <input type="checkbox" [checked]="agree" (change)="agree = !agree">
                   <span class="switch-left">Yes</span>
                   <span class="switch-right">No</span>
                 </label>
               </div>
         </div>
-        <p-button label="Test"></p-button>
 
-				<button class="button login__submit" [ariaChecked]="agree">
+				<button class="button login__submit" >
 					<span class="button__text">Register</span>
 					<i class="button__icon fas fa-chevron-right"></i>
 				</button>				
