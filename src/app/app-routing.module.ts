@@ -7,21 +7,22 @@ import { SignupComponent } from './signup/signup.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MortgageComponent } from './mortgage/mortgage.component';
 import { AuthGuard } from './auth.guard';
-import { BackOfficeComponent } from './back-office/back-office.component';
 import { FullComponent } from './back-office/layouts/full/full.component';
-import { FrontOrBackService } from './services/front-or-back.service';
 import { AdminResolver } from './admin.resolver';
 import { AddProductComponent } from './add-product/add-product.component';
 import { CartComponent } from './cart/cart.component';
 import { CartDetailComponent } from './cart-detail/cart-detail.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { NonauthGuard } from './nonauth.guard';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 
 const routes: Routes = [
   {path : "", component: HomeComponent, pathMatch: 'full' },
   {path : "home", component: HomeComponent },
-  {path : "login" , component : LoginComponent },
-  {path : "signup" , component : SignupComponent},
+  {path : "login" , component : LoginComponent , canActivate: [NonauthGuard] },
+  {path : "signup" , component : SignupComponent,  canActivate: [NonauthGuard]},
+  {path : "forgetPassword" , component : ForgetPasswordComponent,  canActivate: [NonauthGuard]},
   {path : "profile" , component : ProfileComponent, canActivate: [AuthGuard]},
   {path : "mortgage" , component : MortgageComponent , canActivate: [AuthGuard]} ,
   {path:"Addproduct" ,component:AddProductComponent},

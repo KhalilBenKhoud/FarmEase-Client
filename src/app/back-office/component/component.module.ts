@@ -18,6 +18,8 @@ import { MarketPlaceComponent } from './market-place/market-place.component';
 import { DialogModule } from 'primeng/dialog';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { MortgageComponent } from './mortgage/mortgage';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -36,6 +38,8 @@ import { MessageService } from 'primeng/api';
     ButtonModule,
     ToastModule,
     DialogModule,
+    MarketplaceComponent
+     
   ],
   declarations: [
     MarketPlaceComponent,

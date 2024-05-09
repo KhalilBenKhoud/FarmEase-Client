@@ -34,7 +34,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { CartComponent } from './cart/cart.component';
 import { CartDetailComponent } from './cart-detail/cart-detail.component';
 import { SidebarModule } from 'primeng/sidebar';
-import { DialogModule } from 'primeng/dialog';
+
 import { SliderModule } from 'primeng/slider';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { TreeSelectModule } from 'primeng/treeselect';
@@ -42,6 +42,16 @@ import { ImageModule } from 'primeng/image';
 import { DragDropModule } from 'primeng/dragdrop';
 import { TableModule} from 'primeng/table';
 import { CarouselModule } from 'primeng/carousel';
+import { NonauthGuard } from './nonauth.guard';
+import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
+import { DialogModule } from 'primeng/dialog';
+import { InputTextModule } from 'primeng/inputtext';
+import { AvatarModule } from 'primeng/avatar';
+import { SelectButtonModule } from 'primeng/selectbutton';
+import { TabViewModule } from 'primeng/tabview';
+import { ChnagePasswordComponent } from './profile/chnage-password/chnage-password.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+
 
 
 @NgModule({
@@ -62,9 +72,12 @@ import { CarouselModule } from 'primeng/carousel';
     AddProductComponent,
     ProductDetailsComponent,
     CartComponent,
-    CartDetailComponent
+    CartDetailComponent,
+    EditProfileComponent,
+    ChnagePasswordComponent,
+    ForgetPasswordComponent,
     
-  ],
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -93,8 +106,14 @@ import { CarouselModule } from 'primeng/carousel';
 
     
     
+    DialogModule,
+    InputTextModule,
+    AvatarModule,
+    SelectButtonModule,
+    TabViewModule,
+    ReactiveFormsModule
   ],
-  providers: [    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } , AuthGuard ],
+  providers: [    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } , AuthGuard , NonauthGuard ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
