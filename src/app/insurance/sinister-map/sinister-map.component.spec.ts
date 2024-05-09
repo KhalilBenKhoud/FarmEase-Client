@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ViewInsuranceComponent } from './view-insurance.component';
+import { SinisterMapComponent } from './sinister-map.component';
 
-describe('ViewInsuranceComponent', () => {
-  let component: ViewInsuranceComponent;
-  let fixture: ComponentFixture<ViewInsuranceComponent>;
+describe('SinisterMapComponent', () => {
+  let component: SinisterMapComponent;
+  let fixture: ComponentFixture<SinisterMapComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ViewInsuranceComponent ]
+      declarations: [ SinisterMapComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ViewInsuranceComponent);
+    fixture = TestBed.createComponent(SinisterMapComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -20,5 +20,4 @@ describe('ViewInsuranceComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
 });

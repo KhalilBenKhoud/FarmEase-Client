@@ -6,6 +6,7 @@
         <li class="nav-link"  *ngIf="authService.isAuthenticated()" > <a routerLink="/mortgage">Mortgage</a></li>
         <li class="nav-link"  *ngIf="authService.isAuthenticated()" > <a routerLink="/insurance">Insurance</a></li>
         <li class="nav-link"  *ngIf="authService.isAuthenticated()" > <a routerLink="/currencyConvert">Currency Converter</a></li>
+        <li class="nav-link"  *ngIf="authService.isAuthenticated()" > <a routerLink="/sinisterMap">Sinister Distribution</a></li>
 
 
         <li><button *ngIf="authService.isAuthenticated()" class="button-33" role="button" (click)="logout()">Log out</button> </li>

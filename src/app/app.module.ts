@@ -40,6 +40,9 @@ import { AddSinisterComponent } from './insurance/view-insurance/add-sinister/ad
 import { ViewSinisterComponent } from './insurance/view-insurance/view-sinister/view-sinister.component';
 import { CalendarModule } from 'primeng/calendar';
 import { TableModule } from 'primeng/table';
+import { SinisterMapComponent } from './insurance/sinister-map/sinister-map.component';
+import { SinisterUpdateComponent } from './insurance/sinister-update/sinister-update.component';
+import { DialogService } from 'primeng/dynamicdialog';
 
 
 @NgModule({
@@ -61,8 +64,9 @@ import { TableModule } from 'primeng/table';
     ViewInsuranceComponent,
     CurrencyComponent,
     AddSinisterComponent,
-    ViewSinisterComponent
-
+    ViewSinisterComponent,
+    SinisterMapComponent,
+    SinisterUpdateComponent,
     
   ],
   imports: [
@@ -85,7 +89,7 @@ import { TableModule } from 'primeng/table';
     TagModule,
     CarouselModule,
     CalendarModule,
-    TableModule
+    TableModule,
   ],
   providers: [    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } , AuthGuard ],
   bootstrap: [AppComponent]

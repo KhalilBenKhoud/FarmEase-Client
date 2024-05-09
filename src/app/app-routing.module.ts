@@ -16,6 +16,8 @@ import { AddInsuranceComponent } from './insurance/add-insurance/add-insurance.c
 import { ViewInsuranceComponent } from './insurance/view-insurance/view-insurance.component';
 import { AddSinisterComponent } from './insurance/view-insurance/add-sinister/add-sinister.component';
 import { ViewSinisterComponent } from './insurance/view-insurance/view-sinister/view-sinister.component';
+import { CurrencyComponent } from './currency/currency.component';
+import { SinisterMapComponent } from './insurance/sinister-map/sinister-map.component';
 
 const routes: Routes = [
   {path : "", component: HomeComponent, pathMatch: 'full' },
@@ -29,6 +31,8 @@ const routes: Routes = [
   {path : "viewInsurance" , component : ViewInsuranceComponent , canActivate: [AuthGuard]} ,
   {path : "addSinister/:id" , component : AddSinisterComponent , canActivate: [AuthGuard]} ,
   {path : "viewSinister/:id" , component : ViewSinisterComponent , canActivate: [AuthGuard]} ,
+  {path : "currencyConvert" , component : CurrencyComponent , canActivate: [AuthGuard]} ,
+  {path : "sinisterMap" , component : SinisterMapComponent , canActivate: [AuthGuard]} ,
   {path : "" , component : FullComponent , canActivate: [AuthGuard] ,children : [
     
         {

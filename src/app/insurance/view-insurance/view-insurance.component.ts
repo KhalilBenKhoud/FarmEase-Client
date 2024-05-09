@@ -13,6 +13,7 @@ import { InsuranceService } from 'src/app/services/insurance.service';
 })
 export class ViewInsuranceComponent {
    insurances : any[] = [];
+   searchStatus: string = '';
   
 
 
@@ -29,7 +30,27 @@ export class ViewInsuranceComponent {
       error => {console.log(error) ;}
     )
   }
+  filterInsurances() {
+    if (!this.searchStatus) {
+      // If search status is empty, display all insurances
+      this.insurances = [...this.insurances];
+    } else {
+      // Filter insurances based on search status
+      this.insurances = this.insurances.filter(insurance => {
+        if (!insurance) {
+          console.error("Encountered null insurance object");
+          return false;
+        }
+        if (!insurance.status) {
+          console.error("Insurance object does not have status property:", insurance);
+          return false;
+        }
+        return insurance.status.toLowerCase().includes(this.searchStatus.toLowerCase());
+      });
+    }
+  }
+  }
 
 
 
-}
+
