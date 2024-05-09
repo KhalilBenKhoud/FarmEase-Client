@@ -24,6 +24,11 @@ export class ProfileServiceService {
       return this.http.put(`${environment.BaseApiUrl}/user/current`,newProfile) ;
     }
 
+    deleteAccount() {
+      return this.http.delete(`${environment.BaseApiUrl}/user/current`) ;
+
+    }
+
     getProfileImage(time : number) {
       return this.http.get(`${environment.BaseApiUrl}/user/current/image`) ;
     }

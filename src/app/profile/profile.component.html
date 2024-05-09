@@ -38,13 +38,13 @@
 <p-tabView>
     <p-tabPanel header="Wallet" >
         <div class="tabContainer">
-        <img src="../../assets/walletIllustration.gif" alt="" class="walletIll">
+        <img src="../../assets/walletIll.gif" alt="" class="walletIll">
         <p>
          you have <b style="color : green;">{{profile.wallet.balance.toFixed(3) + "$"}}</b>
         </p>
         <p>
             your wallet is <b>{{profile.wallet.status}}</b> and running an interest of
-            <b>0.0005</b> compounded <b>12 times</b> each <b>5 seconds</b>
+            <b>8.64</b> compounded <b>12 times</b> each <b>day</b>
            </p>
         </div>
     </p-tabPanel>
@@ -54,7 +54,7 @@
           you have been using our services
             since<b style="color : green;"> {{profile.registrationDate}} </b>, however, if you wish to delete your
             account, click here :
-         
+            <button class="btn btn-danger">Delete account</button>
         </p>
     </div>
     </p-tabPanel>

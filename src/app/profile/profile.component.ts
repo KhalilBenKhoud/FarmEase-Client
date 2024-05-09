@@ -99,4 +99,10 @@ export class ProfileComponent implements OnInit{
     )
    }
 
+   deleteAccount() {
+    this.profileService.deleteAccount().subscribe(
+      (data) => {this.auth.logout() ;}
+    )
+   }
+
 }
