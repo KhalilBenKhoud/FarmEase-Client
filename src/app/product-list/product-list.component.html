@@ -1,0 +1,165 @@
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <!-- ASIDE -->
+            <div id="aside" class="col-md-3">
+                <div class="aside">
+                    <div class="checkbox-filter">
+                        <h3 class="aside-title">Categories</h3>
+                        <div class="flex flex-column gap-3">
+                            <div class="field-checkbox">
+                                <p-radioButton [(ngModel)]="selectedCategory" binary="true" (change)="filterProductsByCategory()"
+                                    inputId="category-farmer" name="category" [value]="'FARMER'">
+                                </p-radioButton>
+                                <label for="category-farmer" class="ml-2">Farmer</label>
+                            </div>
+                            <div class="field-checkbox">
+                                <p-radioButton [(ngModel)]="selectedCategory" binary="true" (change)="filterProductsByCategory()"
+                                    inputId="category-fisher" name="category" [value]="'FISHER'">
+                                </p-radioButton>
+                                <label for="category-fisher" class="ml-2">Fisher</label>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /ASIDE -->
+
+            <!-- STORE -->
+            <div id="store" class="col-md-9">
+                <div class="store-filter clearfix">
+                    <div class="store-sort">
+                        <label>
+                            Sort By:
+                            <select class="input-select" [(ngModel)]="sortOrder" (change)="sortProducts()">
+                                <option value="all"></option>
+                                <option value="like">Like</option>
+                                <option value="priceAsc">Price: Low to High</option>
+                                <option value="priceDesc">Price: High to Low</option>
+                            </select>
+                        </label>
+                        
+                        <input type="file" id="imageUpload" accept="image/*" style="display: none;"
+                            (change)="handleImageUpload($event)">
+                        <button type="button" (click)="openImageUpload()">Search Image</button>
+                        <p>Recherche en cours avec la classe : {{ searchQuery }}</p>
+                    </div>
+                    <ul class="store-grid">
+                        <li class="active"><i class="fa fa-th"></i></li>
+                        <li><a href="#"><i class="fa fa-th-list"></i></a></li>
+                    </ul>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-title">
+                            <h1 class="title">Our Product</h1>
+                        </div>
+                    </div>
+                    <!-- Product Items -->
+                    
+                    <div class="col-md-4 col-xs-6" *ngFor="let product of sortedProducts">
+                        <div class="product">
+                            <div class="product-img">
+                                <p-image    [src]="getImageUrl(product.productImage)" alt="" class="product-image"
+                                     alt="Image" 
+                                    width="310" 
+                                    [preview]="true" /> 
+                                <!-- <img [src]="getImageUrl(product.productImage)" alt="" class="product-image"> -->
+                                <div class="product-label">
+                                    <span class="new">{{ product.productStock > 0 ? 'In Stock' : 'Out of Stock' }}</span>
+                                </div>
+                            </div>
+                            <div class="product-body">
+                                <p class="product-category">{{ product.productCategory }}</p>
+                                <h1 class="product-name">{{ product.productName }}</h1>
+                                <h4 class="product-price">{{ product.productPrice }} <del
+                                        class="product-old-price">{{ product.productPrice }}</del></h4>
+                                <div class="product-btns">
+                                    <button class="add-to-wishlist" (click)="toggleLike(product.productId)">
+                                        <i class="fa-solid fa-heart"></i><span class="tooltipp">add Like</span>
+                                    </button>
+                                    <button class="add-to-compare">
+                                        <i class="fa fa-exchange"></i><span class="tooltipp">add to compare</span>
+                                    </button>
+                                    <button (click)="showDialog(product)">
+                                        <i class="fa fa-eye"></i><span class="tooltipp">quick view</span>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="add-to-cart">
+                                <button class="add-to-cart-btn"
+                                    (click)="addToCartWithDefaultQuantity(product.productId)">
+                                    <i class="fa fa-shopping-cart"></i> add to cart
+                                </button>
+                            </div>
+                            <p-toast #toast [breakpoints]="{ '800px': { width: '100%', right: '0', left: '0' } }"></p-toast>
+                        </div>
+                        
+                    </div>
+
+                    <!-- /Product Items -->
+                </div>
+            </div>
+            <!-- /STORE -->
+        </div>
+        
+    </div>
+   <!-- Pagination -->
+
+
+<p-dialog header="Product Details" [(visible)]="displayDialog" [modal]="true" [style]="{ 'width': '50%', 'height': 'auto' }">
+    <div class="section">
+        <div class="container">
+            <div class="row" *ngIf="selectedProduct">
+                <div class="col-md-6">
+                    <div id="product-main-img">
+
+                        <div class="product-preview">
+                            <img [src]="getImageUrl(selectedProduct.productImage)" alt="" class="product-image">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="product-details">
+                        <h2 class="product-name">{{ selectedProduct.productName }}</h2>
+                        <div>
+                            <h3 class="product-price">{{ selectedProduct.productPrice }}<del
+                                    class="product-old-price">{{ selectedProduct.productOldPrice }}</del></h3>
+                            <span class="product-available">In Stock</span>
+                        </div>
+                        <p>{{ selectedProduct.productDescription }}</p>
+                        <div class="add-to-cart">
+                            <div class="qty-label">
+                                Qty
+                                <div class="input-number">
+                                    <input type="number" id="quantityInput" [(ngModel)]="quantity">
+                                    <span class="qty-up" id="increaseQty">+</span> <span class="qty-down"
+                                        id="decreaseQty">-</span>
+                                </div>
+                            </div>
+                            <button class="add-to-cart-btn" (click)="addToCart()">
+                                <i class="fa fa-shopping-cart"></i> add to cart
+                            </button>
+                        </div>
+                        <ul class="product-btns">
+                           <li><button class="add-to-wishlist" (click)="toggleLike(selectedProduct.productId)">
+                            <i class="fa-solid fa-heart"></i><span class="tooltipp">add Like</span>
+                        </button></li> 
+                            <li><i class="fa fa-exchange"></i> add to compare</li>
+                        </ul>
+                        <ul class="product-links">
+                            <li>Category:</li>
+                            <li><a href="#">{{ selectedProduct.productCategory }}</a></li>
+                        </ul>
+                        <p-toast #toast [breakpoints]="{ '800px': { width: '100%', right: '0', left: '0' } }"></p-toast>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dialog-buttons">
+        <p-button label="Close" (click)="hideDialog()" class="p-button-secondary"></p-button>
+    </div>
+</p-dialog>

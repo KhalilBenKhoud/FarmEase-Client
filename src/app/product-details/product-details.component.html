@@ -1,0 +1,50 @@
+<div class="section">
+
+    <div class="container">
+  
+      <div class="row" *ngIf="product">
+  
+        <div class="col-md-6">
+          <div id="product-main-img">
+            <div class="product-preview">
+              <img [src]="getImageUrl(product.productImage)" alt="" class="product-image">
+            </div>
+          </div>
+        </div>
+  
+        <div class="col-md-5">
+          <div class="product-details">
+            <h2 class="product-name">{{ product.productName }}</h2>
+            <div>
+              <h3 class="product-price">{{ product.productPrice }}<del class="product-old-price">$990.00</del></h3>
+              <span class="product-available">In Stock</span>
+            </div>
+            <p>{{ product.productDescription }}</p>
+            <div class="add-to-cart">
+              <div class="qty-label">
+                Qty
+                <div class="input-number">
+                  <input type="number" id="quantityInput" [(ngModel)]="quantity">
+                  <span class="qty-up" id="increaseQty">+</span> <span class="qty-down" id="decreaseQty">-</span> </div>
+              </div>
+              <button class="add-to-cart-btn" (click)="addToCart()">
+                <i class="fa fa-shopping-cart"></i> add to cart
+              </button>
+            </div>
+  
+            <ul class="product-btns">
+              <li><a href="#"><i class="fa-solid fa-heart"></i> add Like</a></li>
+              <li><a href="#"><i class="fa fa-exchange"></i> add to compare</a></li>
+            </ul>
+  
+            <ul class="product-links">
+              <li>Category:</li>
+              <li><a href="#">{{ product.productCategory }}</a></li>
+            </ul>
+  
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  

@@ -13,14 +13,14 @@ import  { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { ProfileComponent } from './profile/profile.component'
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { MortgageComponent } from './mortgage/mortgage.component';
 import { AuthGuard } from './auth.guard';
 import { ButtonModule } from 'primeng/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AccordionModule } from 'primeng/accordion';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { BackOfficeComponent } from './back-office/back-office.component';
 import { SpinnerComponent } from './back-office/shared/spinner.component';
 import { FullComponent } from './back-office/layouts/full/full.component';
@@ -28,7 +28,20 @@ import { NavigationComponent } from './back-office/shared/header/navigation.comp
 import { SidebarComponent } from './back-office/shared/sidebar/sidebar.component';
 import { ToastModule } from 'primeng/toast';
 import { MessagesModule } from 'primeng/messages';
-
+import { ProductListComponent } from './product-list/product-list.component';
+import { AddProductComponent } from './add-product/add-product.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
+import { CartComponent } from './cart/cart.component';
+import { CartDetailComponent } from './cart-detail/cart-detail.component';
+import { SidebarModule } from 'primeng/sidebar';
+import { DialogModule } from 'primeng/dialog';
+import { SliderModule } from 'primeng/slider';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { TreeSelectModule } from 'primeng/treeselect';
+import { ImageModule } from 'primeng/image';
+import { DragDropModule } from 'primeng/dragdrop';
+import { TableModule} from 'primeng/table';
+import { CarouselModule } from 'primeng/carousel';
 
 
 @NgModule({
@@ -45,6 +58,11 @@ import { MessagesModule } from 'primeng/messages';
     MortgageComponent,
     BackOfficeComponent,
     SpinnerComponent,
+    ProductListComponent,
+    AddProductComponent,
+    ProductDetailsComponent,
+    CartComponent,
+    CartDetailComponent
     
   ],
   imports: [
@@ -61,7 +79,20 @@ import { MessagesModule } from 'primeng/messages';
     NavigationComponent,
     SidebarComponent,
     ToastModule,
-    MessagesModule
+    MessagesModule,
+    ReactiveFormsModule,
+    SidebarModule,
+    DialogModule,
+
+    RadioButtonModule,
+    ImageModule,
+    DragDropModule,
+    TableModule,
+    NgbPaginationModule,
+    CarouselModule,
+
+    
+    
   ],
   providers: [    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } , AuthGuard ],
   bootstrap: [AppComponent]

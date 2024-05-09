@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Product, TopSelling, TableRows, Employee } from './table-data';
 import { NgFor } from '@angular/common';
+import { ProductService } from 'src/app/services/product.service';
 
 
 @Component({
@@ -10,14 +11,11 @@ import { NgFor } from '@angular/common';
   templateUrl: 'marketplace.component.html'
 })
 export class MarketplaceComponent {
-  topSelling: Product[];
+  products: any[] = [];
 
-  trow: TableRows[];
 
-  constructor() {
+  constructor( private productService: ProductService ) {
 
-    this.topSelling = TopSelling;
-
-    this.trow = Employee;
   }
+ 
 }

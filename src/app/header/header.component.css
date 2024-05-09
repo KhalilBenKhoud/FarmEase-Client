@@ -62,4 +62,22 @@ nav.scrolled {
  .nav-link:hover:after {
    width: 100%; /* Animate width on hover */
  }
+ .header-cart-item-txt {
+   justify-content: space-between; /* Distribute space between text and icon */
+ }
+ 
+ .trash-icon {
+   margin-left: 10px; /* Add some margin between the icon and the text */
+ }
+ .custom-button {
+   color: white; /* Couleur du texte */
+   background-color: rgb(8, 88, 51); /* Couleur de fond */
+   border-color: rgb(8, 88, 51) /* Couleur de la bordure */
+ }
+ 
+ .custom-button:hover {
+   background-color: rgb(8, 88, 51); /* Couleur de fond au survol */
+   border-color: rgb(8, 88, 51); /* Couleur de la bordure au survol */
+ }
+ 
  

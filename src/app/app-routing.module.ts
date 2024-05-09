@@ -11,6 +11,11 @@ import { BackOfficeComponent } from './back-office/back-office.component';
 import { FullComponent } from './back-office/layouts/full/full.component';
 import { FrontOrBackService } from './services/front-or-back.service';
 import { AdminResolver } from './admin.resolver';
+import { AddProductComponent } from './add-product/add-product.component';
+import { CartComponent } from './cart/cart.component';
+import { CartDetailComponent } from './cart-detail/cart-detail.component';
+import { ProductListComponent } from './product-list/product-list.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 const routes: Routes = [
   {path : "", component: HomeComponent, pathMatch: 'full' },
@@ -19,6 +24,11 @@ const routes: Routes = [
   {path : "signup" , component : SignupComponent},
   {path : "profile" , component : ProfileComponent, canActivate: [AuthGuard]},
   {path : "mortgage" , component : MortgageComponent , canActivate: [AuthGuard]} ,
+  {path:"Addproduct" ,component:AddProductComponent},
+  {path:"Cart" ,component:CartComponent},
+  {path:"Cartdetail" ,component:CartDetailComponent},
+  {path:"Allproduct",component:ProductListComponent},
+  { path: 'product/:id', component: ProductDetailsComponent } ,
   {path : "" , component : FullComponent , canActivate: [AuthGuard] ,children : [
     
         {
