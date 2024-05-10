@@ -3,9 +3,69 @@
     <ul class="navItems">
         <li class="nav-link"><i class="fa-solid fa-house fa-bounce" style="color: green;"></i> <a routerLink="/">Home</a></li>
         <li class="nav-link" *ngIf="authService.isAuthenticated()"> <a routerLink="/profile">Profile</a></li>
+        <li class="nav-link" *ngIf="authService.isAuthenticated()"> <a routerLink="/projects">projects</a></li>
         <li class="nav-link"  *ngIf="authService.isAuthenticated()" > <a routerLink="/mortgage">Mortgage</a></li>
+        <li class="nav-link"  *ngIf="authService.isAuthenticated()" > <a routerLink="/Allproduct">Ecommerce</a></li>
+        <li class="nav-link" *ngIf="authService.isAuthenticated()">
+            <a (click)="openCartSidebar()" class="cart-icon">
+                <i class="fa-solid fa-cart-shopping cart-icon"></i>
+                <span class="cart-item-count" *ngIf="cartDetails && cartDetails.length > 0">{{ cartDetails.length }}</span>
+            </a>
+        </li>
+     
         <li><button *ngIf="authService.isAuthenticated()" class="button-33" role="button" (click)="logout()">Log out</button> </li>
         <li><button *ngIf="!authService.isAuthenticated()" class="button-33" role="button"  routerLink="/signup">Sign up</button></li>
         <li><button *ngIf="!authService.isAuthenticated()" class="button-33" role="button"  routerLink="/login">Sign in</button> </li>
     </ul>
 </nav>
+
+<p-sidebar [(visible)]="sidebarVisible" position="right">
+    <ng-template pTemplate="content">
+        
+      <div class="header-cart-title flex-w flex-sb-m p-b-8">
+        <span class="mtext-103 cl2">Your Cart</span>
+      </div>
+  
+
+      <ul class="list-none flex flex-column gap-2 p-0 m-0">
+        <li
+          *ngFor="let item of cartDetails"
+          class="header-cart-item flex-w flex-t m-b-12 p-2 border-round shadow-1"
+          draggable="true"
+          (dragstart)="dragStart($event, item)"
+          (dragend)="dragEnd()"
+        >
+          <div class="header-cart-item-img">
+            <img [src]="getImageUrl(item.imageUrl)" alt="" class="product-image">
+          </div>
+  
+          <div class="header-cart-item-txt flex-w"> <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
+              {{ item.productName }}
+            </a>
+            <span class="header-cart-item-info">
+              {{ item.quantity }} x {{ item.unitPrice }}
+            </span>
+  
+            <div class="trash-icon trash-icon-custom" (dragover)="allowDrop($event)" (drop)="drop($event)">
+                <i class="fa fa-trash"></i>
+              </div>
+          </div>
+        </li>
+      </ul>
+  
+      <span class="mtext-103 cl2" *ngIf="totalCartPrice !== null">
+        Total Price: {{ totalCartPrice }} TND
+      </span>
+      <a routerLink="/Cartdetail" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+        View Cart
+    </a>
+    <button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" (click)="confirmPurchase()">
+        confirm Purchase
+    </button>
+    </ng-template>
+  </p-sidebar>
+      
+  
+  
+  
+  

@@ -13,14 +13,15 @@ import  { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { ProfileComponent } from './profile/profile.component'
-import { FormsModule } from '@angular/forms';
+
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { MortgageComponent } from './mortgage/mortgage.component';
 import { AuthGuard } from './auth.guard';
 import { ButtonModule } from 'primeng/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AccordionModule } from 'primeng/accordion';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { BackOfficeComponent } from './back-office/back-office.component';
 import { SpinnerComponent } from './back-office/shared/spinner.component';
 import { FullComponent } from './back-office/layouts/full/full.component';
@@ -28,6 +29,33 @@ import { NavigationComponent } from './back-office/shared/header/navigation.comp
 import { SidebarComponent } from './back-office/shared/sidebar/sidebar.component';
 import { ToastModule } from 'primeng/toast';
 import { MessagesModule } from 'primeng/messages';
+import { ProductListComponent } from './product-list/product-list.component';
+import { AddProductComponent } from './add-product/add-product.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
+import { CartComponent } from './cart/cart.component';
+import { CartDetailComponent } from './cart-detail/cart-detail.component';
+import { SidebarModule } from 'primeng/sidebar';
+
+import { SliderModule } from 'primeng/slider';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { TreeSelectModule } from 'primeng/treeselect';
+import { ImageModule } from 'primeng/image';
+import { DragDropModule } from 'primeng/dragdrop';
+import { TableModule} from 'primeng/table';
+import { CarouselModule } from 'primeng/carousel';
+
+import { InvestmentComponent } from './investment/investment.component';
+import { ProjectComponent } from './investment/project/project.component';
+import { ProjectDetailsComponent } from './investment/project-details/project-details.component';
+import { ShowProjectComponent } from './investment/show-project/show-project.component';
+import { AddProjectFormComponent } from './investment/add-project-form/add-project-form.component';
+import { CreateProjectComponent } from './investment/create-project/create-project.component';
+import { InvestFormComponent } from './investment/invest-form/invest-form.component';
+import { ProgressBarModule } from 'primeng/progressbar';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { TimelineModule } from 'primeng/timeline';
+import { CardModule } from 'primeng/card';
+
 import { NonauthGuard } from './nonauth.guard';
 import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
 import { DialogModule } from 'primeng/dialog';
@@ -37,7 +65,10 @@ import { SelectButtonModule } from 'primeng/selectbutton';
 import { TabViewModule } from 'primeng/tabview';
 import { ChnagePasswordComponent } from './profile/chnage-password/chnage-password.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
-import { ReactiveFormsModule} from '@angular/forms';
+
+
+import { InvestorsComponent } from './investment/investors/investors.component';
+
 
 
 
@@ -55,9 +86,22 @@ import { ReactiveFormsModule} from '@angular/forms';
     MortgageComponent,
     BackOfficeComponent,
     SpinnerComponent,
+    ProductListComponent,
+    AddProductComponent,
+    ProductDetailsComponent,
+    CartComponent,
+    CartDetailComponent,
+    InvestmentComponent,
+    ProjectComponent,
+    ProjectDetailsComponent,
+    ShowProjectComponent,
+    AddProjectFormComponent,
+    CreateProjectComponent,
+    InvestFormComponent,
     EditProfileComponent,
     ChnagePasswordComponent,
     ForgetPasswordComponent,
+    InvestorsComponent,
     
    ],
   imports: [
@@ -75,12 +119,24 @@ import { ReactiveFormsModule} from '@angular/forms';
     SidebarComponent,
     ToastModule,
     MessagesModule,
+    ReactiveFormsModule,
+    SidebarModule,
+    RadioButtonModule,
+    ImageModule,
+    DragDropModule,
+    TableModule,
+    NgbPaginationModule,
+    CarouselModule,
+    ProgressBarModule,
+    OverlayPanelModule,
+    TimelineModule,
+    CardModule,
     DialogModule,
     InputTextModule,
     AvatarModule,
     SelectButtonModule,
     TabViewModule,
-    ReactiveFormsModule
+
   ],
   providers: [    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } , AuthGuard , NonauthGuard ],
   bootstrap: [AppComponent]

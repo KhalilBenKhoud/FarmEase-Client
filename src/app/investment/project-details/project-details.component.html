@@ -1,0 +1,301 @@
+<body>
+  <div class="body" role="main">
+    <div class="container">
+      <div class="masthead trim">
+        <h1 class="heading">{{ project?.title }}</h1>
+        <h4 class="subheading">Project created by</h4>
+      </div>
+      <ul class="tabs">
+        <li class="tabs__tab" routerLinkActive="active">
+          <a routerLink="/description">Description</a>
+        </li>
+        <li class="tabs__tab" routerLinkActive="active">
+          <a routerLink="/updates">Updates <span class="badge">200</span></a>
+        </li>
+        <li class="tabs__tab" routerLinkActive="active">
+          <a routerLink="/comments">Comments</a>
+        </li>
+        <li class="tabs__tab" routerLinkActive="active">
+          <a routerLink="/backers">Backers <span class="badge">2</span></a>
+        </li>
+      </ul>
+      
+      <div class="content">
+        <div class="content__main">
+          <div
+            id="description"
+            class="tabs__content tabs__content--active content-block"
+          >
+            <div class="main-img">
+              <img
+                [src]="project?.imageUrl || 'https://placehold.it/800x400'"
+              />
+            </div>
+            <div class="visible-on-mobile">
+              <div class="spaced center">
+                <p class="stat">
+                  <span class="stat__value"
+                    >{{ project?.totalInvestment }} $</span
+                  >
+                  <span class="stat__label"
+                    >Pledged<span class="hidden-on-mobile">
+                      of {{ project?.goalAmount }} $</span
+                    ></span
+                  >
+                </p>
+                <p class="stat">
+                  <span class="stat__value">38</span>
+                  <span class="stat__label">Backers</span>
+                </p>
+                <p class="stat">
+                  <span class="stat__value">{{ project?.deadline }}</span>
+                  <span class="stat__label">Deadline</span>
+                </p>
+              </div>
+              <p>
+                <button
+                  class="btn btn--primary btn--wide btn--pledge"
+                  data-bs-toggle="modal"
+                  data-bs-target="#staticBackdrop"
+                >
+                  Back this project
+                </button>
+              </p>
+              <p class="small center">
+                You only have the opportunity to invest in this project before
+                <strong>{{ project?.deadline }}</strong>
+              </p>
+              <hr />
+            </div>
+            <p class="large">Description</p>
+            <p>{{ project?.description }}</p>
+            <h3>Net icome last year :</h3>
+            <p>{{ project?.netIncomeLastYear }} $</p>
+            <h3>dividend Payout Ratio :</h3>
+            <p>{{ project?.dividendPayoutRatio }} %</p>
+            <h3>Equity offred :</h3>
+            <p>{{ project?.equityOffered }} %</p>
+            <h3>Address :</h3>
+            <p>{{ project?.address }}</p>
+            <button class="btn btn-primary" (click)="downloadProjectReport()">Download Report</button>
+            <hr>
+            <div class="card">
+              <p-timeline [value]="events" align="alternate" styleClass="customized-timeline">
+                  <ng-template pTemplate="marker" let-event>
+                      <span 
+                          class="flex w-2rem h-2rem align-items-center justify-content-center text-white border-circle z-1 shadow-1" 
+                          [style]="{ 'background-color': event.color }">
+                              <i [class]="event.icon"></i>
+                      </span>
+                  </ng-template>
+                  <ng-template pTemplate="content" let-event>
+                      <p-card [header]="event.status" [subheader]="event.role">
+                          <img 
+                              *ngIf="event.image" 
+                              [src]="event.image"
+                              [alt]="event.name"
+                              width="200" 
+                              class="shadow-2" />
+                              <hr>
+                              <p>{{ event.role }}</p>
+                          <p>
+                            {{event.description}}
+                          </p>
+                          
+                      </p-card>
+                  </ng-template>
+              </p-timeline>
+          </div>
+            <div class="visible-on-mobile">
+              <hr />
+              <h3>Creator</h3>
+              <div class="media media--center author">
+                <div class="media__img">
+                  <img
+                    src="https://avatars2.githubusercontent.com/u/527305?s=460&v=4"
+                    alt=""
+                    class="author__img"
+                  />
+                </div>
+                <div class="media__bdy">
+                  <h4 class="author__name">Matt Brailsford</h4>
+                  <p class="author__description">
+                    {{ project?.projectCategory }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="content__aside hidden-on-mobile">
+          <p class="stat">
+            <span class="stat__value">{{ project?.totalInvestment }}$</span>
+            <span class="stat__label"
+              >Pledged of
+              <span class="hidden-on-mobile"
+                >{{ project?.goalAmount }}$</span
+              ></span
+            >
+          </p>
+          <p class="stat">
+            <span class="stat__value">38</span>
+            <span class="stat__label">Backers</span>
+          </p>
+          <p class="stat">
+            <span class="stat__value">{{ project?.deadline }}</span>
+            <span class="stat__label">Deadline</span>
+          </p>
+          <p>
+            <button
+              class="btn btn--primary btn--wide btn--pledge"
+              data-bs-toggle="modal"
+              data-bs-toggle="modal"
+              data-bs-target="#staticBackdrop"
+            >
+              Back this project
+            </button>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ownershipModal">
+              Calculate Ownership Stake
+            </button>
+          </p>
+          <p class="small center">
+            You only have the opportunity to donate to this project before
+            <strong>{{ project?.deadline }}</strong>
+          </p>
+          <hr />
+          <h3>Author</h3>
+          <div class="media media--center author">
+            <div class="media__img">
+              <img
+                src="https://avatars2.githubusercontent.com/u/527305?s=460&v=4"
+                alt=""
+                class="author__img"
+              />
+            </div>
+            <div class="media__bdy">
+              <h4 class="author__name">Matt Brailsford</h4>
+              <p class="author__description">{{ project?.projectCategory }}</p>
+            </div>
+          </div>
+          <hr />
+        </aside>
+        <div class="content__main">
+          <div id="description" class="tabs__content tabs__content--active content-block">
+            <!-- Your existing description content here -->
+          </div>
+          <div id="updates" class="tabs__content content-block">
+            <!-- Content for updates tab goes here -->
+          </div>
+          <div id="comments" class="tabs__content content-block">
+            <!-- Content for comments tab goes here -->
+          </div>
+          <div id="backers" class="tabs__content content-block">
+            <!-- Content for backers tab goes here -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="staticBackdrop"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Make your investment</h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <form class="pledge__form" (ngSubmit)="createInvestment2()">
+            <fieldset>
+              <div class="columns columns--x1 columns--x2-md">
+                <div class="column">
+                  <label for="pledge__amount">Enter the amount you want to invest :</label>
+                  <input
+                    type="text"
+                    id="pledge__amount"
+                    name="pledge__amount"
+                    class="pledge__amount"
+                    [(ngModel)]="newInvestment.amount"
+                    (ngModelChange)="calculateInvestorShare(newInvestment.amount)" placeholder="Enter investment amount"
+                    required
+
+                  />
+                  <div *ngIf="investorShare !== null">
+                    <p>Ownership Stake: {{ investorShare | number }}%</p>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+            <button type="submit" class="btn btn--primary pledge__submit" >Submit</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn modal__cancel" data-bs-dismiss="modal" #closeModal>
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal body -->
+<!-- New Modal for Ownership Stake Calculation -->
+
+<div
+  class="modal fade"
+  id="ownershipModal"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="ownershipModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="ownershipModalLabel">Calculate Ownership Stake</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="investmentAmount">Enter Investment Amount:</label>
+          <input
+            type="number"
+            class="form-control"
+            id="investmentAmount"
+            [(ngModel)]="investmentAmount"
+            placeholder="Enter investment amount"
+          />
+        </div>
+        <button class="btn btn-primary" (click)="calculateOwnershipStake2()">Calculate</button>
+      </div>
+      <hr>
+      <div *ngIf="investmentAmount > 0">
+        <p>Your ownership stake: {{ investorShare }}%</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

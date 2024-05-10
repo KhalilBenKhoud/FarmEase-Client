@@ -55,7 +55,11 @@
           you have been using our services
             since<b style="color : green;"> {{profile.registrationDate}} </b>, however, if you wish to delete your
             account, click here :
-            <button class="btn btn-danger" (click)="showDeleteAccountModal = true ;">Delete account</button>
+      <button class="btn btn-danger" (click)="showDeleteAccountModal = true ;">Delete account</button>
+            <button class="btn btn-info " routerLink="/createproject">add project</button>
+
+
+
         </p>
     </div>
     </p-tabPanel>
@@ -80,4 +84,5 @@
               >Close</button>
         </ng-template>
 </p-dialog>
+
 
