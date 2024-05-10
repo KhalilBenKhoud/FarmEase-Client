@@ -1,0 +1,60 @@
+<div class="inc-exp-container">
+  <div class="income">
+    <h4>Income</h4>
+    <p id="money-plus" class="money plus">+${{ income }}</p>
+  </div>
+  <div class="expense">
+    <h4>Expense</h4>
+    <p id="money-minus" class="money minus">-${{ expense }}</p>
+  </div>
+</div>
+
+<style>
+  /* Vos styles CSS ici */
+
+.inc-exp-container {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  background-color: #fefefe;
+  box-shadow: var(--box-shadow);
+  padding: 20px;
+  margin: 20px 0;
+  justify-content: start;
+}
+
+.income,
+.expense {
+  text-align: left;
+  transition: transform 0.3s ease;
+  padding: 10px;
+  border-radius: 18px;
+  background-color: #f2f2f2;
+}
+
+.income:hover,
+.expense:hover {
+  transform: translateY(-5px);
+}
+
+h4 {
+  margin: 0;
+  text-transform: uppercase;
+  font-size: 1.2em;
+  color: #555;
+}
+
+.money {
+  font-size: 18px;
+  letter-spacing: 1px;
+  margin: 1px 0;
+}
+
+.money.plus {
+  color: #2ecc71;
+}
+
+.money.minus {
+  color: #c0392b;
+}
+</style>

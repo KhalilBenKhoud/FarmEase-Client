@@ -9,6 +9,15 @@ import { MortgageComponent } from './mortgage/mortgage.component';
 import { AuthGuard } from './auth.guard';
 import { FullComponent } from './back-office/layouts/full/full.component';
 import { AdminResolver } from './admin.resolver';
+
+import { expensesComponent } from './Loan/expenses Loan/expenses.component';
+
+import { ApplyLoanComponent } from './Loan/Apply For Home/loan form/Applyloan.component';
+import { GarantorComponent } from './Loan/Apply For Home/Garantor Form/Garantor.component';
+import { SimulatorComponent } from './Loan/Simulator/Simulator.component';
+import { uploadComponent } from './Loan/Apply For Home/upload Form/upload.component';
+import { packComponent } from './Loan/PackLoan/pack.component';
+
 import { AddProductComponent } from './add-product/add-product.component';
 import { CartComponent } from './cart/cart.component';
 import { CartDetailComponent } from './cart-detail/cart-detail.component';
@@ -38,11 +47,19 @@ const routes: Routes = [
   {path : "details/:id" , component : ProjectDetailsComponent, canActivate: [AuthGuard]},
   {path : "projects2" , component : ShowProjectComponent, canActivate: [AuthGuard]},
   {path : "mortgage" , component : MortgageComponent , canActivate: [AuthGuard]} ,
+
+  {path : "ApplyLoan" , component : ApplyLoanComponent , canActivate: [AuthGuard]} ,
+  {path : "Garantor" , component : GarantorComponent , canActivate: [AuthGuard]} ,
+  {path : "Simulator" , component : SimulatorComponent , canActivate: [AuthGuard]} ,
+  {path : "upload" , component : uploadComponent , canActivate: [AuthGuard]}, 
+  {path : "PackLoan" , component : packComponent , canActivate: [AuthGuard]},
+  {path : "expenses" , component : expensesComponent , canActivate: [AuthGuard]},
   {path:"Addproduct" ,component:AddProductComponent},
   {path:"Cart" ,component:CartComponent},
   {path:"Cartdetail" ,component:CartDetailComponent},
   {path:"Allproduct",component:ProductListComponent},
   { path: 'product/:id', component: ProductDetailsComponent } ,
+
   {path : "" , component : FullComponent , canActivate: [AuthGuard] ,children : [
     
         {
