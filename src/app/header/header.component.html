@@ -4,11 +4,20 @@
         <li class="nav-link"><i class="fa-solid fa-house fa-bounce" style="color: green;"></i> <a routerLink="/">Home</a></li>
         <li class="nav-link" *ngIf="authService.isAuthenticated()"> <a routerLink="/profile">Profile</a></li>
         <li class="nav-link"  *ngIf="authService.isAuthenticated()" > <a routerLink="/mortgage">Mortgage</a></li>
-        <li class="nav-link"  *ngIf="authService.isAuthenticated()" > <a routerLink="/insurance">Insurance</a></li>
-        <li class="nav-link"  *ngIf="authService.isAuthenticated()" > <a routerLink="/currencyConvert">Currency Converter</a></li>
-        <li class="nav-link"  *ngIf="authService.isAuthenticated()" > <a routerLink="/sinisterMap">Sinister Distribution</a></li>
-
-
+       
+        <li class="nav-link">
+           <span style=" color :teal ;"(click)="showInsuranceDropdown = !showInsuranceDropdown" >Insurance</span> 
+            <ul class="nav-link" aria-placeholder="Insurance" *ngIf="showInsuranceDropdown">
+          
+                <div class="ulItems">
+             <li class="nav-link"  *ngIf="authService.isAuthenticated()" > <a routerLink="/insurance">Insurance Services</a></li>
+             <li class="nav-link"  *ngIf="authService.isAuthenticated()" > <a routerLink="/currencyConvert">Currency Converter</a></li>
+             <li class="nav-link"  *ngIf="authService.isAuthenticated()" > <a routerLink="/sinisterMap">Sinister Distribution</a></li>
+             </div>   
+             </ul>
+        </li>
+       
+      
         <li><button *ngIf="authService.isAuthenticated()" class="button-33" role="button" (click)="logout()">Log out</button> </li>
         <li><button *ngIf="!authService.isAuthenticated()" class="button-33" role="button"  routerLink="/signup">Sign up</button></li>
         <li><button *ngIf="!authService.isAuthenticated()" class="button-33" role="button"  routerLink="/login">Sign in</button> </li>

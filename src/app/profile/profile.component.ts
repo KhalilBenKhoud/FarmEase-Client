@@ -19,11 +19,7 @@ export class ProfileComponent implements OnInit{
   showEdit : boolean = false ;
   showChangePassword : boolean = false ;
   ngOnInit() {
-<<<<<<< HEAD
-    this.profileService.getProfile().subscribe(
-      data => {this.profile = data ; console.log(data.constructor) ; },
-=======
-   
+  
     setInterval(() => {
       if(this.auth.isAuthenticated())
       this.fetchProfile()
@@ -60,7 +56,6 @@ export class ProfileComponent implements OnInit{
     this.profileService.getProfile().
     subscribe(
       data => {this.profile = data ; console.log("fetched : "+JSON.stringify(data)) ; },
->>>>>>> khalil
       error => alert(error.error.message)
     )
   }

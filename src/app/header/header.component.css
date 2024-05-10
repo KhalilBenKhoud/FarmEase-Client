@@ -63,3 +63,20 @@ nav.scrolled {
    width: 100%; /* Animate width on hover */
  }
  
+
+ .ulItems {
+   position: absolute;
+   top : 100%;
+   margin-top: 20px;
+ 
+   z-index: 100;
+  width: 180px;
+  background-color: whitesmoke;
+   right: 0 ;
+  margin-left: 100px !important;
+
+}
+
+.ulItems > * {
+   border-bottom: 2px solid brown;
+}

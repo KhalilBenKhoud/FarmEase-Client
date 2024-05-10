@@ -1,7 +1,16 @@
 .container {
-    max-width: 800px;
+    max-width: 1500px;
+    max-height: 1500px;
+    height: 500px;
+    width: 100%;
     margin: auto;
     padding: 0 15px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
     background-image: url('https://thumbor.forbes.com/thumbor/fit-in/1290x/https://www.forbes.com/advisor/wp-content/uploads/2020/11/what-is-forex-trading.jpg'); /* Remplacer 'path/to/icon.png' par le chemin de votre icône */
     
 }
@@ -40,7 +49,7 @@
     padding: .75rem 1.25rem;
     font-size: 1rem;
     line-height: 1.5;
-    color: #495057;
+    color: #020203;
     background-color: #fff;
     background-clip: padding-box;
     border: 1px solid #ced4da;

@@ -2,12 +2,14 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { InsuranceService } from 'src/app/services/insurance.service';
+import { ToggleButtonModule } from 'primeng/togglebutton';
+
 
 @Component({
   selector: 'app-add-insurance',
   templateUrl: './add-insurance.component.html',
   styleUrls: ['./add-insurance.component.css'],
-  providers: [MessageService]
+  providers: [MessageService],
 })
 export class AddInsuranceComponent {
 
@@ -23,21 +25,20 @@ export class AddInsuranceComponent {
 
   constructor(private messageService: MessageService, private insuranceService: InsuranceService, private router: Router) {}
 
-  // Method to calculate premium based on coverage, type, duration, and franchise
+  // calculate premium based on coverage, type, duration, and franchise
   calculatePremium(): void {
     if (this.duration === 0) {
-      // Handle zero duration (e.g., display an error message)
+      
       return;
     }
-      // Check for non-numeric types (example using type assertion)
+
   if (typeof this.coverage !== 'number' || typeof this.duration !== 'number' || typeof this.franchise !== 'number') {
     console.error('Invalid data types for premium calculation');
     return;
   } 
   console.log('Coverage:', this.coverage, 'Duration:', this.duration, 'Franchise:', this.franchise);
 
-    // Implement your business logic here to calculate the premium
-    // For demonstration purposes, let's say premium = coverage amount * duration * (1 + franchise)
+    // premium = coverage amount * duration * (1 + franchise)
     this.premium = this.coverage * this.duration * (1 + this.franchise);
   }
 

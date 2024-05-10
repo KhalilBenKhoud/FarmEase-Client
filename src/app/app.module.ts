@@ -52,6 +52,8 @@ import { TabViewModule } from 'primeng/tabview';
 import { ChnagePasswordComponent } from './profile/chnage-password/chnage-password.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { ReactiveFormsModule} from '@angular/forms';
+import { DropdownModule } from 'primeng/dropdown';
+
 
 
 
@@ -80,6 +82,7 @@ import { ReactiveFormsModule} from '@angular/forms';
     EditProfileComponent,
     ChnagePasswordComponent,
     ForgetPasswordComponent,
+
     
    ],
   imports: [
@@ -108,7 +111,8 @@ import { ReactiveFormsModule} from '@angular/forms';
     AvatarModule,
     SelectButtonModule,
     TabViewModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DropdownModule
   ],
   providers: [    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } , AuthGuard , NonauthGuard ],
   bootstrap: [AppComponent]

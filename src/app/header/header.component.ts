@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, OnChanges } from '@angular/core';
+import { Component, OnInit, HostListener, OnChanges, ElementRef } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 
@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit  {
   
   constructor( public authService : AuthService, private router: Router) {}
   
-  
+showInsuranceDropdown : boolean = false ;
 
   @HostListener('window:scroll', ['$event'])
   onScroll() {
