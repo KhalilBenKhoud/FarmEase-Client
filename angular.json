@@ -35,6 +35,7 @@
               "node_modules/primeng/resources/primeng.min.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+
               "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
               "src/assets/scss/style.scss"
             ],
@@ -117,6 +118,8 @@
     }
   },
   "cli": {
-    "analytics": "96a85f72-cb90-41f2-8e00-7fac037a9ab1"
+
+    "analytics": "d354c54d-8eed-4160-a6f3-64e9f6293232"
+
   }
 }

@@ -1,0 +1,20 @@
+<div class="container">
+  <h2>Choose Your Loan Pack</h2>
+  <div class="loan-pack">
+    <div *ngIf="LoanType && LoanType.length > 0">
+      <div *ngFor="let loan of LoanType" class="loan-card" (click)="redirectToApplyLoanPage(loan)">
+        <div class="loan-image">
+          <img *ngIf="loan.image" [src]="'data:image/jpeg;base64,' + loan.image" alt="Loan Image">
+        </div>
+        <div class="loan-details">
+          <h3>{{ loan.name }}</h3>
+          <p class="description">{{ loan.descprtion }}</p> <!-- Corrigé la faute de frappe ici -->
+          <a href="#" class="btn">Apply Now</a>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!LoanType || LoanType.length === 0" class="no-loans">
+      <p>No loan types available.</p>
+    </div>
+  </div>
+</div>

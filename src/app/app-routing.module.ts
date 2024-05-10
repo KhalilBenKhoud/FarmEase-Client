@@ -16,8 +16,28 @@ import { AddSinisterComponent } from './insurance/view-insurance/add-sinister/ad
 import { ViewSinisterComponent } from './insurance/view-insurance/view-sinister/view-sinister.component';
 import { CurrencyComponent } from './currency/currency.component';
 import { SinisterMapComponent } from './insurance/sinister-map/sinister-map.component';
+
+import { expensesComponent } from './Loan/expenses Loan/expenses.component';
+
+import { ApplyLoanComponent } from './Loan/Apply For Home/loan form/Applyloan.component';
+import { GarantorComponent } from './Loan/Apply For Home/Garantor Form/Garantor.component';
+import { SimulatorComponent } from './Loan/Simulator/Simulator.component';
+import { uploadComponent } from './Loan/Apply For Home/upload Form/upload.component';
+import { packComponent } from './Loan/PackLoan/pack.component';
+
+import { AddProductComponent } from './add-product/add-product.component';
+import { CartComponent } from './cart/cart.component';
+import { CartDetailComponent } from './cart-detail/cart-detail.component';
+import { ProductListComponent } from './product-list/product-list.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
+import { ProjectComponent } from './investment/project/project.component';
+import { ProjectDetailsComponent } from './investment/project-details/project-details.component';
+import { ShowProjectComponent } from './investment/show-project/show-project.component';
+import { AddProjectFormComponent } from './investment/add-project-form/add-project-form.component';
+import { CreateProjectComponent } from './investment/create-project/create-project.component';
 import { NonauthGuard } from './nonauth.guard';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { InvestorsComponent } from './investment/investors/investors.component';
 
 const routes: Routes = [
   {path : "", component: HomeComponent, pathMatch: 'full' },
@@ -26,6 +46,13 @@ const routes: Routes = [
   {path : "signup" , component : SignupComponent,  canActivate: [NonauthGuard]},
   {path : "forgetPassword" , component : ForgetPasswordComponent,  canActivate: [NonauthGuard]},
   {path : "profile" , component : ProfileComponent, canActivate: [AuthGuard]},
+  {path : "projects" , component : ProjectComponent, canActivate: [AuthGuard]},
+  {path : "backers" , component : InvestorsComponent, canActivate: [AuthGuard]},
+
+
+  {path : "createproject" , component : AddProjectFormComponent, canActivate: [AuthGuard]},
+  {path : "details/:id" , component : ProjectDetailsComponent, canActivate: [AuthGuard]},
+  {path : "projects2" , component : ShowProjectComponent, canActivate: [AuthGuard]},
   {path : "mortgage" , component : MortgageComponent , canActivate: [AuthGuard]} ,
   {path : "insurance" , component : InsuranceComponent , canActivate: [AuthGuard]} ,
   {path : "addInsurance" , component : AddInsuranceComponent , canActivate: [AuthGuard]} ,
@@ -34,6 +61,19 @@ const routes: Routes = [
   {path : "viewSinister/:id" , component : ViewSinisterComponent , canActivate: [AuthGuard]} ,
   {path : "currencyConvert" , component : CurrencyComponent , canActivate: [AuthGuard]} ,
   {path : "sinisterMap" , component : SinisterMapComponent , canActivate: [AuthGuard]} ,
+
+  {path : "ApplyLoan" , component : ApplyLoanComponent , canActivate: [AuthGuard]} ,
+  {path : "Garantor" , component : GarantorComponent , canActivate: [AuthGuard]} ,
+  {path : "Simulator" , component : SimulatorComponent , canActivate: [AuthGuard]} ,
+  {path : "upload" , component : uploadComponent , canActivate: [AuthGuard]}, 
+  {path : "PackLoan" , component : packComponent , canActivate: [AuthGuard]},
+  {path : "expenses" , component : expensesComponent , canActivate: [AuthGuard]},
+  {path:"Addproduct" ,component:AddProductComponent},
+  {path:"Cart" ,component:CartComponent},
+  {path:"Cartdetail" ,component:CartDetailComponent},
+  {path:"Allproduct",component:ProductListComponent},
+  { path: 'product/:id', component: ProductDetailsComponent } ,
+
   {path : "" , component : FullComponent , canActivate: [AuthGuard] ,children : [
     
         {

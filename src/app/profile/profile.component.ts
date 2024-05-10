@@ -2,22 +2,27 @@ import { Component, OnInit } from '@angular/core';
 import { ProfileServiceService } from '../services/profile-service.service';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 
 
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.css'],
+  providers :  [MessageService]
 })
 export class ProfileComponent implements OnInit{
-  constructor(private profileService : ProfileServiceService, private auth : AuthService, private router : Router) {}
+  constructor(private profileService : ProfileServiceService,
+    private messageService: MessageService,
+     private auth : AuthService, private router : Router) {}
   profile !: any ;
   profileImage : string = "" ;
   selectedFile !: File ;
   imageInput !: any ;
   showEdit : boolean = false ;
   showChangePassword : boolean = false ;
+  showDeleteAccountModal : boolean = false ;
   ngOnInit() {
   
     setInterval(() => {
@@ -50,6 +55,10 @@ export class ProfileComponent implements OnInit{
       this.fetchProfile() ;
     },500) 
   }
+
+  showSuccess() {
+    this.messageService.add({ severity: 'success', summary: 'Success', detail: 'account deleted successfully' });
+   }
 
 
   fetchProfile() {
@@ -101,7 +110,17 @@ export class ProfileComponent implements OnInit{
 
    deleteAccount() {
     this.profileService.deleteAccount().subscribe(
-      (data) => {this.auth.logout() ;}
+      (data) => { this.showSuccess() ;
+        setTimeout(() => {
+          this.auth.logout().subscribe(
+            data => {
+              localStorage.removeItem('accessToken') ;
+              this.router.navigate(["/home"]) ;},
+            error => console.log(error)
+          )
+        },1500)
+       
+      }
     )
    }
 

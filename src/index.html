@@ -14,5 +14,69 @@
 </head>
 <body class="mat-typography">
   <app-root></app-root>
+  		<!-- jQuery Plugins -->
+      <script src="assets/template/js/jquery.min.js"></script>
+      <script src="assets/template/js/bootstrap.min.js"></script>
+      <script src="assets/template/js/slick.min.js"></script>
+      <script src="assets/template/js/nouislider.min.js"></script>
+      <script src="assets/template/js/jquery.zoom.min.js"></script>
+      <script src="assets/template/js/main.js"></script>
+      <script src="assets/template/vendor/jquery/jquery-3.2.1.min.js"></script>
+      <!--===============================================================================================-->
+        <script src="assets/template/vendor/animsition/js/animsition.min.js"></script>
+      <!--===============================================================================================-->
+        <script src="assets/template/vendor/bootstrap/js/popper.js"></script>
+        <script src="assets/template/vendor/bootstrap/js/bootstrap.min.js"></script>
+      <!--===============================================================================================-->
+        <script src="assets/template/vendor/select2/select2.min.js"></script>
+        <script>
+          $(".js-select2").each(function(){
+            $(this).select2({
+              minimumResultsForSearch: 20,
+              dropdownParent: $(this).next('.dropDownSelect2')
+            });
+          })
+        </script>
+      <!--===============================================================================================-->
+        <script src="assets/template/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+      <!--===============================================================================================-->
+        <script src="assets/template/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+        <script>
+          $('.js-pscroll').each(function(){
+            $(this).css('position','relative');
+            $(this).css('overflow','hidden');
+            var ps = new PerfectScrollbar(this, {
+              wheelSpeed: 1,
+              scrollingThreshold: 1000,
+              wheelPropagation: false,
+            });
+      
+            $(window).on('resize', function(){
+              ps.update();
+            })
+          });
+        </script>
+      <!--===============================================================================================-->
+        <script src="assets/template/js/main.js"></script>
+        <!-- ///////////////////// -->
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+              
 </body>
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/662a388da0c6737bd1303f88/1hsaepqh9';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+  </script>
+  <!--End of Tawk.to Script-->
+  
 </html>
+
