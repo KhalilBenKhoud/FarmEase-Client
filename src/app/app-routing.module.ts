@@ -16,6 +16,7 @@ import { AddProjectFormComponent } from './investment/add-project-form/add-proje
 import { CreateProjectComponent } from './investment/create-project/create-project.component';
 import { NonauthGuard } from './nonauth.guard';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { InvestorsComponent } from './investment/investors/investors.component';
 
 const routes: Routes = [
   {path : "", component: HomeComponent, pathMatch: 'full' },
@@ -25,6 +26,9 @@ const routes: Routes = [
   {path : "forgetPassword" , component : ForgetPasswordComponent,  canActivate: [NonauthGuard]},
   {path : "profile" , component : ProfileComponent, canActivate: [AuthGuard]},
   {path : "projects" , component : ProjectComponent, canActivate: [AuthGuard]},
+  {path : "backers" , component : InvestorsComponent, canActivate: [AuthGuard]},
+
+
   {path : "createproject" , component : AddProjectFormComponent, canActivate: [AuthGuard]},
   {path : "details/:id" , component : ProjectDetailsComponent, canActivate: [AuthGuard]},
   {path : "projects2" , component : ShowProjectComponent, canActivate: [AuthGuard]},

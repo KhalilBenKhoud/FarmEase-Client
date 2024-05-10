@@ -28,6 +28,8 @@ export class ProjectDetailsComponent implements OnInit {
   selectedInvestment: Investment;
   projectId: number;
   events: EventItem[];
+  investorShare: number = 0;
+  investmentAmount: number = 0;
 
 
   constructor(
@@ -108,6 +110,11 @@ export class ProjectDetailsComponent implements OnInit {
         }
       );
   }
+  calculateInvestorShare(amount: number) {
+    if (this.project && this.project.totalInvestment && this.project.equityOffered) {
+      this.investorShare = (amount / this.project.totalInvestment) * this.project.equityOffered;
+    }
+  }
 
   @ViewChild('closeModal', { static: false }) closeModal: any;
   successAlert(){
@@ -159,5 +166,15 @@ export class ProjectDetailsComponent implements OnInit {
       });
   }
 
+  calculateOwnershipStake2() {
+    if (this.project && this.project.goalAmount) {
+      // Calculate ownership stake based on the investment amount
+      // For demonstration purposes, let's assume a simple calculation
+      // You can replace this with your actual calculation logic
+      this.investorShare = this.investmentAmount / this.project.goalAmount * 100; // Assuming goalAmount represents the total investment needed
+    }
+  }
+  
+ 
 
 }

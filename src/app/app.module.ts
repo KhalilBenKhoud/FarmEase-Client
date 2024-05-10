@@ -48,6 +48,7 @@ import { SelectButtonModule } from 'primeng/selectbutton';
 import { TabViewModule } from 'primeng/tabview';
 import { ChnagePasswordComponent } from './profile/chnage-password/chnage-password.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { InvestorsComponent } from './investment/investors/investors.component';
 
 
 
@@ -75,6 +76,7 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
     EditProfileComponent,
     ChnagePasswordComponent,
     ForgetPasswordComponent,
+    InvestorsComponent,
     
    ],
   imports: [

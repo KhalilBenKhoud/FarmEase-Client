@@ -91,7 +91,8 @@ select {
 [type="reset"],
 [type="submit"],
 button {
-    background-color: #007bff; /* Blue background */
+
+    background-color: #3bb14a; /* Blue background */
     color: #fff; /* White text */
     border: none; /* Remove border */
     padding: 10px 20px; /* Add padding */
@@ -102,7 +103,7 @@ button {
   
   /* Hover effect */
   button:hover {
-    background-color: #0056b3; /* Darker blue background on hover */
+    background-color: #2d8142; /* Darker blue background on hover */
   }
   
 [type="button"]::-moz-focus-inner,
@@ -1093,4 +1094,7 @@ element.style {
   transform: translateY(-5px); /* Add slight upward lift on hover */
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Darken box shadow on hover */
   border-color: #22bd7a;
+}
+.radio_buttons{
+  justify-content: space-around;
 }
