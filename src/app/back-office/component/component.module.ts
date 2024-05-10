@@ -12,7 +12,14 @@ import { InvestmentComponent } from './investment/investment.component';
 import { CardsComponent } from './card/card.component';
 import { LoanComponent } from './loan/loan.component';
 import { MarketplaceComponent } from './marketplace/marketplace.component';
+import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
+import { MarketPlaceComponent } from './market-place/market-place.component';
+import { DialogModule } from 'primeng/dialog';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 import { MortgageComponent } from './mortgage/mortgage';
+import { FileUploadModule } from 'primeng/fileupload';
 
 @NgModule({
   imports: [
@@ -28,7 +35,19 @@ import { MortgageComponent } from './mortgage/mortgage';
     InvestmentComponent,
     CardsComponent,
     MarketplaceComponent,
-     
+    TableModule,
+    ButtonModule,
+    ToastModule,
+    DialogModule,
+    MarketplaceComponent,
+    FileUploadModule,
+
   ],
+  declarations: [
+    MarketPlaceComponent,
+  ],
+  providers: [
+    MessageService // Add MessageService to providers
+  ]
 })
 export class ComponentsModule { }

@@ -29,6 +29,7 @@
     "gsap": "^3.12.5",
     "ng-apexcharts": "^1.8.0",
     "ngx-typed-js": "^2.1.1",
+    "primeicons": "^7.0.0",
     "primeng": "^15.4.1",
     "rxjs": "~7.8.1",
     "sweetalert2": "^11.10.8",

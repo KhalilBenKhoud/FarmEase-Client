@@ -1,9 +1,13 @@
 import { Component } from '@angular/core';
 import { Product, TopSelling, TableRows, Employee } from './table-data';
 import { NgFor } from '@angular/common';
+
+import { ProductService } from 'src/app/services/product.service';
+
 import { Chart, registerables } from 'chart.js';
 import { ProjectService } from 'src/app/services/project.service';
 import { Project, ProjectCategory } from 'src/app/models/Project';
+
 
 @Component({
   selector: 'app-table',
@@ -12,11 +16,12 @@ import { Project, ProjectCategory } from 'src/app/models/Project';
   templateUrl: 'marketplace.component.html'
 })
 export class MarketplaceComponent {
-  topSelling: Product[];
+  products: any[] = [];
 
-  trow: TableRows[];
 
-  constructor(private projectserice: ProjectService) {
+ 
+
+  constructor(private projectserice: ProjectService, private productService: ProductService) {
 
     this.topSelling = TopSelling;
     Chart.register(...registerables);
@@ -31,6 +36,7 @@ export class MarketplaceComponent {
       const counts = this.getCountsByType1(project);
       this.createChart(counts);
     });
+
 }
 
 
