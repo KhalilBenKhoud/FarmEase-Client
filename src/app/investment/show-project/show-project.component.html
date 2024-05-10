@@ -1,0 +1,52 @@
+<div class="card-container">
+  <div *ngFor="let project of projects">
+    <div class="plan">
+      <div class="inner">
+        <img class="card-img-top" *ngIf="project.imageUrl !== null" [src]="project.imageUrl" alt="land image">
+        <span class="pricing">
+          <span>
+            {{project.projectStatus}}
+          </span>
+        </span>
+        <p class="title">{{ project.title }}</p>
+        <ul class="features">
+          <li>
+            <span class="icon">
+              <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
+              </svg>
+            </span>
+            <span><strong>goal Amount</strong>{{ project.goalAmount }}</span>
+          </li>
+          <li>
+            <span class="icon">
+              <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
+              </svg>
+            </span>
+            <span>deadline <strong>{{ project.deadline}}</strong></span>
+          </li>
+          <li>
+            <span class="icon">
+              <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 0h24v24H0z" fill="none"></path>
+                <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z"></path>
+              </svg>
+            </span>
+            <span><i class="fa-solid fa-location-dot"></i>{{project.address}}</span>
+          </li>
+        </ul>
+        <div class="progress" role="progressbar" aria-label="Basic example" [attr.aria-valuenow]="calculateProgress(project)" aria-valuemin="0" aria-valuemax="100">
+          <div class="progress-bar w-{{ calculateProgress(project) }}"></div>
+        </div>
+        <div class="action">
+          <a class="button" routerLink="/details">
+            details
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -13,7 +13,8 @@ import  { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { ProfileComponent } from './profile/profile.component'
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptor } from './services/auth.interceptor';
 import { MortgageComponent } from './mortgage/mortgage.component';
 import { AuthGuard } from './auth.guard';
@@ -42,6 +43,19 @@ import { ImageModule } from 'primeng/image';
 import { DragDropModule } from 'primeng/dragdrop';
 import { TableModule} from 'primeng/table';
 import { CarouselModule } from 'primeng/carousel';
+
+import { InvestmentComponent } from './investment/investment.component';
+import { ProjectComponent } from './investment/project/project.component';
+import { ProjectDetailsComponent } from './investment/project-details/project-details.component';
+import { ShowProjectComponent } from './investment/show-project/show-project.component';
+import { AddProjectFormComponent } from './investment/add-project-form/add-project-form.component';
+import { CreateProjectComponent } from './investment/create-project/create-project.component';
+import { InvestFormComponent } from './investment/invest-form/invest-form.component';
+import { ProgressBarModule } from 'primeng/progressbar';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { TimelineModule } from 'primeng/timeline';
+import { CardModule } from 'primeng/card';
+
 import { NonauthGuard } from './nonauth.guard';
 import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
 import { DialogModule } from 'primeng/dialog';
@@ -51,6 +65,10 @@ import { SelectButtonModule } from 'primeng/selectbutton';
 import { TabViewModule } from 'primeng/tabview';
 import { ChnagePasswordComponent } from './profile/chnage-password/chnage-password.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+
+
+import { InvestorsComponent } from './investment/investors/investors.component';
+
 
 
 
@@ -73,9 +91,17 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
     ProductDetailsComponent,
     CartComponent,
     CartDetailComponent,
+    InvestmentComponent,
+    ProjectComponent,
+    ProjectDetailsComponent,
+    ShowProjectComponent,
+    AddProjectFormComponent,
+    CreateProjectComponent,
+    InvestFormComponent,
     EditProfileComponent,
     ChnagePasswordComponent,
     ForgetPasswordComponent,
+    InvestorsComponent,
     
    ],
   imports: [
@@ -95,23 +121,22 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
     MessagesModule,
     ReactiveFormsModule,
     SidebarModule,
-    DialogModule,
-
     RadioButtonModule,
     ImageModule,
     DragDropModule,
     TableModule,
     NgbPaginationModule,
     CarouselModule,
-
-    
-    
+    ProgressBarModule,
+    OverlayPanelModule,
+    TimelineModule,
+    CardModule,
     DialogModule,
     InputTextModule,
     AvatarModule,
     SelectButtonModule,
     TabViewModule,
-    ReactiveFormsModule
+
   ],
   providers: [    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } , AuthGuard , NonauthGuard ],
   bootstrap: [AppComponent]

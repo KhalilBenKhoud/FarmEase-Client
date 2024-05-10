@@ -41,7 +41,7 @@ import { FileUploadModule } from 'primeng/fileupload';
     DialogModule,
     MarketplaceComponent,
     FileUploadModule,
-     
+
   ],
   declarations: [
     MarketPlaceComponent,

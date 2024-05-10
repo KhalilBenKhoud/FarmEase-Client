@@ -3,6 +3,7 @@
     <ul class="navItems">
         <li class="nav-link"><i class="fa-solid fa-house fa-bounce" style="color: green;"></i> <a routerLink="/">Home</a></li>
         <li class="nav-link" *ngIf="authService.isAuthenticated()"> <a routerLink="/profile">Profile</a></li>
+        <li class="nav-link" *ngIf="authService.isAuthenticated()"> <a routerLink="/projects">projects</a></li>
         <li class="nav-link"  *ngIf="authService.isAuthenticated()" > <a routerLink="/mortgage">Mortgage</a></li>
         <li class="nav-link"  *ngIf="authService.isAuthenticated()" > <a routerLink="/Allproduct">Ecommerce</a></li>
         <li class="nav-link" *ngIf="authService.isAuthenticated()">
