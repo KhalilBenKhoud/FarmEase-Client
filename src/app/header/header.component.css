@@ -21,7 +21,31 @@ nav.scrolled {
   
  }
  
+ .cart-item-count {
+   background-color: rgb(3, 71, 51);
+   color: white;
+   border-radius: 30%;
+   padding: 2px 3px;
+   font-size: 9px;
+   position: absolute;
+   top: -5px;
+   
+   
+   left: 20px;
+}
+.cart-icon {
+   font-size: 23px; /* Taille de l'icône du panier en pixels */
+   color: rgb(4, 113, 99);
+   
+}
 
+ 
+.trash-icon-custom {
+   /* Ajoutez vos styles personnalisés ici */
+   color: rgb(2, 83, 105); /* Couleur rouge pour l'icône de la corbeille */
+   cursor: pointer; /* Curseur de type pointer pour indiquer qu'il est cliquable */
+   font-size: 28px;
+ }
 .logo {
    width: 100px ;
    height: 120px;

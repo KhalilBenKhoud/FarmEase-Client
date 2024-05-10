@@ -137,9 +137,9 @@
                                     <input type="number" id="quantityInput" [(ngModel)]="quantity">
                                     <span class="qty-up" id="increaseQty">+</span> <span class="qty-down"
                                         id="decreaseQty">-</span>
-                                </div>
+                                </div>  
                             </div>
-                            <button class="add-to-cart-btn" (click)="addToCart()">
+                            <button class="add-to-cart-btn"  (click)="addToCart()">
                                 <i class="fa fa-shopping-cart"></i> add to cart
                             </button>
                         </div>
@@ -153,7 +153,7 @@
                             <li>Category:</li>
                             <li><a href="#">{{ selectedProduct.productCategory }}</a></li>
                         </ul>
-                        <p-toast #toast [breakpoints]="{ '800px': { width: '100%', right: '0', left: '0' } }"></p-toast>
+                        <!-- <p-toast #toast [breakpoints]="{ '800px': { width: '100%', right: '0', left: '0' } }"></p-toast> -->
                     </div>
                 </div>
             </div>

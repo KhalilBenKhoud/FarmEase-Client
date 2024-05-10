@@ -33,6 +33,7 @@ export class ProductListComponent implements OnInit {
   sortedProducts: Product[] = []; // Tableau pour stocker les produits triés
   mostLikedProducts: Product[] = [];
 
+
 //////////////////////
 responsiveOptions: any[] | undefined;
   constructor(private route: ActivatedRoute, private productService: ProductService, private cartService: CartService,private messageService: MessageService) { }
@@ -151,13 +152,16 @@ responsiveOptions: any[] | undefined;
     this.cartService.addToCart(productId, defaultQuantity).subscribe(
       (response) => {
         this.showSuccessToast();
+        
         console.log('Product added to cart successfully:', response);
       },
       (error) => {
         this.showSuccessToast();
+       
        console.error('Error adding product to cart:', error);
       }
     );
+    
   }
 
   async loadModel() {
@@ -290,14 +294,16 @@ responsiveOptions: any[] | undefined;
   }
 
 
+
   quantity: number = 1;
   addToCart(): void {
     if (this.quantity > 0 && this.selectedProduct) {
         this.cartService.addToCart(this.selectedProduct.productId, this.quantity).subscribe(
             () => {
               this.showSuccessToast();
-                console.log('Product added to cart successfully');
               
+                console.log('Product added to cart successfully');
+               
                 this.hideDialog(); // Cacher le dialogue après l'ajout au panier réussi
             },
             error => {
@@ -308,6 +314,7 @@ responsiveOptions: any[] | undefined;
     } else {
         console.error('Invalid quantity or product.');
     }
+
 }
 
 showSuccessToast() {

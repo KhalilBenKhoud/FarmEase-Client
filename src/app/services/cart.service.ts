@@ -40,4 +40,10 @@ export class CartService {
     return this.http.post<any>(`${environment.BaseApiUrl}/cart/confirm`, {});
   }
   public cartItemsSubject: BehaviorSubject<CartItems[]> = new BehaviorSubject<CartItems[]>([]);
+
+  clearCart(): Observable<any> {
+
+    return this.http.post<any>(`${environment.BaseApiUrl}/cart/clear`,{});
+  }
+
 }

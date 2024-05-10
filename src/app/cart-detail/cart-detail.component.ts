@@ -11,17 +11,16 @@ import { catchError } from 'rxjs/operators';
 export class CartDetailComponent implements OnInit {
   cartDetails: any[] = [];
   totalCartPrice: number = 0;
-  numberOfMonths: number = 0;
-  downPayment: number = 0;
+  numberOfMonths!: number ;
+  downPayment!: number ;
   cartId: number = 0; // Ajout de la variable cartId
-  monthlyPrices: number[] = [];
+  monthlyPrices: any[] = [];
   couponCode: string = '';
 
   constructor(private cartService: CartService, private profileService: ProfileServiceService) { }
 
   ngOnInit(): void {
-    this.retrieveCartDetails();
-    this.retrieveTotalCartPrice();
+    this.updateCart();
     this.getCartId(); // Appel de la fonction pour récupérer cartId
   }
 
@@ -55,8 +54,7 @@ export class CartDetailComponent implements OnInit {
 
   removeFromCart(productId: number): void {
     this.cartService.removeFromCart(productId).subscribe(() => {
-      this.retrieveCartDetails();
-      this.retrieveTotalCartPrice();
+      this.updateCart();
     }, error => {
       console.error('Error removing item from cart:', error);
     });
@@ -77,17 +75,18 @@ export class CartDetailComponent implements OnInit {
   calculateMonthlyPrices(): void {
     // Appel de la méthode de service pour calculer les prix mensuels
     this.cartService.calculateMonthlyPrices(this.numberOfMonths, this.downPayment)
-      .pipe(
-        catchError(error => {
-          console.error('Error calculating monthly prices:', error);
-          return [];
-        })
-      )
       .subscribe((prices: number[]) => {
-        this.monthlyPrices = prices;
-        console.log('Monthly Prices:', this.monthlyPrices);
+        this.monthlyPrices = []; // Réinitialisez le tableau avant de l'utiliser
+        for (let i = 0; i < prices.length; i++) {
+          const result = `Mois ${i + 1}: ${prices[i]} TND`;
+          this.monthlyPrices.push(result); // Ajoutez chaque résultat au tableau monthlyPrices
+        }
+        console.log('Monthly Prices:', this.monthlyPrices); // Ceci est facultatif, vous pouvez le supprimer si vous ne voulez pas l'afficher dans la console
+      }, error => {
+        console.error('Error calculating monthly prices:', error);
+        this.monthlyPrices = ['Error calculating monthly prices']; // En cas d'erreur, ajoutez un message d'erreur au tableau monthlyPrices
       });
-  }
+  } 
   applyCoupon(): void {
     if (!this.couponCode) {
       alert('Please enter a coupon code.');
@@ -106,17 +105,35 @@ export class CartDetailComponent implements OnInit {
     );
   } 
   updateCart(): void {
+    this.retrieveCartDetails();
     this.retrieveTotalCartPrice();
   }   
   confirmPurchase(): void {
     this.cartService.confirmPurchase().subscribe(
       (response) => {
         console.log('Purchase confirmed successfully:', response);
+        this.clearCart();
+   
+        this.updateCart();
         // Ajoutez ici la logique pour gérer la réponse après la confirmation d'achat
       },
       (error) => {
         console.error('Failed to confirm purchase:', error);
+        this.clearCart();
+        this.updateCart();
         // Ajoutez ici la logique pour gérer les erreurs lors de la confirmation d'achat
+      }
+    );
+  }
+  clearCart(): void {
+    this.cartService.clearCart().subscribe(
+      (response: string) => {
+       
+        console.log('Cart cleared successfully');
+      },
+      (error) => {
+      
+        console.error('Error clearing cart:', error);
       }
     );
   }

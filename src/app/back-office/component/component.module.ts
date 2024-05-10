@@ -19,6 +19,7 @@ import { DialogModule } from 'primeng/dialog';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { MortgageComponent } from './mortgage/mortgage';
+import { FileUploadModule } from 'primeng/fileupload';
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import { MortgageComponent } from './mortgage/mortgage';
     ButtonModule,
     ToastModule,
     DialogModule,
-    MarketplaceComponent
+    MarketplaceComponent,
+    FileUploadModule,
      
   ],
   declarations: [

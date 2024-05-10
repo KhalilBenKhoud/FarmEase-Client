@@ -78,6 +78,7 @@
         <div class="form-group">
             <label for="imageFile" class="font-semibold w-6rem">Image du produit</label>
             <input type="file" id="imageFile" formControlName="imageFile" (change)="onFileChange($event)" class="flex-auto form-control-file">
+            
         </div>
         <button type="submit" class="btn btn-primary">Ajouter le produit</button>
         <button label="Close" (click)="hideDialog()" class="btn btn-secondary">close</button>

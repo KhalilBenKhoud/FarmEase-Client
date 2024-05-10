@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit  {
   totalCartPrice: number = 0;
   cartItems: any[] = [];
   cartDetails: any[] = [];
-
+  
   @HostListener('window:scroll', ['$event'])
   onScroll() {
     const scrollY = window.scrollY; // Get current scroll position
@@ -47,11 +47,36 @@ drop(event: DragEvent): void {
   if (productId) {
     const productIdNumber = parseInt(productId, 10);
     this.remove(productIdNumber);
+    this.retrieveCartDetails();
+    this.retrieveTotalCartPrice();
+
   }
+
+  
+}
+confirmPurchase(): void {
+  this.cartService.confirmPurchase().subscribe(
+    (response) => {
+      console.log('Purchase confirmed successfully:', response);
+      this.clearCart();
+ 
+      this.updateCart();
+      // Ajoutez ici la logique pour gérer la réponse après la confirmation d'achat
+    },
+    (error) => {
+      console.error('Failed to confirm purchase:', error);
+      this.clearCart();
+      this.updateCart();
+      // Ajoutez ici la logique pour gérer les erreurs lors de la confirmation d'achat
+    }
+  );
 }
 
 
-
+updateCart(): void {
+  this.retrieveCartDetails();
+  this.retrieveTotalCartPrice();
+}  
 
 
 remove(productid: number): void {
@@ -64,6 +89,18 @@ remove(productid: number): void {
     error => {
       console.error('Erreur lors de la suppression du produit du panier:', error);
       // Gérer l'erreur ici si nécessaire
+    }
+  );
+}
+clearCart(): void {
+  this.cartService.clearCart().subscribe(
+    (response: string) => {
+     
+      console.log('Cart cleared successfully');
+    },
+    (error) => {
+    
+      console.error('Error clearing cart:', error);
     }
   );
 }

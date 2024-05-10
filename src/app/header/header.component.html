@@ -5,10 +5,11 @@
         <li class="nav-link" *ngIf="authService.isAuthenticated()"> <a routerLink="/profile">Profile</a></li>
         <li class="nav-link"  *ngIf="authService.isAuthenticated()" > <a routerLink="/mortgage">Mortgage</a></li>
         <li class="nav-link"  *ngIf="authService.isAuthenticated()" > <a routerLink="/Allproduct">Ecommerce</a></li>
-        <li class="nav-link"  *ngIf="authService.isAuthenticated()" >  <a (click)="openCartSidebar()">
-            <i class="fa-solid fa-cart-shopping"></i>
-            <!-- <span class="cart-badge" *ngIf="cartItems.length > 0">{{ cartItems.length }}</span> -->
-        </a>
+        <li class="nav-link" *ngIf="authService.isAuthenticated()">
+            <a (click)="openCartSidebar()" class="cart-icon">
+                <i class="fa-solid fa-cart-shopping cart-icon"></i>
+                <span class="cart-item-count" *ngIf="cartDetails && cartDetails.length > 0">{{ cartDetails.length }}</span>
+            </a>
         </li>
      
         <li><button *ngIf="authService.isAuthenticated()" class="button-33" role="button" (click)="logout()">Log out</button> </li>
@@ -16,63 +17,15 @@
         <li><button *ngIf="!authService.isAuthenticated()" class="button-33" role="button"  routerLink="/login">Sign in</button> </li>
     </ul>
 </nav>
-<!-- <p-sidebar [(visible)]="sidebarVisible" position="right">
-    <ng-template pTemplate="content">   
-        <div class="header-cart-title flex-w flex-sb-m p-b-8">
-            <span class="mtext-103 cl2">
-                Your Cart
-            </span>
-
-            
-        </div>    
-    <li class="header-cart-item flex-w flex-t m-b-12" *ngFor="let item of cartDetails">
-        <div class="header-cart-item-img">
-            <img [src]="getImageUrl(item.imageUrl)" alt="" class="product-image">
-        </div>
-
-        <div class="header-cart-item-txt p-t-8">
-            <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-                {{ item.productName }}
-            </a>
-
-            <span class="header-cart-item-info">
-                {{ item.quantity }} x {{ item.unitPrice }}
-            </span>
-        </div>
-    </li>
-    <span class="mtext-103 cl2">
-        Total Price
-    </span>
-    <div class="size-209">
-        <span class="mtext-110 cl2" *ngIf="totalCartPrice !== null">{{ totalCartPrice }} TND</span>
-    </div>
-
-    <div class="header-cart-buttons flex-w w-full">
-        
-            <a routerLink="/Cartdetail" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
-                View Cart
-            </a>
-
-        <a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
-            Check Out
-        </a>
-    </div>
-   
-      
-</ng-template>
-
-</p-sidebar> -->
 
 <p-sidebar [(visible)]="sidebarVisible" position="right">
     <ng-template pTemplate="content">
+        
       <div class="header-cart-title flex-w flex-sb-m p-b-8">
         <span class="mtext-103 cl2">Your Cart</span>
       </div>
   
-      <!-- <div class="drop-area" (dragover)="allowDrop($event)" (drop)="drop($event)">
-        <span class="drop-text">Drop items here to remove</span>
-      </div> -->
-  
+
       <ul class="list-none flex flex-column gap-2 p-0 m-0">
         <li
           *ngFor="let item of cartDetails"
@@ -92,9 +45,9 @@
               {{ item.quantity }} x {{ item.unitPrice }}
             </span>
   
-            <div class="trash-icon" (dragover)="allowDrop($event)" (drop)="drop($event)">
-              <i class="fa fa-trash"></i>
-            </div>
+            <div class="trash-icon trash-icon-custom" (dragover)="allowDrop($event)" (drop)="drop($event)">
+                <i class="fa fa-trash"></i>
+              </div>
           </div>
         </li>
       </ul>
@@ -105,6 +58,9 @@
       <a routerLink="/Cartdetail" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
         View Cart
     </a>
+    <button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer" (click)="confirmPurchase()">
+        confirm Purchase
+    </button>
     </ng-template>
   </p-sidebar>
       
