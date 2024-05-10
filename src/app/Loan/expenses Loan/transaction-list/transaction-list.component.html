@@ -1,0 +1,8 @@
+<h3 class="section-title">History</h3>
+<ul id="list" class="transaction-list">
+  <app-transaction-item
+    *ngFor="let transaction of transactionList"
+    [transaction]="transaction"
+    (onDelete)="deleteTransaction($event)"
+  ></app-transaction-item>
+</ul>

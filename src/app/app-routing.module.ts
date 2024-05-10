@@ -11,7 +11,7 @@ import { BackOfficeComponent } from './back-office/back-office.component';
 import { FullComponent } from './back-office/layouts/full/full.component';
 import { FrontOrBackService } from './services/front-or-back.service';
 import { AdminResolver } from './admin.resolver';
-
+import { expensesComponent } from './Loan/expenses Loan/expenses.component';
 
 import { ApplyLoanComponent } from './Loan/Apply For Home/loan form/Applyloan.component';
 import { GarantorComponent } from './Loan/Apply For Home/Garantor Form/Garantor.component';
@@ -32,7 +32,7 @@ const routes: Routes = [
   {path : "Simulator" , component : SimulatorComponent , canActivate: [AuthGuard]} ,
   {path : "upload" , component : uploadComponent , canActivate: [AuthGuard]}, 
   {path : "PackLoan" , component : packComponent , canActivate: [AuthGuard]},
-  
+  {path : "expenses" , component : expensesComponent , canActivate: [AuthGuard]},
   {path : "" , component : FullComponent , canActivate: [AuthGuard] ,children : [
     
         {

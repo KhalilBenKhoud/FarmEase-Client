@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ComponentsRoutes } from './component.routing';
 import { InsuranceComponent } from './insurance/insurance.component';
@@ -12,6 +12,8 @@ import { InvestmentComponent } from './investment/investment.component';
 import { CardsComponent } from './card/card.component';
 import { LoanComponent } from './loan/loan.component';
 import { MarketplaceComponent } from './marketplace/marketplace.component';
+import { NgForm } from '@angular/forms';
+
 
 @NgModule({
   imports: [
@@ -20,14 +22,14 @@ import { MarketplaceComponent } from './marketplace/marketplace.component';
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
+    NgxPaginationModule,
     InsuranceComponent,
     LoanComponent,
     NgbdDropdownBasicComponent,
     NgbdnavBasicComponent,
     InvestmentComponent,
     CardsComponent,
-    MarketplaceComponent 
-   
+    MarketplaceComponent  
   ],
 })
 export class ComponentsModule { }

@@ -7,11 +7,12 @@ import { GuarantorService } from 'src/app/services/Garantor.service';
 import { Garantor } from 'src/app/Models/Garantor.model'; 
 import * as QRCode from 'qrcode-generator';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser'; 
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-Simulator',
   templateUrl: './simulator.component.html',
-  styleUrls: ['./simulator.component.css']
+  styleUrls: ['./Simulator.component.css']
 })
 export class SimulatorComponent implements OnInit, AfterViewInit {
   credits: Credit[] = [];
@@ -26,7 +27,7 @@ export class SimulatorComponent implements OnInit, AfterViewInit {
   isLoading: boolean = false;
   creditPeriods: number[] = [];
   monthlyPaymentAmounts: number[] = [];
- 
+  
   speechSynthesis = window.speechSynthesis;
   garantors!: Garantor[];
   creditsAndGarantors: { credit: Credit, garantor: Garantor }[] = [];
@@ -79,6 +80,7 @@ if (loanEMIElement instanceof HTMLElement &&
         this.init();
       });
     }
+    
   
   }
 
@@ -192,7 +194,7 @@ if (loanEMIElement instanceof HTMLElement &&
         Date de demande: ${credit.dateDemande},
         Date d'obtention: ${credit.obtainingDate},
         Date de paiement mensuel: ${credit.monthlyPaymentDate},
-        État: ${credit.state ? 'Actif' : 'Inactif'},
+        État: ${credit.status ? 'Accepted' : 'Rejected'},
         Différé: ${credit.differe ? 'Oui' : 'Non'},
         Période de différé: ${credit.DIFF_period},
         Taux d'intérêt: ${credit.interestRate} %,
@@ -299,22 +301,30 @@ if (loanEMIElement instanceof HTMLElement &&
   speak(text: string) {
     const utterance = new SpeechSynthesisUtterance(text);
 
-    const arabicVoice = speechSynthesis.getVoices().find(voice => voice.lang === 'ar');
-    if (arabicVoice) {
-      utterance.voice = arabicVoice;
-    } else {
-      console.warn('Aucune voix en arabe n\'est disponible.');
-    }
+    // Attendre que les voix soient chargées de manière asynchrone
+    speechSynthesis.onvoiceschanged = () => {
+        // Récupérer les voix disponibles
+        const voices = speechSynthesis.getVoices();
+        // Chercher la voix en arabe
+        const arabicVoice = voices.find(voice => voice.lang === 'ar');
+        // Utiliser la voix en arabe si elle est disponible
+        if (arabicVoice) {
+            utterance.voice = arabicVoice;
+            // Lancer la synthèse vocale
+            speechSynthesis.speak(utterance);
+        } else {
+            console.warn('Aucune voix en arabe n\'est disponible.');
+        }
+    };
+}
 
-    this.speechSynthesis.speak(utterance);
+  onMouseEnter(text: string) {
+    this.speak(text);
   }
-
-
-
   isAnimating(index: number): boolean {
-    // Implement your logic here to determine animation state based on index
-    // This is just a placeholder for now
-    return index % 2 === 0; // Simulate animation every other card
+    // Implémentez votre logique pour déterminer l'état de l'animation en fonction de l'index ici
+    // Ceci n'est qu'un exemple
+    return index % 2 === 0; // Simuler l'animation sur chaque autre carte
   }
 
   // Define toggleCreditDetails method

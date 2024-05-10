@@ -47,11 +47,24 @@ export class CreditService {
   }
 
 
-  updateCredit(credit: Credit, idCredit: number): Observable<Object> {
-    return this.httpClient.put(`${environment.BaseApiUrl}/credit/${idCredit}`, credit)  
+  
+  updateCredit(credit: Credit, idCredit: number): Observable<Credit> {
+    const url = `${environment.BaseApiUrl}/credit/${idCredit}`;
+    return this.httpClient.put<Credit>(url, credit);
   }
 
-  
+  removeCredit(idCredit: number): Observable<void> {
+    const url = `${environment.BaseApiUrl}/credit/${idCredit}`;
+    return this.httpClient.delete<void>(url);
+  }
 
-  
+  calculateRisk(creditId: number, clientId: number): Observable<string> {
+    return this.httpClient.get<string>(`${environment.BaseApiUrl}/calculateRisk/${creditId}/${clientId}`);
+  }
+
+  getAverageCreditAmount(): Observable<number> {
+    return this.httpClient.get<number>(`${environment.BaseApiUrl}/credits/average`);
+  }
+
+
 }

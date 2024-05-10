@@ -20,10 +20,9 @@ import { ApplyLoanComponent } from './Loan/Apply For Home/loan form/Applyloan.co
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
 import { DatePickerModule } from '@syncfusion/ej2-angular-calendars'; 
 import { SimulatorComponent } from './Loan/Simulator/Simulator.component';
-
-
+import { RecaptchaModule } from 'angular-google-recaptcha';
 import { packComponent } from './Loan/PackLoan/pack.component';
-
+import { NgxCaptchaModule } from 'ngx-captcha';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -32,12 +31,24 @@ import { SpinnerComponent } from './back-office/shared/spinner.component';
 import { FullComponent } from './back-office/layouts/full/full.component';
 import { NavigationComponent } from './back-office/shared/header/navigation.component';
 import { SidebarComponent } from './back-office/shared/sidebar/sidebar.component';
-
+import { expensesComponent } from './Loan/expenses Loan/expenses.component';
 
 
 
 import { GarantorComponent } from './Loan/Apply For Home/Garantor Form/Garantor.component';
 import { uploadComponent } from './Loan/Apply For Home/upload Form/upload.component';
+
+
+
+
+
+import { BalanceComponent } from './Loan/expenses Loan/balance/balance.component';
+import { IncomeExpensesComponent } from './Loan/expenses Loan/income-expenses/income-expenses.component';
+import { TransactionListComponent } from './Loan/expenses Loan/transaction-list/transaction-list.component';
+import { AddTransactionComponent } from './Loan/expenses Loan/add-transaction/add-transaction.component';
+
+import { TransactionItemComponent } from './Loan/expenses Loan/transaction-list/transaction-item/transaction-item.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +68,12 @@ import { uploadComponent } from './Loan/Apply For Home/upload Form/upload.compon
     packComponent ,
     BackOfficeComponent,
     SpinnerComponent,
-    
+    expensesComponent , 
+    BalanceComponent , 
+    IncomeExpensesComponent , 
+    TransactionListComponent,
+    AddTransactionComponent ,
+    TransactionItemComponent
   ],
   imports: [
     BrowserModule,
@@ -69,13 +85,15 @@ import { uploadComponent } from './Loan/Apply For Home/upload Form/upload.compon
     ReactiveFormsModule,
     DatePickerModule , 
     HttpClientModule ,
- 
-  
+    ReactiveFormsModule,
+    RecaptchaModule,
+    NgxCaptchaModule 
+    
   ],
   providers: [    
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, 
     AuthGuard ,
-
+  
     BrowserAnimationsModule,
 
     NgbModule,

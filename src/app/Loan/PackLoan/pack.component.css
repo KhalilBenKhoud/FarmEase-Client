@@ -1,54 +1,105 @@
+/* Style pour le container principal */
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .loan-types {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  
-  .loan-card {
-    width: calc(33.33% - 20px); /* Réduisez la largeur pour tenir compte de l'espacement */
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px; /* Ajoutez un espace en bas pour séparer les cartes */
-  }
-  
-  .loan-image img {
-    width: 100%;
-    height: auto;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .loan-details {
-    padding: 20px;
-  }
-  
-  h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-  
-  p {
-    margin: 0;
-  }
-  
-  .description {
-    color: #666;
-  }
-  
-  .value {
-    font-weight: bold;
-    color: #00aaff;
-  }
-  
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Style pour le titre */
+h2 {
+  color: #006400; /* Couleur verte */
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+}
+
+/* Style pour chaque pack de prêt */
+.loan-card {
+  width: calc(33.33% - 20px);
+  background-color: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s ease;
+  display: inline-block; /* Afficher en ligne */
+  vertical-align: top; /* Alignement en haut */
+  margin: 0 10px 20px; /* Marge entre les éléments */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Style pour l'image du prêt */
+.loan-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  filter: brightness(70%) grayscale(20%);
+}
+
+/* Style pour les détails du prêt */
+.loan-details {
+  padding: 20px;
+}
+
+/* Style pour le titre du prêt */
+h3 {
+  color: #333; /* Couleur du texte gris foncé */
+  margin-bottom: 10px;
+  font-size: 1.8rem;
+  text-align: center;
+}
+
+/* Style pour la description du prêt */
+.description {
+  color: #666; /* Couleur du texte gris */
+  font-size: 1.6rem;
+  line-height: 1.4;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+/* Style pour le bouton */
+.btn {
+  display: inline-block;
+  background-color: #006400; /* Couleur verte */
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  display: block;
+  text-align: center;
+  margin: auto;
+}
+
+.btn:hover {
+  background-color: #004d00; /* Couleur verte plus foncée au survol */
+}
+
+/* Animation de survol */
+.loan-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.loan-card:hover .loan-image img {
+  transform: scale(1.1);
+}
+
+/* Style pour l'overlay */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 100, 0, 0.8), rgba(0, 100, 0, 0.6));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 20px;
+}
+
+.loan-card:hover .overlay {
+  opacity: 1;
+}

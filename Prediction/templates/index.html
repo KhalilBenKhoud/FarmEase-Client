@@ -4,159 +4,169 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loan Prediction</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f5f5f5;
         }
 
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 40px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+
         h1 {
+            grid-column: span 2;
             text-align: center;
-            margin-top: 50px;
-            color: #697c37;
+            color: #4caf50;
+            margin-bottom: 30px;
         }
 
         form {
-            width: 80%;
-            max-width: 600px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
         }
 
         label {
-            display: block;
-            margin-bottom: 10px;
-            color: #697c37;
+            color: #4caf50;
+            font-weight: bold;
         }
 
         input[type="text"] {
-            width: calc(100% - 22px);
-            padding: 8px;
-            margin-bottom: 10px;
-            border: 1px solid #697c37;
-            border-radius: 4px;
+            width: calc(100% - 20px);
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
             box-sizing: border-box;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         input[type="submit"] {
             width: 100%;
-            padding: 10px;
-            background-color: #697c37;
+            padding: 15px;
+            background-color: #4caf50;
             border: none;
+            border-radius: 5px;
             color: #fff;
-            border-radius: 4px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
         input[type="submit"]:hover {
-            background-color: #5c6930;
+            background-color: #43a047;
         }
 
-        h2 {
-            margin-top: 30px;
-            color: #697c37;
-        }
-
-        p {
-            color: #666;
-        }
-
-        /* Styles for the prediction box */
-        #predictionBox {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #ffffff;
-            border: 1px solid #cccccc;
-            border-radius: 5px;
+        .prediction-box {
+            grid-column: span 2;
             padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            z-index: 9999;
         }
 
-        #predictionResult {
-            font-weight: bold;
+        .prediction-box h2 {
+            color: #4caf50;
             margin-bottom: 10px;
         }
 
-        #predictionDescription {
-            color: #666666;
+        .prediction-box p {
+            color: #666;
         }
-        #loanForm label {
-        display: inline-block;
-        width: 120px; /* Ajustez cette valeur selon vos besoins */
-        text-align: right;
-    }
 
-    #loanForm input {
-        display: inline-block;
-        width: 200px; /* Ajustez cette valeur selon vos besoins */
-        margin-bottom: 10px;
-    }
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
     </style>
 </head>
 <body>
-    <h1>Loan Prediction Result</h1>
-    
-    <form method="post" id="loanForm">
-        <label for="age">Age:</label>
-        <input type="text" name="age" required>
-        <br>
+    <div class="container">
+        <div>
+            <h1>Loan Prediction Form</h1>
+            
+            <form method="post" id="loanForm">
+                <div>
+                    <label for="age">Age</label>
+                    <input type="text" name="age" required>
+                </div>
+                <div>
+                    <label for="experience">Experience</label>
+                    <input type="text" name="experience" required>
+                </div>
+                <div>
+                    <label for="income">Income</label>
+                    <input type="text" name="income" required>
+                </div>
+                <div>
+                    <label for="family">Family</label>
+                    <input type="text" name="family" required>
+                </div>
+                <div>
+                    <label for="ccavg">CCAvg</label>
+                    <input type="text" name="ccavg" required>
+                </div>
+                <div>
+                    <label for="education">Education</label>
+                    <input type="text" name="education" required>
+                </div>
+                <div>
+                    <label for="mortgage">Mortgage</label>
+                    <input type="text" name="mortgage" required>
+                </div>
+                <div>
+                    <label for="securities_account">Securities Account</label>
+                    <input type="text" name="securities_account" required>
+                </div>
+                <div>
+                    <label for="cd_account">CD Account</label>
+                    <input type="text" name="cd_account" required>
+                </div>
+                <div>
+                    <label for="online">Online</label>
+                    <input type="text" name="online" required>
+                </div>
+                <div>
+                    <label for="credit_card">Credit Card</label>
+                    <input type="text" name="credit_card" required>
+                </div>
+                <input type="submit" value="Predict" id="predictButton">
+            </form>
 
-        <label for="experience">Experience:</label>
-        <input type="text" name="experience" required>
-        <br>
-
-        <label for="income">Income:</label>
-        <input type="text" name="income" required>
-        <br>
-
-        <label for="family">Family:</label>
-        <input type="text" name="family" required>
-        <br>
-
-        <label for="ccavg">CCAvg:</label>
-        <input type="text" name="ccavg" required>
-        <br>
-
-        <label for="education">Education:</label>
-        <input type="text" name="education" required>
-        <br>
-
-        <label for="mortgage">Mortgage:</label>
-        <input type="text" name="mortgage" required>
-        <br>
-
-        <label for="securities_account">Securities Account:</label>
-        <input type="text" name="securities_account" required>
-        <br>
-
-        <label for="cd_account">CD Account:</label>
-        <input type="text" name="cd_account" required>
-        <br>
-
-        <label for="online">Online:</label>
-        <input type="text" name="online" required>
-        <br>
-
-        <label for="credit_card">Credit Card:</label>
-        <input type="text" name="credit_card" required>
-        <br>
-
-        <input type="submit" value="Predict" id="predictButton">
-    </form>
-
-    <!-- Prediction box -->
-    <div id="predictionBox">
-        <div id="predictionResult"></div>
-        <div id="predictionDescription"></div>
+            <!-- Prediction box -->
+            <div class="prediction-box" id="predictionBox">
+                <h2>Prediction Result</h2>
+                <p id="predictionResult"></p>
+                <p id="predictionDescription"></p>
+            </div>
+        </div>
+        <div class="image-container">
+            <img src="https://img.freepik.com/vecteurs-libre/gerer-illustration-du-concept-argent_114360-8079.jpg?t=st=1715301964~exp=1715305564~hmac=22b0e316ae2ee87eaa46acf0d86f25b0f897fcf577fd76e9e710cca13c53a815&w=740" alt="failed">
+        </div>
     </div>
 
     <script>
@@ -176,6 +186,7 @@
                 if (predictionResult === 0) {
                     predictionDescription = 'Credit not accepted';
                 } else {
+                    predictionDescription = 'Credit accepted';
                 }
 
                 // Display the prediction box

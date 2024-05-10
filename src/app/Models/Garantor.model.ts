@@ -1,5 +1,5 @@
 import { Credit } from "./Credit.model";
-
+import { User } from "./user.model";
 export class Garantor {
     // Other properties
     idGarantor!: number ; 
@@ -8,7 +8,7 @@ export class Garantor {
     salaryGarantor!: number;
     workGarantor!: string;
     qrString!: string;
-    credit!: Credit;
-    creditId!: number; // Add creditId property
+    credit!: Credit; // Supposons que vous avez déjà un modèle Credit
     pdfDocument!: Blob | null; 
+    user!: User;
 }

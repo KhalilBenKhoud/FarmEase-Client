@@ -35,4 +35,10 @@ export class GuarantorService {
     return this.httpClient.get(url, { observe: 'response', responseType: 'blob' });
   }
 
+
+  getGarantorById(idGarantor: number): Observable<Garantor> {
+    const url = `${environment.BaseApiUrl}/Garantor/${idGarantor}`;
+    return this.httpClient.get<Garantor>(url);
+  }
+  
 }

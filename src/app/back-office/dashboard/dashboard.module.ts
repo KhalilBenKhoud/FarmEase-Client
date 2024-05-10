@@ -10,7 +10,7 @@ import { TopSellingComponent } from "./dashboard-components/top-selling/top-sell
 import { TopCardsComponent } from "./dashboard-components/top-cards/top-cards.component";
 import { BlogCardsComponent } from "./dashboard-components/blog-cards/blog-cards.component";
 import { DatePipe, AsyncPipe } from '@angular/common';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 const routes: Routes = [
   {
     path: "",
@@ -30,7 +30,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     NgApexchartsModule,
     CommonModule,
-    FormsModule
+    FormsModule ,
+    NgxPaginationModule
    
   ],
   declarations: [

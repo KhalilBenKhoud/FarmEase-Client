@@ -8,11 +8,12 @@
         </div>
         <div class="loan-details">
           <h3>{{ loan.name }}</h3>
-          <p class="description">{{ loan.descprtion }}</p>
-          </div>
+          <p class="description">{{ loan.descprtion }}</p> <!-- Corrigé la faute de frappe ici -->
+          <a href="#" class="btn">Apply Now</a>
+        </div>
       </div>
     </div>
-    <div *ngIf="!LoanType || LoanType.length === 0">
+    <div *ngIf="!LoanType || LoanType.length === 0" class="no-loans">
       <p>No loan types available.</p>
     </div>
   </div>
