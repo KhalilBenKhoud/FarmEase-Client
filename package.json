@@ -11,6 +11,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^15.2.0",
+    "@angular/cdk": "^15.2.9",
     "@angular/common": "^15.2.0",
     "@angular/compiler": "^15.2.0",
     "@angular/core": "^15.2.0",
@@ -21,6 +22,7 @@
     "@angular/router": "^15.2.0",
     "@ng-bootstrap/ng-bootstrap": "^14.2.0",
     "@popperjs/core": "^2.11.6",
+
     "@syncfusion/ej2-angular-calendars": "^25.1.40",
     "@syncfusion/ej2-angular-charts": "^25.1.40",
     "@syncfusion/ej2-angular-grids": "^25.1.40",
@@ -31,10 +33,14 @@
     "angular-google-recaptcha": "^1.0.3",
     "angular2-qrcode": "^2.0.3",
     "angularx-qrcode": "^17.0.0",
+
+    "@types/chart.js": "^2.9.41",
+
     "apexcharts": "^3.49.0",
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.11.3",
     "chart.js": "^4.4.2",
+
     "file-saver": "^2.0.5",
     "gsap": "^3.12.5",
     "html2canvas": "^1.4.1",
@@ -43,9 +49,15 @@
     "ngx-pagination": "^6.0.3",
     "ngx-qrcode": "^0.1.0-rc.1",
     "ngx-typed-js": "^2.1.1",
+
     "pdfmake": "^0.2.10",
     "qrcode-generator": "^1.4.4",
+
+    "primeicons": "^7.0.0",
+    "primeng": "^15.4.1",
+
     "rxjs": "~7.8.1",
+    "sweetalert2": "^11.10.8",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
   },

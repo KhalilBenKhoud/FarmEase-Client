@@ -9,8 +9,11 @@ import { FeedsComponent } from "./dashboard-components/feeds/feeds.component";
 import { TopSellingComponent } from "./dashboard-components/top-selling/top-selling.component";
 import { TopCardsComponent } from "./dashboard-components/top-cards/top-cards.component";
 import { BlogCardsComponent } from "./dashboard-components/blog-cards/blog-cards.component";
+
 import { DatePipe, AsyncPipe } from '@angular/common';
 import { NgxPaginationModule } from 'ngx-pagination';
+
+
 const routes: Routes = [
   {
     path: "",
@@ -29,10 +32,12 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     NgApexchartsModule,
+
     CommonModule,
     FormsModule ,
     NgxPaginationModule
-   
+
+
   ],
   declarations: [
     DashboardComponent,

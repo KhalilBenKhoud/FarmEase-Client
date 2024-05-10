@@ -1,0 +1,8 @@
+<p-sidebar [(visible)]="sidebarVisible" position="right">
+  <h3>Cart</h3>
+  <ul>
+      <li *ngFor="let item of cartItems">
+          {{ item.cartItemsQuantity }} - {{ item.itemsPrice }}
+      </li>
+  </ul>
+</p-sidebar>

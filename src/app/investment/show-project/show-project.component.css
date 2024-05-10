@@ -1,0 +1,143 @@
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Align cards to the center */
+  gap: 20px;
+}
+
+.card {
+  margin-bottom: 20px;
+  
+}
+.card-img-top{
+  border-radius: 10%;
+  margin: auto;
+  max-width: 200px; /* Limit image width to fit container */
+  max-height: 150px; /* Limit image height to 200px */
+  object-fit: cover;
+}
+.plan {
+  flex: 1; /* Make each card grow to fill available space */
+  max-width: 250px; /* Limit maximum width of each card */
+  border-radius: 16px;
+  box-shadow: 0 30px 30px -25px rgba(0, 38, 255, 0.205);
+  padding: 10px;
+  background-color: #fff;
+  color: #7c9c11;
+  max-width: 300px;
+}
+
+.plan strong {
+  font-weight: 600;
+  color: #5a7236;
+}
+
+.plan .inner {
+  align-items: center;
+  padding: 20px;
+  padding-top: 40px;
+  background-color: #ecf0ff;
+  border-radius: 12px;
+  position: relative;
+}
+
+.plan .pricing {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #bed6fb;
+  border-radius: 99em 0 0 99em;
+  display: flex;
+  align-items: center;
+  padding: 0.625em 0.75em;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #5c7c1a;
+}
+
+.plan .pricing small {
+  color: #85ac38;
+  font-size: 0.75em;
+  margin-left: 0.25em;
+}
+
+.plan .title {
+  margin-top: 20px;
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: #425675;
+}
+
+.plan .title + * {
+  margin-top: 0.75rem;
+}
+
+.plan .info + * {
+  margin-top: 1rem;
+}
+
+.plan .features {
+  margin-top: 20px; /* Add margin to separate features from other elements */
+  display: flex;
+  flex-direction: column;
+}
+
+.plan .features li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.plan .features li + * {
+  margin-top: 0.75rem;
+}
+
+.plan .features .icon {
+  background-color: #65a342;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+}
+
+.plan .features .icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+.plan .features + * {
+  margin-top: 1.25rem;
+}
+
+.plan .action {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.plan .button {
+  background-color: #5a7236;
+  border-radius: 6px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1.125rem;
+  text-align: center;
+  border: 0;
+  outline: 0;
+  width: 100%;
+  padding: 0.625em 0.75em;
+  text-decoration: none;
+}
+
+.plan .button:hover, .plan .button:focus {
+  background-color: #7c9c11;
+}
+.plan .progress {
+  margin-top: 20px; /* Add margin to separate progress bar from other elements */
+}
+

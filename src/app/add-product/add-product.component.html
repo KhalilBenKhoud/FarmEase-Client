@@ -1,0 +1,31 @@
+<form [formGroup]="productForm" (ngSubmit)="ajouter()" class="product-form">
+    <div class="form-group">
+      <label for="productName">Nom du produit</label>
+      <input type="text" id="productName" formControlName="productName" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="productDescription">Description du produit</label>
+      <textarea id="productDescription" formControlName="productDescription" class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="productPrice">Prix du produit</label>
+      <input type="number" id="productPrice" formControlName="productPrice" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="productStock">Stock du produit</label>
+      <input type="number" id="productStock" formControlName="productStock" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="productCategory">Catégorie du produit</label>
+      <select id="productCategory" formControlName="productCategory" class="form-control">
+        <option value="FARMER">FARMER</option>
+        <option value="FISHER">FISHER</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="imageFile">Image du produit</label>
+      <input type="file" id="imageFile" formControlName="imageFile" (change)="onFileChange($event)" class="form-control-file">
+    </div>
+    <button type="submit" class="btn btn-primary">Ajouter le produit</button>
+  </form>
+  

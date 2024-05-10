@@ -21,6 +21,7 @@ import {
   // ApexTooltip,
   // ApexStroke
 } from 'ng-apexcharts';
+import { AdminUserService } from 'src/app/services/admin-user.service';
 
 export type salesChartOptions = {
   series: ApexAxisChartSeries | any;
@@ -46,7 +47,11 @@ export class SalesRatioComponent implements OnInit {
 
   @ViewChild("chart") chart: ChartComponent = Object.create(null);
   public salesChartOptions: Partial<salesChartOptions>;
-  constructor() {
+  allUsers !: any[] ; 
+  totalMoney !: number ;
+
+
+  constructor(private admin : AdminUserService) {
     this.salesChartOptions = {
       series: [
         {
@@ -97,6 +102,20 @@ export class SalesRatioComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getAll() ;
+    setTimeout(() => {
+      this.totalMoney = this.allUsers.filter(u => u.role != 'ADMIN').map(u => u.wallet.balance)
+      .reduce((x  ,y ) =>  x + y,0)
+    },1500)
+  }
+
+  getAll() {
+     this.admin.getAll().subscribe(
+     ( data : any) => {this.allUsers = data ;},
+     error => {
+      console.log(error) ;
+     }
+     )
   }
 
 }

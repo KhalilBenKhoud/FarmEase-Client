@@ -1,0 +1,95 @@
+
+<div class="card">
+    
+    <p-table [value]="products" [tableStyle]="{'min-width': '60rem'}">
+        <ng-template pTemplate="caption">
+            <div class="flex align-items-center justify-content-between">
+                Products
+                <button (click)="showDialog()">
+                    <span class="tooltipp">Add new</span>
+                </button>
+            </div>
+        </ng-template>
+
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Price</th>
+                <th>Category</th>
+                <th>Stock</th>
+                <th>Description</th>
+                <th>Actions</th> <!-- Nouvelle colonne pour les actions -->
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product>
+            <tr>
+                <td>{{ product.productName }}</td>
+                <td><img [src]="getImageUrl(product.productImage)" [alt]="product.productName" width="100" class="shadow-4" /></td>
+                <td>{{ product.productPrice | currency:'USD' }}</td>
+                <td>{{ product.productCategory }}</td>
+                <td>
+                    <p-tag [ngClass]="{'outofstock': product.productStock === 0, 'lowstock': product.productStock > 0 && product.productStock < 10, 'instock': product.productStock >= 10}">
+                        {{ getStatusText(product.productStock) }}
+                    </p-tag>
+                </td>
+                <td>{{ product.productDescription }}</td>
+                <td>
+                    <!-- <p-button label="Edit" (click)="openEditDialog(product)" class="p-button-secondary"></p-button> -->
+                    <p-button label="Remove" (click)="removeFromCart(product.productId)" class="p-button-danger"></p-button>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="flex align-items-center justify-content-between">
+                In total there are {{ products ? products.length : 0 }} products.
+            </div>
+        </ng-template>
+    </p-table>
+</div>
+
+    
+<p-dialog header="Add Product" [modal]="true" [(visible)]="displayDialog" [style]="{ 'width': '50%', 'height': 'auto' }">
+   
+    <form [formGroup]="productForm" (ngSubmit)="ajouter()" class="product-form">
+        <div class="form-group">
+            <label for="productName" class="font-semibold w-6rem">Nom du produit</label>
+            <input type="text" id="productName" formControlName="productName" class="flex-auto form-control">
+        </div>
+        <div class="form-group">
+            <label for="productDescription" class="font-semibold w-6rem">Description du produit</label>
+            <textarea id="productDescription" formControlName="productDescription" class="flex-auto form-control"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="productPrice" class="font-semibold w-6rem">Prix du produit</label>
+            <input type="number" id="productPrice" formControlName="productPrice" class="flex-auto form-control">
+        </div>
+        <div class="form-group">
+            <label for="productStock" class="font-semibold w-6rem">Stock du produit</label>
+            <input type="number" id="productStock" formControlName="productStock" class="flex-auto form-control">
+        </div>
+        <div class="form-group">
+            <label for="productCategory" class="font-semibold w-6rem">Catégorie du produit</label>
+            <select id="productCategory" formControlName="productCategory" class="flex-auto form-control">
+                <option value="FARMER">FARMER</option>
+                <option value="FISHER">FISHER</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="imageFile" class="font-semibold w-6rem">Image du produit</label>
+            <input type="file" id="imageFile" formControlName="imageFile" (change)="onFileChange($event)" class="flex-auto form-control-file">
+            
+        </div>
+        <button type="submit" class="btn btn-primary">Ajouter le produit</button>
+        <button label="Close" (click)="hideDialog()" class="btn btn-secondary">close</button>
+    </form>
+    <p-toast #toast [breakpoints]="{ '800px': { width: '100%', right: '0', left: '0' } }"></p-toast>
+</p-dialog>
+
+  <div *ngIf="productLikes">
+    <h2>Statistiques des Likes par Produit</h2>
+    <canvas #barChart width="600" height="200"></canvas>
+</div>
+  
+  
+  
