@@ -1,3 +1,4 @@
+<p-toast position="top-center"></p-toast>
 <div class="profileContainer">
 
     <div class="bannerContainer">
@@ -54,8 +55,9 @@
           you have been using our services
             since<b style="color : green;"> {{profile.registrationDate}} </b>, however, if you wish to delete your
             account, click here :
-            <button class="btn btn-danger" style="margin-right: 20px;">Delete account</button>
+      <button class="btn btn-danger" (click)="showDeleteAccountModal = true ;">Delete account</button>
             <button class="btn btn-info " routerLink="/createproject">add project</button>
+
 
 
         </p>
@@ -63,5 +65,24 @@
     </p-tabPanel>
 </p-tabView>
 </div>
+
+
+
+
+<p-dialog 
+    header="Alert" 
+    [(visible)]="showDeleteAccountModal" 
+    [modal]="true" 
+    [style]="{ width: '25rem' }">
+       
+        <h4>Are you sure ? this action is permanent</h4>
+        <ng-template pTemplate="footer">
+            <button class="btn btn-danger" (click)="deleteAccount() ;">Delete account</button>
+            <button 
+                 class="btn btn-info"
+                (click)="showDeleteAccountModal = false" 
+              >Close</button>
+        </ng-template>
+</p-dialog>
 
 
