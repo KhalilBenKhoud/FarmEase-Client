@@ -1,34 +1,103 @@
-<p>mortgage works!</p>
-<div class="container">
-  <h2>Mortgages</h2>
-  <h3>Mortgage List</h3>
-  <div *ngFor="let mortgage of mortgages" class="mortgage">
-    <p>Description: {{ mortgage.description_mortgage }}</p>
-    <p>Duration: {{ mortgage.duration_mortgage }}</p>
-    <p>Prize: {{ mortgage.prize_mortgage }}</p>
-    <p>Month Payment: {{ mortgage.month_payment.toFixed(2) }}</p>
-    <p>Category: {{ mortgage.category_mortgage }}</p>
-    <p>Type: {{ mortgage.type_mortgage }}</p>
-    <button (click)="showApplyForm()">Apply</button>
-    <div *ngIf="showApplyFormFlag">
-      <h3>Apply</h3>
-      <div class="form-group">
-        <label for="nom_application">Nom:</label>
-        <input type="text" class="form-control" id="nom_application" name="nom_application" [(ngModel)]="newapplication.nom_application" required>
+<body>
+  <div class="body" role="main">
+      <div class="container">
+          <div class="masthead trim">
+              <h1 class="heading">Discover</h1>
+              <h4 class="subheading">mortgage Projects by Farmease</h4>
+          </div>
+          <p-button type="button" class="" (click)="fetchUserApplications()" data-bs-toggle="modal" data-bs-target="#viewApplicationsModal">
+            My applications
+         </p-button>
+         
+          <hr />
+          <div class="summary__list columns columns--x1 columns--x2-md columns--x3-lg">
+              <div class="column" *ngFor="let mortgage of mortgages">
+                  <!-- Add routerLink directive with project ID as a parameter -->
+                  <a [routerLink]="['/apply', mortgage.id_mortgage]" class="summary trim">
+                    <span class="summary__img">
+                        
+                        <img class="card-img-top" src="https://alcbc.ca/wp-content/uploads/2020/10/mortgage.jpg"  alt="land image">
+                      </span>
+                   
+                      <h4 style="font-size: 16px" class="summary__heading">{{mortgage.description_mortgage}}</h4>
+                      <h6 style="font-size: 12px" class="summary__subheading">{{mortgage.category_mortgage}}</h6>
+                       <h4 style="font-size: 16px" class="summary__heading">Duration of the mortgage is {{mortgage.duration_mortgage}} years</h4>
+                      <p style="font-size: 12px" class="summary__meta">Monthly Payment: {{mortgage.month_payment}}</p>
+                      <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="">
+                       veiw mortgage
+                    </button>
+              
+                    
+                  </a>
+              </div>
+          </div>
       </div>
-      <div class="form-group">
-        <label for="prenom_application">Prénom:</label>
-        <input type="text" class="form-control" id="prenom_application" name="prenom_application" [(ngModel)]="newapplication.prenom_application" required>
+  </div>
+</body>
+
+<div  data-bs-scroll="true" tabindex="-1" id="chatSection"
+style="background-color: rgb(242, 230, 250);">
+<div class="offcanvas-header bg-light-200">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Google_Gemini_logo.svg/2560px-Google_Gemini_logo.svg.png"
+        width="10%" alt="aaaayahoussem">
+        <h5 class="offcanvas-title" id="offcanvasRightLabel">Do You Need Some Help?</h5>
+    <button type="button"
+        class="aside_close btn btn-danger z-index-9 rounded-circle p-0 m-0 d-flex align-items-center justify-content-center"
+        data-bs-dismiss="offcanvas" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+</div>
+<!-- Google AI -->
+<div class="card-body">
+    <form [formGroup]="queryFormGroup" (ngSubmit)="googleAI()">
+        <div class="mb-3">
+            <label class="form-label" for="ta">What do you need today?</label>
+            <div class="inline-elements d-flex">
+                <textarea class="form-control" id="ta" formControlName="query"></textarea>
+                <i class="bi bi-send-fill me-2" (click)="googleAI()"></i>
+            </div>
+            <button class="btn btn-light text-black " [disabled]="!queryFormGroup.valid"><i
+                    class="bi bi-send me-2"></i></button>
+        </div>
+
+    </form>
+    <div class="response-container mt-3" *ngIf="resultgoogle?.candidates && resultgoogle.candidates.length > 0"
+        style="height: auto; max-height: 400px; overflow-y: auto;">
+        <div class="alert">
+            <div class="response-content">
+                <ng-container *ngFor="let part of resultgoogle.candidates[0].content.parts">
+                    <div class="response-part" *ngIf="part.text.trim()">
+                        {{ part.text }}
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="viewApplicationsModal" tabindex="-1" aria-labelledby="viewApplicationsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="viewApplicationsModalLabel">View Application</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <ul>
+            <li *ngFor="let application of userApplications">
+              <div>
+                <h4>Description{{ application.description_application }}</h4>
+                <p>Interest Rate: {{ application.interesting_rate_application }}</p>
+                <p>Etat Applicationn: {{ application.etat_application }}</p>
+                <p>Message: {{ application.message_application }}</p>
+                <p-button (click)="exportApplicationToPdf(application.id_application)">Export to PDF</p-button>
+                <p-button type="button" class="" (click)="deleteapplication(application.id)">Delete</p-button>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <p-button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</p-button>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="interesting_rate_application">Taux d'intérêt:</label>
-        <input type="number" class="form-control" id="interesting_rate_application" name="interesting_rate_application" [(ngModel)]="newapplication.interesting_rate_application" required>
-      </div>
-      <div class="form-group">
-        <label for="description_application">Description:</label>
-        <input type="text" class="form-control" id="description_application" name="description_application" [(ngModel)]="newapplication.description_application" required>
-      </div>
-      <button (click)="submitApplication(mortgage.id_mortgage)">Submit</button>
     </div>
   </div>
-</div>
+
+

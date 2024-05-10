@@ -14,10 +14,15 @@ export class PostService {
   addPost(postData: any): Observable<any> {
     return this.http.post(`${environment.BaseApiUrl}/posts/add`, postData);
   }
+  
+  addpool(postData: any): Observable<any> {
+    return this.http.post(`${environment.BaseApiUrl}/posts/add`, postData);
+  }
   getPosts(): Observable<any[]> {
     return this.http.get<any[]>(`${environment.BaseApiUrl}/posts/get`);
   }
 
+ 
   incrementLike(postId: number): Observable<any> {
     // Vous pouvez définir des en-têtes si nécessaire
     const headers = new HttpHeaders();

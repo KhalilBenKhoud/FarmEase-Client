@@ -1,0 +1,83 @@
+<body>
+  <div class="body" role="main">
+    <div class="container">
+      <div class="masthead trim">
+        <h4 class="subheading">Mortgage</h4>
+      </div>
+      <div class="content">
+        <div class="content__main">
+          <div id="description" class="tabs__content tabs__content--active content-block">
+            <div class="main-img">
+              <img src="https://alcbc.ca/wp-content/uploads/2020/10/mortgage.jpg" />
+            </div>
+            <div class="mortgage-details">
+              <h4 class="subheading">Description</h4>
+              <h3>{{ mortgageDetails.description_mortgage }}</h3>
+              <div class="details">
+                <p><strong>Duration:</strong> {{ mortgageDetails.duration_mortgage }}</p>
+                <p><strong>Prize:</strong> {{ mortgageDetails.prize_mortgage }}</p>
+                <p><strong>Month Payment:</strong> {{ mortgageDetails.month_payment }}</p>
+                <p><strong>Category:</strong> {{ mortgageDetails.category_mortgage }}</p>
+                <p><strong>Type:</strong> {{ mortgageDetails.type_mortgage }}</p>
+                <p><strong>Price:</strong> {{ mortgageDetails.price_mortgage }}</p>
+                
+
+       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addApplicationModal">
+        Add Application
+    </button>
+    <div class="modal fade" id="addApplicationModal" tabindex="-1" aria-labelledby="addApplicationModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+       
+        <h5 class="modal-title" id="addApplicationModalLabel">Add Application</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+         <form>
+          <div class="mb-3">
+            <label for="description_application" class="form-label">Application Description:</label>
+            <input type="text" class="form-control" id="description_application" name="description_application" [(ngModel)]="newapplication.description_application" required>
+          </div>
+          <div class="mb-3">
+            <label for="interest_rate" class="form-label">Interest Rate:</label>
+            <p-rating [(ngModel)]="newapplication.interesting_rate_application" name="newapplication.interesting_rate_application" star="5">
+              <ng-template pTemplate="cancelicon">
+                  <img 
+                      src="https://primefaces.org/cdn/primeng/images/demo/rating/cancel.png" 
+                      width="25px" 
+                      height="25px" />
+              </ng-template>
+              <ng-template pTemplate="onicon">
+                  <img 
+                      src="https://primefaces.org/cdn/primeng/images/demo/rating/custom-icon-active.png" 
+                      width="25px" 
+                      height="25px" />
+              </ng-template>
+              <ng-template pTemplate="officon">
+                  <img 
+                      src="https://primefaces.org/cdn/primeng/images/demo/rating/custom-icon.png"
+                      width="25px"
+                      height="25px" />
+              </ng-template>
+      </p-rating>
+          </div>
+          <!-- Ajoutez d'autres champs de formulaire au besoin -->
+        </form>
+      </div>
+      <div class="mt-3">
+        <div class="mt-3 d-flex justify-content-center align-items-center">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?data={{ randomCode }}&size=100x100" alt="QR Code">
+        </div>
+                <input type="text" class="form-control mt-2" [(ngModel)]="verificationCode" placeholder="Enter verification code">
+    </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="addApplication()" data-bs-dismiss="modal">Add Application</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<!-- Fin du modal -->

@@ -35,7 +35,7 @@ export class PostComponent implements OnInit {
     const comment = {
    
       description_comment :  this.description ,
-      date_Comment: new Date().toISOString(), // Convert to ISO 8601 string
+      date_Comment: new Date(), // Convert to ISO 8601 string
 
       nbr_like_Comment: 0, // Initialize to 0
       nbr_signal_Comment: 0, // Initialize to 0
@@ -56,8 +56,10 @@ export class PostComponent implements OnInit {
       }
     );
   }
-  toggleComments() {
-    this.showComments = !this.showComments;
+  
+  toggleComments(id : number) {
+    this.posts.find(p => p.id_Post == id).commentaire.length > 0 ? this.posts.find(p => p.id_Post == id).commentaire = []
+    : setTimeout(() => {this.fetchPosts() ;},100) ;
   }
   toggleComment(post: any) {
     post.showCommentField = !post.showCommentField;
@@ -152,8 +154,12 @@ export class PostComponent implements OnInit {
   }
   ngOnInit() {
     // Fetch posts when the component initializes
-    this.fetchPosts();
-    this.loadCommentsForPosts();
+    this.loadPosts();
+    setTimeout(() => {
+      console.log(this.posts) ;
+
+    },3000)
+   
 
   }
 
@@ -194,7 +200,18 @@ export class PostComponent implements OnInit {
     this.post.nbr_signal_post = 0;
     this.post.stat1 = 0;
     this.post.stat2 = 0;
+    this.postService.addPost(this.post).subscribe(
+      (response) => {
+        console.log('Post added successfully:', response);
 
+       this.resetPostFields();
+        // After adding, fetch posts again to update the list
+        this.fetchPosts();
+      },
+      (error) => {
+        console.error('Error adding post:', error);
+      }
+    );
     // Autres traitements pour l'ajout du pool...
   }
 

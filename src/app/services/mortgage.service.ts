@@ -25,8 +25,19 @@ export class MortgageService {
   updateMortgage(id: number, mortgageData: any): Observable<any> {
     return this.http.put(`${environment.BaseApiUrl}/mortgages/update/${id}`, mortgageData);
   }
+  getAllGrounds(): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.BaseApiUrl}/mortgages/places`);
+  }
+  
+  getAllmateriel(): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.BaseApiUrl}/mortgages/materiel`);
+  }
+
 
   deleteMortgage(id: number): Observable<any> {
     return this.http.delete(`${environment.BaseApiUrl}/mortgages/delete/${id}`);
+  }
+  addMateriel(materiel: any): Observable<any> {
+    return this.http.post(`${environment.BaseApiUrl}/mortgages/addmateriel`, materiel);
   }
 }

@@ -12,6 +12,7 @@ import { MarketplaceComponent } from './marketplace/marketplace.component';
 import { AdminResolver } from 'src/app/admin.resolver';
 import { PostComponent } from 'src/app/post/post.component';
 import { MortgagebackComponent } from './mortgageback/mortgageback.component';
+import { PostbackComponent } from './postback/postback.component';
 
 export const ComponentsRoutes: Routes = [
 	{
@@ -36,6 +37,12 @@ export const ComponentsRoutes: Routes = [
 				path: 'mortgages',
 				component: MortgagebackComponent,
 				resolve : {data : AdminResolver }
+			},
+			{
+				path :'posts',
+			component : PostbackComponent,
+			resolve :{data :AdminResolver }
+
 			},
 			{
 				path: 'post',

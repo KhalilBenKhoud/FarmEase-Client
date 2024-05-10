@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MortgageService } from '../services/mortgage.service';
 import { ApplicationService } from '../services/application.service';
-
+import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { FormBuilder,FormGroup,Validator, Validators } from '@angular/forms';
+//my application tri 
 @Component({
   selector: 'app-mortgage',
   templateUrl: './mortgage.component.html',
@@ -10,6 +12,15 @@ import { ApplicationService } from '../services/application.service';
 export class MortgageComponent implements OnInit {
   showApplyFormFlag: boolean = false;
   mortgages: any[] = [];
+  userApplications: any[] = []; // Variable pour stocker les applications de l'utilisateur connecté
+newmateriel: any ={
+name_materiel:'',
+  price_materiel:null,
+  
+
+
+}
+ 
   newMortgage: any = {
     description_mortgage: '',
     duration_mortgage: null,
@@ -19,20 +30,88 @@ export class MortgageComponent implements OnInit {
     type_mortgage: '',
     price_mortgage: null
   };
+  result: any;
+  resultgoogle: any;
+  queryFormGroup!: FormGroup;
   updatingMortgage: any = null; // To store the mortgage being updated
   newapplication :any = {
     nom_application: '',
     prenom_application: '',
     interesting_rate_application: 0,
     description_application: ''
+    
   };
-  constructor(private mortgageService: MortgageService,private ApplicationService : ApplicationService) { }
+  
+  constructor(private mortgageService: MortgageService,private ApplicationService : ApplicationService,private fb:FormBuilder,private http:HttpClient) { }
 
   ngOnInit(): void {
     this.fetchMortgages();
+    this.queryFormGroup = this.fb.group({
+      query: this.fb.control("",Validators.required)
+    });
+
+    // Appel à la méthode pour récupérer les applications de l'utilisateur connecté
+
+  }
+  googleAI() {
+    let url = "https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=";
+    let API_KEY = "AIzaSyBqR3-TbIauhEIoSd0-FoK3U5AJ_NP-DK8";
+  
+    let headers = new HttpHeaders()
+      .set("Content-Type", "application/json")
+      .set("x-goog-api-key", API_KEY);
+  
+    // Create a new array of content with the user's query
+    let newContent = [
+      {
+        role: "user",
+        parts: [{ text: "hello "+this.queryFormGroup.value.query }]
+      }
+    ];
+  
+    let payload = {
+      contents: newContent
+    };
+    
+    this.http.post(url + API_KEY, payload, { headers: headers })
+      .subscribe({
+        next: (resp) => {
+          this.resultgoogle = resp;
+          //console.log(resp);
+         
+    //
+          this.queryFormGroup.reset();
+        },
+        error: (err) => {
+          console.error(err);
+        }
+      });
+  }
+  fetchUserApplications() {
+    this.ApplicationService.getApplicationsByUserId().subscribe(
+      (response) => {
+        this.userApplications = response;
+        console.log(response) ;
+      },
+      (error) => {
+        console.error('Error fetching user applications:', error);
+      }
+    );
+  }
+ 
+  exportApplicationToPdf(applicationId: number) {
+    this.ApplicationService.exportApplicationToPdf(applicationId).subscribe(
+      () => {
+        console.log('Application exported to PDF successfully');
+        // Ajoutez ici le code pour gérer le succès de l'exportation
+      },
+      (error) => {
+        console.error('Error exporting application to PDF:', error);
+        // Ajoutez ici le code pour gérer les erreurs lors de l'exportation
+      }
+    );
   }
   
-
   fetchMortgages() {
     this.mortgageService.getAllMortgages().subscribe(
       (response) => {
@@ -123,6 +202,17 @@ export class MortgageComponent implements OnInit {
       },
       (error) => {
         console.error('Error deleting mortgage:', error);
+      }
+    );
+  }
+  deleteapplication(id: number) {
+    this.ApplicationService.deleteApplication(id).subscribe(
+      (response) => {
+        console.log('application deleted successfully:', response);
+        this.fetchMortgages(); // Refresh the list of mortgages
+      },
+      (error) => {
+        console.error('Error deleting application:', error);
       }
     );
   }

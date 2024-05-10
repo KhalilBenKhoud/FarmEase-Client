@@ -29,8 +29,14 @@ import { SidebarComponent } from './back-office/shared/sidebar/sidebar.component
 import { ToastModule } from 'primeng/toast';
 import { MessagesModule } from 'primeng/messages';
 import { PostComponent } from './post/post.component';
-
-
+import { ApplyComponent } from './apply/apply.component';
+import { DataViewModule } from 'primeng/dataview';
+import { RatingModule } from 'primeng/rating';
+import { FieldsetModule } from 'primeng/fieldset';
+import {AvatarModule} from 'primeng/avatar';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { FormBuilder,FormGroup,Validator } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -46,7 +52,8 @@ import { PostComponent } from './post/post.component';
     MortgageComponent,
     BackOfficeComponent,
     SpinnerComponent,
-    PostComponent,
+    ApplyComponent,
+    PostComponent
     
   ],
   imports: [
@@ -63,9 +70,16 @@ import { PostComponent } from './post/post.component';
     NavigationComponent,
     SidebarComponent,
     ToastModule,
-    MessagesModule
+    DataViewModule,
+    RatingModule,
+    MessagesModule,
+    FieldsetModule,
+    AvatarModule,
+    ReactiveFormsModule,
+
   ],
   providers: [    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } , AuthGuard ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+  

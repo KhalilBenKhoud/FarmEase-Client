@@ -885,5 +885,85 @@ body {
     padding: 2rem 0;
     line-height: 1.5rem;
 }
-
+/* Style pour le conteneur principal */
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  /* Style pour les titres */
+  h2 {
+    margin-top: 40px;
+  }
+  
+  /* Style pour les cartes des posts */
+  .card {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Style pour les boutons */
+  .btn {
+    padding: 5px 10px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  /* Style pour les boutons de petite taille */
+  .btn-sm {
+    padding: 3px 6px;
+  }
+  
+  /* Style pour les boutons de signalisation */
+  .btn-signal {
+    background-color: #dc3545;
+  }
+  
+  /* Style pour les boutons de vote */
+  .btn-vote {
+    background-color: #28a745;
+  }
+  
+  /* Style pour les boutons de commentaire */
+  .btn-comment {
+    background-color: #6c757d;
+  }
+  
+  /* Style pour les boutons de suppression */
+  .btn-delete {
+    background-color: #ff0000;
+  }
+  
+  /* Style pour les formulaires */
+  .form-control {
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  /* Style pour les étiquettes de formulaire */
+  label {
+    font-weight: bold;
+  }
+  
+  /* Style pour les commentaires */
+  .comments {
+    margin-top: 10px;
+  }
+  
+  /* Style pour les commentaires individuels */
+  .comment {
+    margin-bottom: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
 /* 968 / 740 */

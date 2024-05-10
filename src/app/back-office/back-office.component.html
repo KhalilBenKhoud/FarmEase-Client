@@ -1,1 +1,101 @@
 <p>back-office works!</p>
+<p>post works!</p>
+<div class="post-container">
+    <h2>Add New</h2>
+    <form *ngIf="showFields" (ngSubmit)="addPostOrPool()" #form="ngForm">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" name="title" [(ngModel)]="post.title_Post" required>
+      </div>
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea class="form-control" id="description" name="description" [(ngModel)]="post.description_Post" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="category">Category</label>
+        <select class="form-control" id="category" name="category" [(ngModel)]="post.category_post" required>
+          <option value="" disabled selected>Select category</option>
+          <option value="farmer">Farmer</option>
+          <option value="fisherman">Fisherman</option>
+        </select>
+      </div>
+      
+      <!-- Afficher les champs supplémentaires uniquement si c'est pour un "Pool" -->
+      <div *ngIf="isPool">
+        <div class="form-group">
+          <label for="sondage1">Sondage 1</label>
+          <input type="text" class="form-control" id="sondage1" name="sondage1" [(ngModel)]="post.sondage1">
+        </div>
+        <div class="form-group">
+          <label for="sondage2">Sondage 2</label>
+          <input type="text" class="form-control" id="sondage2" name="sondage2" [(ngModel)]="post.sondage2">
+        </div>
+      </div>
+      
+      <!-- Bouton de soumission du formulaire -->
+      <button type="submit" class="btn btn-primary" [disabled]="form.invalid">{{ isPool ? 'add pool' : 'Add post' }}</button>
+    </form>
+  
+    <!-- Bouton "Post" pour afficher les champs du formulaire -->
+    <button type="button" class="btn btn-primary" (click)="showFields = true; isPool = false">Post</button>
+  
+    <!-- Bouton "Pool" pour afficher les champs du formulaire -->
+    <button type="button" class="btn btn-primary" (click)="showFields = true; isPool = true">Pool</button>
+  </div>
+  
+  <div class="container">
+    <h2>Posts</h2>
+    <div *ngFor="let post of posts" class="post">
+      <p-fieldset>
+        <ng-template pTemplate="header">
+            <div class="flex align-items-center gap-2 px-2">
+                <p-avatar 
+                    image="https://cdn-icons-png.flaticon.com/512/149/149071.png" 
+                    shape="circle" />
+                <span class="font-bold">User</span>
+            </div>
+        </ng-template>
+        <p class="m-0">
+          <h3>{{ post.title_Post }}</h3>
+          <p>{{ post.description_Post }}</p>
+          <div *ngIf="post.sondage1 !== '' || post.sondage2 !== ''">
+            <p>
+              <strong>sujet 1:</strong> {{ post.sondage1 }} | 
+              <strong>pourcentage:</strong> {{ ((post.stat1 * 100) / (post.stat1 + post.stat2)).toFixed(2) }}% 
+              <p-button (click)="vote1(post)">Vote</p-button>
+            </p>
+            <p>
+              <strong>sujet 2:</strong> {{ post.sondage2 }} | 
+              <strong>pourcentage :</strong> {{ ((post.stat2 * 100) / (post.stat1 + post.stat2)).toFixed(2) }}% 
+              <p-button (click)="vote2(post)">Vote</p-button>
+            </p>
+          </div>
+          <p><strong>Date:</strong> {{ post.date_Post }}</p>
+          <p><strong>Number of Likes:</strong> {{ post.nbr_like_post }} <p-button (click)="likePost(post)">Like</p-button></p>
+          <p><strong>Number of Signals:</strong> {{ post.nbr_signal_post }} <p-button (click)="signalpost(post)">signal</p-button></p>
+          <p><strong>Category:</strong> {{ post.category_post }}</p>
+          <p-button (click)="toggleComments(post.id_Post)">Show Comments</p-button>
+    
+          <div>
+            <h4>Comments:</h4>
+            <div *ngFor="let comment of post.commentaire">
+              <p><strong>Description:</strong> {{ comment.description_comment }}</p>
+              <p><strong>Date:</strong> {{ comment.date_comment | date }}</p> <!-- Utilisation du pipe 'date' pour formater la date -->
+            </div>
+          </div>
+    
+    
+          
+          
+    
+    
+        
+          <p-button (click)="deletePost(post.id_Post)">Delete</p-button>
+          <p-button (click)="toggleComment(post)">Comment</p-button>
+          <div *ngIf="post.showCommentField">
+            <input type="text" name="description" [(ngModel)]="description">
+            <p-button (click)="addComment(post.id_Post)">Add Comment</p-button>
+          </div>
+    </p-fieldset>
+    </div>
+ 

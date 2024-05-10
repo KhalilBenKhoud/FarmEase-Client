@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PostComponent } from './post.component';
+import { PostbackComponent } from './postback.component';
 
-describe('ForumComponent', () => {
-  let component: PostComponent;
-  let fixture: ComponentFixture<PostComponent>;
+describe('PostbackComponent', () => {
+  let component: PostbackComponent;
+  let fixture: ComponentFixture<PostbackComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PostComponent ]
+      declarations: [ PostbackComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PostComponent);
+    fixture = TestBed.createComponent(PostbackComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

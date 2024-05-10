@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { PostService } from '../services/post.service';
-import { CommentService } from '../services/comment.service';import { ActivatedRoute } from '@angular/router';
+import { CommentService } from 'src/app/services/comment.service';
+import { PostService } from 'src/app/services/post.service';
 
 @Component({
-  selector: 'app-back-office',
-  templateUrl: './back-office.component.html',
-  styleUrls: ['./back-office.component.css']
+  selector: 'app-postback',
+  templateUrl: './postback.component.html',
+  styleUrls: ['./postback.component.css']
 })
-export class BackOfficeComponent {
+export class PostbackComponent {
   showFields: boolean = false;
   isPool: boolean = false;
   description !: string ;
@@ -259,6 +259,3 @@ export class BackOfficeComponent {
     );
   }
 }
-
-      
-

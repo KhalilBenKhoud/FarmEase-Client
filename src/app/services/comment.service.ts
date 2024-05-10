@@ -28,4 +28,12 @@ export class CommentService {
   addComment(comment: any, postId: number): Observable<any> {
     return this.http.post<any>(`${environment.BaseApiUrl}/Comment/add/${postId}`, comment);
   }
-}
+
+  
+  
+  
+  
+  }
+  
+
+
