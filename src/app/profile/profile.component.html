@@ -1,3 +1,67 @@
+<<<<<<< HEAD
 <div class="profile">
 {{profile.email}}
+=======
+<div class="profileContainer">
+
+    <div class="bannerContainer">
+     <div class="box">
+      
+        <img [src]="profileImage || '../../assets/account-avatar-profile-user-11.svg' " alt="" class="avatar" />
+        <p class="gray">Name : </p>
+        <p class="info">
+        <i class="fa-solid fa-user fa-beat" style="color: #63E6BE;"></i>
+        <b>{{profile.firstname + " "+ profile.lastname}} </b></p>
+        <p class="gray">Profession : </p>
+        <p  class="info">
+        <i class="fa-solid fa-user-tie fa-beat" style="color: #63E6BE;"></i>    
+        <b>{{profile.role.toLowerCase()}} </b></p>
+        <hr>
+       
+            <div class="settings"><i class="fa-solid fa-gear"></i><span class="gray">settings</span></div>
+            
+            <button class="button-30" style="width:180px" (click)="showmodal()">edit your profile</button>
+            <button class="button-44" style="width : 200px;"  (click)="showPasswordModal()"  role="button">
+                <span class="text">Change your password</span>
+              </button>
+            <p style="font-weight : 700">change your picture</p>
+            <input type="file" class="custom-file-input"  value="change your picutre" [(ngModel)]="imageInput" 
+            (change)="changeImage($event)"
+            />
+                
+           
+    </div>
+   
+
+</div>
+<app-edit-profile [visible]="showEdit" [profile]  = "profile" [profileImage]="profileImage" (closed)="closeModal()">
+</app-edit-profile>
+<app-chnage-password [visible]="showChangePassword" [profile]  = "profile" [profileImage]="profileImage" (closed)="closePasswordModal()"></app-chnage-password>
+
+<div class="walletContainer">
+<p-tabView>
+    <p-tabPanel header="Wallet" >
+        <div class="tabContainer">
+        <img src="../../assets/walletIll.gif" alt="" class="walletIll">
+        <p>
+         you have <b style="color : green;">{{profile.wallet.balance.toFixed(3) + "$"}}</b>
+        </p>
+        <p>
+            your wallet is <b>{{profile.wallet.status}}</b> and running an interest of
+            <b>8.64</b> compounded <b>12 times</b> each <b>day</b>
+           </p>
+        </div>
+    </p-tabPanel>
+    <p-tabPanel header="Personal Info" >
+        <div class="tabContainer">
+        <p>
+          you have been using our services
+            since<b style="color : green;"> {{profile.registrationDate}} </b>, however, if you wish to delete your
+            account, click here :
+            <button class="btn btn-danger">Delete account</button>
+        </p>
+    </div>
+    </p-tabPanel>
+</p-tabView>
+>>>>>>> khalil
 </div>

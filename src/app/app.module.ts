@@ -31,7 +31,6 @@ import { MessagesModule } from 'primeng/messages';
 import { InsuranceComponent } from './insurance/insurance.component';
 import { AddInsuranceComponent } from './insurance/add-insurance/add-insurance.component';
 import { ViewInsuranceComponent } from './insurance/view-insurance/view-insurance.component';
-import { SelectButtonModule } from 'primeng/selectbutton';
 import { DataViewModule } from 'primeng/dataview';
 import { TagModule } from 'primeng/tag';
 import { CarouselModule } from 'primeng/carousel';
@@ -43,6 +42,17 @@ import { TableModule } from 'primeng/table';
 import { SinisterMapComponent } from './insurance/sinister-map/sinister-map.component';
 import { SinisterUpdateComponent } from './insurance/sinister-update/sinister-update.component';
 import { DialogService } from 'primeng/dynamicdialog';
+import { NonauthGuard } from './nonauth.guard';
+import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
+import { DialogModule } from 'primeng/dialog';
+import { InputTextModule } from 'primeng/inputtext';
+import { AvatarModule } from 'primeng/avatar';
+import { SelectButtonModule } from 'primeng/selectbutton';
+import { TabViewModule } from 'primeng/tabview';
+import { ChnagePasswordComponent } from './profile/chnage-password/chnage-password.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { ReactiveFormsModule} from '@angular/forms';
+
 
 
 @NgModule({
@@ -67,8 +77,11 @@ import { DialogService } from 'primeng/dynamicdialog';
     ViewSinisterComponent,
     SinisterMapComponent,
     SinisterUpdateComponent,
+    EditProfileComponent,
+    ChnagePasswordComponent,
+    ForgetPasswordComponent,
     
-  ],
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -90,8 +103,14 @@ import { DialogService } from 'primeng/dynamicdialog';
     CarouselModule,
     CalendarModule,
     TableModule,
+    DialogModule,
+    InputTextModule,
+    AvatarModule,
+    SelectButtonModule,
+    TabViewModule,
+    ReactiveFormsModule
   ],
-  providers: [    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } , AuthGuard ],
+  providers: [    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } , AuthGuard , NonauthGuard ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
