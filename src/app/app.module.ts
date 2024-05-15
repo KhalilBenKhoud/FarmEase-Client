@@ -16,7 +16,6 @@ import { SignupComponent } from './signup/signup.component';
 
 import { ProfileComponent } from './profile/profile.component'
 
-import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AuthInterceptor } from './services/auth.interceptor';
 import { MortgageComponent } from './mortgage/mortgage.component';
@@ -25,7 +24,7 @@ import { ApplyLoanComponent } from './Loan/Apply For Home/loan form/Applyloan.co
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
 import { DatePickerModule } from '@syncfusion/ej2-angular-calendars'; 
 import { SimulatorComponent } from './Loan/Simulator/Simulator.component';
-import { RecaptchaModule } from 'angular-google-recaptcha';
+
 import { packComponent } from './Loan/PackLoan/pack.component';
 import { NgxCaptchaModule } from 'ngx-captcha';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -57,8 +56,8 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { CartComponent } from './cart/cart.component';
 import { CartDetailComponent } from './cart-detail/cart-detail.component';
 import { SidebarModule } from 'primeng/sidebar';
-
 import { SliderModule } from 'primeng/slider';
+import { ButtonModule } from 'primeng/button';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { TreeSelectModule } from 'primeng/treeselect';
 import { ImageModule } from 'primeng/image';
@@ -157,41 +156,18 @@ import { TransactionItemComponent } from './Loan/expenses Loan/transaction-list/
     DatePickerModule , 
     HttpClientModule ,
     ReactiveFormsModule,
-    RecaptchaModule,
-    NgxCaptchaModule 
-    
-  ],
-  providers: [    
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }, 
-    AuthGuard ,
-  
-    BrowserAnimationsModule,
-
-    NgbModule,
-    FullComponent,
-    NavigationComponent,
-    SidebarComponent,
+    NgxCaptchaModule ,
     ToastModule,
-    MessagesModule,
-    ReactiveFormsModule,
-    SidebarModule,
-    RadioButtonModule,
-    ImageModule,
-    DragDropModule,
-    TableModule,
+    BrowserAnimationsModule,
+    AccordionModule,
+    NgbModule,
     NgbPaginationModule,
-    CarouselModule,
-    ProgressBarModule,
-    OverlayPanelModule,
-    TimelineModule,
-    CardModule,
-    DialogModule,
-    InputTextModule,
-    AvatarModule,
-    SelectButtonModule,
-    TabViewModule,
-
+    MessagesModule,
+    SidebarModule, SliderModule, RadioButtonModule, TreeSelectModule,ImageModule,DragDropModule,TableModule,CarouselModule,
+    ProgressBarModule,OverlayPanelModule,TimelineModule,CardModule,DialogModule,InputTextModule,AvatarModule,SelectButtonModule,TabViewModule,
+    ButtonModule
   ],
+  
   providers: [    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } , AuthGuard , NonauthGuard ],
 
   bootstrap: [AppComponent]
