@@ -1,0 +1,223 @@
+
+<body>
+  <section class="left-section">
+    <h5>Bank account</h5>
+    <div>
+      <canvas id="canvas" width="500" height="100"></canvas>
+    </div>
+</section>
+
+<section class="right-section">
+    <h5>Bank Card</h5>
+    <div>
+      <canvas id="myChart" width="200" height="200"></canvas>
+    </div>
+</section>
+
+  <div class="body" role="main">
+    <div class="container">
+      <div class="masthead trim">
+        <h1 class="heading">Discover</h1>
+        <h4 class="subheading">mortgage Projects by Farmease</h4>
+        <div>Teachable Machine Image Model</div>
+        <button type="button" (click)="init()">Start</button>
+        <div id="webcam-container"></div>
+        <div id="label-container"></div>
+
+
+
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addMortgageModal">
+          Add Mortgage
+        </button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addmaterielmodal2">
+          add Materiel
+        </button>
+        <div class="modal fade" id="addmaterielmodal2" tabindex="-1" aria-labelledby="addmaterielmodalLabel2" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="addmaterielmodalLabel2">Add Material</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <!-- Formulaire pour ajouter un matériel -->
+                <form>
+                  <div class="mb-3">
+                    <label for="materielName" class="form-label">Name:</label>
+                    <input type="text" class="form-control" id="materielName" name="materielName" [(ngModel)]="newmateriel.name_materiel" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="materielPrice" class="form-label">Price:</label>
+                    <input type="number" class="form-control" id="materielPrice" name="materielPrice" [(ngModel)]="newmateriel.price_materiel" required>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="addmateriel()" data-bs-dismiss="modal">Add Material</button>
+              </div>
+            </div>
+          </div>
+        </div>
+       
+      </div>
+      <hr />
+      <div class="summary__list columns columns--x1 columns--x1-md columns--x1-lg">
+        <div class="column" *ngFor="let mortgage of mortgages">
+          <!-- Add routerLink directive with project ID as a parameter -->
+          <a [routerLink]="['/apply', mortgage.id_mortgage]" class="summary trim">
+            <span class="summary__img">
+              <img class="card-img-top" src="https://alcbc.ca/wp-content/uploads/2020/10/mortgage.jpg" alt="land image">
+            </span>
+            <h4 style="font-size: 16px" class="summary__heading">{{mortgage.description_mortgage}}</h4>
+            <h6 style="font-size: 12px" class="summary__subheading">{{mortgage.category_mortgage}}</h6>
+            <p style="font-size: 12px" class="summary__meta">{{mortgage.date_mortgage}}</p>
+            <span class="summary__progress progress"><span></span></span>
+
+          </a>
+          <button type="button" class="btn btn-danger" (click)="deleteMortgage(mortgage.id_mortgage)">Supprimer</button>
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewApplicationsModal"
+          (click)=" fetchApplicationsForMortgage(mortgage.id_mortgage) "
+          >
+            View Application
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <div class="modal fade" id="addMortgageModal" tabindex="-1" aria-labelledby="addMortgageModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addMortgageModalLabel">Add Mortgage</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+           
+
+
+            <div class="mb-3">
+              <label for="description" class="form-label">Description:</label>
+              <input type="text" class="form-control" id="description" name="description" [(ngModel)]="newMortgage.description_mortgage" required>
+            </div>
+            <div class="mb-3">
+              <label for="duration" class="form-label">Duration:</label>
+              <select class="form-control" id="duration" name="duration" [(ngModel)]="newMortgage.duration_mortgage">
+                <option value="1">1 Year</option>
+                <option value="2">2 Years</option>
+                <option value="3">3 Years</option>
+                <option value="4">4 Years</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="category" class="form-label">Category:</label>
+              <select class="form-control" id="category" name="category" [(ngModel)]="newMortgage.category_mortgage">
+                <option value="farmer">Farmer</option>
+                <option value="fisherman">Fisherman</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="type" class="form-label">Type:</label>
+              <input type="text" class="form-control" id="type" name="type" [(ngModel)]="newMortgage.type_mortgage" required>
+            </div>
+          
+            <div class="mb-3">
+              <label for="interest" class="form-label">Interest:</label>
+              <input type="number" class="form-control" id="interest" name="interest" [(ngModel)]="newMortgage.interest" required>
+            </div>
+            <div class="mb-3">
+              <label for="cities" class="form-label">Select Materials:</label>
+              <p-multiSelect 
+              name="materiel"
+                [options]="materiel" 
+                [(ngModel)]="newMortgage. materiels" 
+                optionLabel="name_materiel" 
+                optionValue="id_materiel"
+                placeholder="Select materiel" 
+                class="form-control">
+              </p-multiSelect>
+            </div>
+            <button type="button" class="btn btn-primary" (click)="showLandFields()">Add Land</button>
+            <div *ngIf="showLandInputs">
+              <div class="mb-3">
+                <label for="landDescription" class="form-label">land dimension m2:</label>
+                <input type="text" class="form-control" id="landDescription" name="landDescription" [(ngModel)]="newMortgage.land_description" required>
+              </div>
+              <div class="mb-3">
+                <label for="landPlace" class="form-label">Land Place:</label>
+                <select class="form-control" id="landPlace" name="landPlace" [(ngModel)]="newMortgage.prize_mortgage" required>
+                  <option *ngFor="let ground of grounds" [value]="ground.price_ground">{{ ground.place_ground}}</option>
+                </select>
+                
+
+              </div>
+              
+            
+              
+            </div>
+            
+
+          </form>
+
+        </div>
+          <hr />
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="addMortgage()"data-bs-dismiss="modal">Add Mortgage</button>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+  <hr />
+  <div class="modal fade" id="viewApplicationsModal" tabindex="-1" aria-labelledby="viewApplicationsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="viewApplicationsModalLabel">View Application</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Boucle sur chaque application du mortgage cliqué -->
+          
+          <div *ngFor="let application of applications">
+            <div class="mb-3">
+              <p><strong>Nom:</strong> {{ application.nom_application }}</p>
+              <p><strong>Prénom:</strong> {{ application.prenom_application }}</p>
+              <p><strong>Taux d'intérêt:</strong> {{ application.interesting_rate_application }}</p>
+              <p><strong>Description:</strong> {{ application.description_application }}</p>
+              <p><strong>État:</strong> {{ application.etat_application }}</p>
+             
+                <label for="message" class="form-label">Message:</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" id="message" name="message" [(ngModel)]="application.message_application">
+                  <button type="button" class="btn btn-primary" (click)="submitMessage(application.id_application, application.message_application)">Submit</button>
+                
+                </div>
+                <div>
+                  <button type="button" class="btn btn-danger" (click)="deleteapplication(application.id_application)">Delete</button>
+                  <button type="button" class="btn btn-danger" (click)="acceptApplication(application.id_application)">Accepter</button>
+                  <button type="button" class="btn btn-danger" (click)="refuseApplication(application.id_application)">Refuser</button>
+    
+                </div>
+          <!-- Affiche un message si aucune application n'est associée à ce mortgage -->
+          <div *ngIf="applications?.length === 0">
+            <p>no applications yet</p>
+          </div>
+
+        </div>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+</div> <!-- fermer la balise <div class="body" role="main"> -->
+
+   

@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PostService } from '../services/post.service';
-import { CommentService } from '../services/comment.service';import { ActivatedRoute } from '@angular/router';
+import { CommentService } from '../services/comment.service';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
-  selector: 'app-back-office',
-  templateUrl: './back-office.component.html',
-  styleUrls: ['./back-office.component.css']
+  selector: 'app-post',
+  templateUrl: './post.component.html',
+  styleUrls: ['./post.component.css']
 })
-export class BackOfficeComponent {
+export class PostComponent implements OnInit {
   showFields: boolean = false;
   isPool: boolean = false;
   description !: string ;
@@ -259,6 +260,3 @@ export class BackOfficeComponent {
     );
   }
 }
-
-      
-

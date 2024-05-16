@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms'
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ComponentsRoutes } from './component.routing';
@@ -12,24 +13,30 @@ import { InvestmentComponent } from './investment/investment.component';
 import { CardsComponent } from './card/card.component';
 import { LoanComponent } from './loan/loan.component';
 import { MarketplaceComponent } from './marketplace/marketplace.component';
-
-import { NgForm } from '@angular/forms';
-
-import { TableModule } from 'primeng/table';
-import { ButtonModule } from 'primeng/button';
-import { MarketPlaceComponent } from './market-place/market-place.component';
+import { MortgagebackComponent } from './mortgageback/mortgageback.component';
 import { DialogModule } from 'primeng/dialog';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { ButtonModule } from 'primeng/button';
+import { RatingModule } from 'primeng/rating';
+import { PostbackComponent } from './postback/postback.component';
+import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
+import { MarketPlaceComponent } from './market-place/market-place.component';
 import { MessageService } from 'primeng/api';
-import { MortgageComponent } from './mortgage/mortgage';
-import { FileUploadModule } from 'primeng/fileupload';
-
 
 @NgModule({
+  
+  declarations:[
+  MortgagebackComponent,
+  PostbackComponent,
+  
+],
+ 
+  
   imports: [
     CommonModule,
     RouterModule.forChild(ComponentsRoutes),
-    FormsModule,
+    ButtonModule,
     ReactiveFormsModule,
     NgbModule,
     NgxPaginationModule,
@@ -39,6 +46,12 @@ import { FileUploadModule } from 'primeng/fileupload';
     NgbdnavBasicComponent,
     InvestmentComponent,
     CardsComponent,
+    FormsModule,
+    MarketplaceComponent,
+    DialogModule,
+    MultiSelectModule,
+    RatingModule,
+   
     MarketplaceComponent ,
     MarketplaceComponent,
     TableModule,
@@ -46,13 +59,10 @@ import { FileUploadModule } from 'primeng/fileupload';
     ToastModule,
     DialogModule,
     MarketplaceComponent,
-    FileUploadModule,
+
 
   ],
-  declarations: [
-    MarketPlaceComponent,
 
-  ],
   providers: [
     MessageService // Add MessageService to providers
   ]

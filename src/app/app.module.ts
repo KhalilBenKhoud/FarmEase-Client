@@ -48,10 +48,16 @@ import { uploadComponent } from './Loan/Apply For Home/upload Form/upload.compon
 
 import { ToastModule } from 'primeng/toast';
 import { MessagesModule } from 'primeng/messages';
+import { PostComponent } from './post/post.component';
+import { ApplyComponent } from './apply/apply.component';
+import { DataViewModule } from 'primeng/dataview';
+import { RatingModule } from 'primeng/rating';
+import { FieldsetModule } from 'primeng/fieldset';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { FormBuilder,FormGroup,Validator } from '@angular/forms';
 import { InsuranceComponent } from './insurance/insurance.component';
 import { AddInsuranceComponent } from './insurance/add-insurance/add-insurance.component';
 import { ViewInsuranceComponent } from './insurance/view-insurance/view-insurance.component';
-import { DataViewModule } from 'primeng/dataview';
 import { TagModule } from 'primeng/tag';
 import { CarouselModule } from 'primeng/carousel';
 import { CurrencyComponent } from './currency/currency.component';
@@ -134,6 +140,8 @@ import { TransactionItemComponent } from './Loan/expenses Loan/transaction-list/
     packComponent ,
     BackOfficeComponent,
     SpinnerComponent,
+    ApplyComponent,
+    PostComponent,
     InsuranceComponent,
     AddInsuranceComponent,
     ViewInsuranceComponent,
@@ -186,6 +194,17 @@ import { TransactionItemComponent } from './Loan/expenses Loan/transaction-list/
     BrowserAnimationsModule,
     AccordionModule,
     NgbModule,
+    FullComponent,
+    NavigationComponent,
+    SidebarComponent,
+    ToastModule,
+    DataViewModule,
+    RatingModule,
+    MessagesModule,
+    FieldsetModule,
+    AvatarModule,
+    ReactiveFormsModule,
+
     NgbPaginationModule,
     MessagesModule,
     SidebarModule, SliderModule, RadioButtonModule, TreeSelectModule,ImageModule,DragDropModule,TableModule,CarouselModule,
@@ -200,3 +219,4 @@ import { TransactionItemComponent } from './Loan/expenses Loan/transaction-list/
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+  

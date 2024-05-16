@@ -1,5 +1,4 @@
-<p>back-office works!</p>
-<p>post works!</p>
+
 <div class="post-container">
     <h2>Add New</h2>
     <form *ngIf="showFields" (ngSubmit)="addPostOrPool()" #form="ngForm">
@@ -43,7 +42,7 @@
     <button type="button" class="btn btn-primary" (click)="showFields = true; isPool = true">Pool</button>
   </div>
   
-  <div class="container">
+  <div class="container"  style="width: 80vw;">
     <h2>Posts</h2>
     <div *ngFor="let post of posts" class="post">
       <p-fieldset>

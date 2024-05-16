@@ -46,6 +46,7 @@
     "ngx-pagination": "^6.0.3",
     "ngx-qrcode": "^0.1.0-rc.1",
     "ngx-typed-js": "^2.1.1",
+    "primeflex": "^3.3.1",
     "pdfmake": "^0.2.10",
     "primeicons": "^7.0.0",
     "primeng": "^15.4.1",

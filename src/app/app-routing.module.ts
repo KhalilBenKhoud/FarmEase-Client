@@ -9,6 +9,8 @@ import { MortgageComponent } from './mortgage/mortgage.component';
 import { AuthGuard } from './auth.guard';
 import { FullComponent } from './back-office/layouts/full/full.component';
 import { AdminResolver } from './admin.resolver';
+import { PostComponent } from './post/post.component';
+import { ApplyComponent } from './apply/apply.component';
 import { InsuranceComponent } from './insurance/insurance.component';
 import { AddInsuranceComponent } from './insurance/add-insurance/add-insurance.component';
 import { ViewInsuranceComponent } from './insurance/view-insurance/view-insurance.component';
@@ -54,6 +56,8 @@ const routes: Routes = [
   {path : "details/:id" , component : ProjectDetailsComponent, canActivate: [AuthGuard]},
   {path : "projects2" , component : ShowProjectComponent, canActivate: [AuthGuard]},
   {path : "mortgage" , component : MortgageComponent , canActivate: [AuthGuard]} ,
+  {path : "apply/:id",component : ApplyComponent, canActivate: [AuthGuard]},
+  {path : "post" , component : PostComponent , canActivate: [AuthGuard]} ,
   {path : "insurance" , component : InsuranceComponent , canActivate: [AuthGuard]} ,
   {path : "addInsurance" , component : AddInsuranceComponent , canActivate: [AuthGuard]} ,
   {path : "viewInsurance" , component : ViewInsuranceComponent , canActivate: [AuthGuard]} ,
@@ -83,7 +87,8 @@ const routes: Routes = [
         },
         {
           path: 'component',
-          loadChildren: () => import('./back-office/component/component.module').then(m => m.ComponentsModule)
+          loadChildren: () => import('./back-office/component/component.module').then(m => m.ComponentsModule),
+          resolve : {data : AdminResolver }
         }
       ]}
  ,

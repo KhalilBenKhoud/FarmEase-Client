@@ -7,7 +7,11 @@ import { NgbdnavBasicComponent } from './nav/nav.component';
 
 import { InvestmentComponent } from './investment/investment.component';
 import { CardsComponent } from './card/card.component';
-import { MortgageComponent } from './mortgage/mortgage';
+
+import { MarketplaceComponent } from './marketplace/marketplace.component';
+import { PostComponent } from 'src/app/post/post.component';
+import { MortgagebackComponent } from './mortgageback/mortgageback.component';
+import { PostbackComponent } from './postback/postback.component';
 
 import { AdminResolver } from 'src/app/admin.resolver';
 import { MarketPlaceComponent } from './market-place/market-place.component';
@@ -34,7 +38,18 @@ export const ComponentsRoutes: Routes = [
 			},
 			{
 				path: 'mortgages',
-				component: MortgageComponent,
+				component: MortgagebackComponent,
+				resolve : {data : AdminResolver }
+			},
+			{
+				path :'posts',
+			component : PostbackComponent,
+			resolve :{data :AdminResolver }
+
+			},
+			{
+				path: 'post',
+				component: PostComponent,
 				resolve : {data : AdminResolver }
 			},
 			{
