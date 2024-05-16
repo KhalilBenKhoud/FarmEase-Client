@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { Product, TopSelling, TableRows, Employee } from './table-data';
 import { NgFor } from '@angular/common';
+import { Sinister } from 'src/app/model/Sinister';
+import { InsuranceService } from 'src/app/services/insurance.service';
+
 
 import { CreditService } from 'src/app/services/Credit.service';
 import { Credit } from 'src/app/Models/Credit.model';
@@ -36,30 +39,31 @@ export class MarketplaceComponent {
 
   chart: any;
 
-
   
 
   
 
   ngOnInit(): void {
-    this.creditservice.getCredits().subscribe((credit: Credit[]) => {
-      const counts = this.getCountsByType(credit);
-      this.createChart(counts);
+
+    // this.insService.getAllSinisters().subscribe((sinister: Sinister[]) => {
+    //   const counts = this.getCountsByType1(sinister);
+    //   this.createChart(counts);
+    // });
+  }
+  
+
+
+
+
+
+  getCountsByType1(LoanType: LoanType[]): { [key: string]: number } {
+    const counts1: { [key: string]: number } = {};
+    LoanType.forEach(account => {
+      counts1[account.termType] = counts1[account.termType] + 1 || 1;
+
     });
-
-    this.packService.getLoanTypes().subscribe((loantype: any) => {
-      const counts1 = this.getCountsByType1(loantype);
-      this.generateChart(counts1);
-    });
-        this.projectserice.getAllProjects().subscribe((project: Project[]) => {
-      const counts = this.getCountsByType1(project);
-      this.createChart(counts);
-    });
-
-}
-
-
-
+    return counts1;
+  }
 
   
  
@@ -115,13 +119,6 @@ export class MarketplaceComponent {
 
 
 
-  getCountsByType1(projectCategory: Project[]): { [key: string]: number } {
-    const counts1: { [key: string]: number } = {};
-    projectCategory.forEach(project => {
-      counts1[project.projectCategory] = counts1[project.projectCategory] + 1 || 1;
-    });
-    return counts1;
-  }
   
   generateChart(counts1: { [key: string]: number }): void {
     const ctx = document.getElementById('myChart') as HTMLCanvasElement;
@@ -171,6 +168,7 @@ export class MarketplaceComponent {
   //   });
   //   return counts;
   // }
+
 
   
 

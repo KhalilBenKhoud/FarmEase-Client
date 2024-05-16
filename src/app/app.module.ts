@@ -22,11 +22,9 @@ import { MortgageComponent } from './mortgage/mortgage.component';
 import { AuthGuard } from './auth.guard';
 import { ApplyLoanComponent } from './Loan/Apply For Home/loan form/Applyloan.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
-import { DatePickerModule } from '@syncfusion/ej2-angular-calendars'; 
 import { SimulatorComponent } from './Loan/Simulator/Simulator.component';
 
 import { packComponent } from './Loan/PackLoan/pack.component';
-import { NgxCaptchaModule } from 'ngx-captcha';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
@@ -50,6 +48,20 @@ import { uploadComponent } from './Loan/Apply For Home/upload Form/upload.compon
 
 import { ToastModule } from 'primeng/toast';
 import { MessagesModule } from 'primeng/messages';
+import { InsuranceComponent } from './insurance/insurance.component';
+import { AddInsuranceComponent } from './insurance/add-insurance/add-insurance.component';
+import { ViewInsuranceComponent } from './insurance/view-insurance/view-insurance.component';
+import { DataViewModule } from 'primeng/dataview';
+import { TagModule } from 'primeng/tag';
+import { CarouselModule } from 'primeng/carousel';
+import { CurrencyComponent } from './currency/currency.component';
+import { AddSinisterComponent } from './insurance/view-insurance/add-sinister/add-sinister.component';
+import { ViewSinisterComponent } from './insurance/view-insurance/view-sinister/view-sinister.component';
+import { CalendarModule } from 'primeng/calendar';
+import { TableModule } from 'primeng/table';
+import { SinisterMapComponent } from './insurance/sinister-map/sinister-map.component';
+import { SinisterUpdateComponent } from './insurance/sinister-update/sinister-update.component';
+import { DialogService } from 'primeng/dynamicdialog';
 import { ProductListComponent } from './product-list/product-list.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
@@ -62,8 +74,7 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 import { TreeSelectModule } from 'primeng/treeselect';
 import { ImageModule } from 'primeng/image';
 import { DragDropModule } from 'primeng/dragdrop';
-import { TableModule} from 'primeng/table';
-import { CarouselModule } from 'primeng/carousel';
+
 
 import { InvestmentComponent } from './investment/investment.component';
 import { ProjectComponent } from './investment/project/project.component';
@@ -86,6 +97,9 @@ import { SelectButtonModule } from 'primeng/selectbutton';
 import { TabViewModule } from 'primeng/tabview';
 import { ChnagePasswordComponent } from './profile/chnage-password/chnage-password.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+
+import { DropdownModule } from 'primeng/dropdown';
+
 
 
 import { InvestorsComponent } from './investment/investors/investors.component';
@@ -120,6 +134,18 @@ import { TransactionItemComponent } from './Loan/expenses Loan/transaction-list/
     packComponent ,
     BackOfficeComponent,
     SpinnerComponent,
+    InsuranceComponent,
+    AddInsuranceComponent,
+    ViewInsuranceComponent,
+    CurrencyComponent,
+    AddSinisterComponent,
+    ViewSinisterComponent,
+    SinisterMapComponent,
+    SinisterUpdateComponent,
+    EditProfileComponent,
+    ChnagePasswordComponent,
+    ForgetPasswordComponent,
+
     expensesComponent , 
     BalanceComponent , 
     IncomeExpensesComponent , 
@@ -153,10 +179,9 @@ import { TransactionItemComponent } from './Loan/expenses Loan/transaction-list/
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    DatePickerModule , 
     HttpClientModule ,
     ReactiveFormsModule,
-    NgxCaptchaModule ,
+    
     ToastModule,
     BrowserAnimationsModule,
     AccordionModule,

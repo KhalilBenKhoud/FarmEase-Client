@@ -24,7 +24,7 @@ export class ProfileComponent implements OnInit{
   showChangePassword : boolean = false ;
   showDeleteAccountModal : boolean = false ;
   ngOnInit() {
-   
+  
     setInterval(() => {
       if(this.auth.isAuthenticated())
       this.fetchProfile()

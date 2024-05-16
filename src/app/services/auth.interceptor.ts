@@ -22,6 +22,7 @@ const unallowedRequests = [
     '/auth/resendVerification',
      '/auth/verifyAccount',
      '/auth/logout'
+     
 ];
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {

@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, OnChanges } from '@angular/core';
+import { Component, OnInit, HostListener, OnChanges, ElementRef } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { CartService } from '../services/cart.service';
@@ -17,6 +17,9 @@ export class HeaderComponent implements OnInit  {
   cartItems: any[] = [];
   cartDetails: any[] = [];
   
+  
+showInsuranceDropdown : boolean = false ;
+
   @HostListener('window:scroll', ['$event'])
   onScroll() {
     const scrollY = window.scrollY; // Get current scroll position

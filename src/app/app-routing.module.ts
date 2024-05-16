@@ -9,6 +9,13 @@ import { MortgageComponent } from './mortgage/mortgage.component';
 import { AuthGuard } from './auth.guard';
 import { FullComponent } from './back-office/layouts/full/full.component';
 import { AdminResolver } from './admin.resolver';
+import { InsuranceComponent } from './insurance/insurance.component';
+import { AddInsuranceComponent } from './insurance/add-insurance/add-insurance.component';
+import { ViewInsuranceComponent } from './insurance/view-insurance/view-insurance.component';
+import { AddSinisterComponent } from './insurance/view-insurance/add-sinister/add-sinister.component';
+import { ViewSinisterComponent } from './insurance/view-insurance/view-sinister/view-sinister.component';
+import { CurrencyComponent } from './currency/currency.component';
+import { SinisterMapComponent } from './insurance/sinister-map/sinister-map.component';
 
 import { expensesComponent } from './Loan/expenses Loan/expenses.component';
 
@@ -47,6 +54,13 @@ const routes: Routes = [
   {path : "details/:id" , component : ProjectDetailsComponent, canActivate: [AuthGuard]},
   {path : "projects2" , component : ShowProjectComponent, canActivate: [AuthGuard]},
   {path : "mortgage" , component : MortgageComponent , canActivate: [AuthGuard]} ,
+  {path : "insurance" , component : InsuranceComponent , canActivate: [AuthGuard]} ,
+  {path : "addInsurance" , component : AddInsuranceComponent , canActivate: [AuthGuard]} ,
+  {path : "viewInsurance" , component : ViewInsuranceComponent , canActivate: [AuthGuard]} ,
+  {path : "addSinister/:id" , component : AddSinisterComponent , canActivate: [AuthGuard]} ,
+  {path : "viewSinister/:id" , component : ViewSinisterComponent , canActivate: [AuthGuard]} ,
+  {path : "currencyConvert" , component : CurrencyComponent , canActivate: [AuthGuard]} ,
+  {path : "sinisterMap" , component : SinisterMapComponent , canActivate: [AuthGuard]} ,
 
   {path : "ApplyLoan" , component : ApplyLoanComponent , canActivate: [AuthGuard]} ,
   {path : "Garantor" , component : GarantorComponent , canActivate: [AuthGuard]} ,

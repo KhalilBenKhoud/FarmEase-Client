@@ -13,6 +13,18 @@
     <li class="nav-link" *ngIf="authService.isAuthenticated()"> <a routerLink="/expenses">Expenses Loan</a></li>
 
         <li class="nav-link" *ngIf="authService.isAuthenticated()"> <a routerLink="/projects">projects</a></li>
+        <li class="nav-link"  *ngIf="authService.isAuthenticated()" > <a routerLink="/mortgage">Mortgage</a></li>
+       
+        <li class="nav-link">
+           <span style=" color :teal ;"(click)="showInsuranceDropdown = !showInsuranceDropdown" >Insurance</span> 
+            <ul class="nav-link" aria-placeholder="Insurance" *ngIf="showInsuranceDropdown">
+          
+                <div class="ulItems">
+             <li class="nav-link"  *ngIf="authService.isAuthenticated()" > <a routerLink="/insurance">Insurance Services</a></li>
+             <li class="nav-link"  *ngIf="authService.isAuthenticated()" > <a routerLink="/currencyConvert">Currency Converter</a></li>
+             <li class="nav-link"  *ngIf="authService.isAuthenticated()" > <a routerLink="/sinisterMap">Sinister Distribution</a></li>
+             </div>   
+             </ul>
         <li class="nav-link"  *ngIf="authService.isAuthenticated()" > <a routerLink="/Allproduct">Ecommerce</a></li>
         <li class="nav-link" *ngIf="authService.isAuthenticated()">
             <a (click)="openCartSidebar()" class="cart-icon" *ngIf="authService.isAuthenticated()">
@@ -20,11 +32,12 @@
                 <span class="cart-item-count" *ngIf="cartDetails && cartDetails.length > 0">{{ cartDetails.length }}</span>
             </a>
         </li>
-     
-
+       
+      
         <li><button *ngIf="authService.isAuthenticated()" class="button-33" role="button" (click)="logout()">Log out</button> </li>
         <li><button *ngIf="!authService.isAuthenticated()" class="button-33" role="button"  routerLink="/signup">Sign up</button></li>
         <li><button *ngIf="!authService.isAuthenticated()" class="button-33" role="button"  routerLink="/login">Sign in</button> </li>
+        
     </ul>
 
     
