@@ -31,7 +31,7 @@ export class LoginComponent {
      if(this.password == '') {this.passwordEmpty = true ; return ; }
     this.auth.login({email : this.email, password : this.password}).subscribe(
       (data :any) => { console.log(data) ;
-      localStorage.setItem('accessToken', data.access_token);
+      localStorage.setItem('accessToken', data.access_token);   localStorage.setItem('loggedIn', 'yes');
       this.auth.isLoggedOut = false ;
       if(this.email == 'khalil@farmEase.com') {
         this.router.navigate(['/dashboard']);

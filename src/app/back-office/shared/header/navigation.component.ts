@@ -115,7 +115,7 @@ export class NavigationComponent implements AfterViewInit {
 
   logout() {
     this.authService.logout().subscribe(
-      (data : any) => { localStorage.removeItem('accessToken') ; this.authService.isLoggedOut = true ;
+      (data : any) => { localStorage.removeItem('accessToken') ; localStorage.removeItem('loggedIn') ;
       this.router.navigate(["/home"])
        this.frontOrBack.set(true) ;
       },
