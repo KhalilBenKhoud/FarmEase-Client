@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <style>
+        /* Styles généraux */
+        body {
+            font-family: 'Lato', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 1200px; /* Agrandissement de la largeur */
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #4caf50, #f51212);
+            z-index: -1;
+            transition: all 0.5s ease;
+            transform: translateX(-100%);
+        }
+
+        .container:hover:before {
+            transform: translateX(100%);
+        }
+
+        .left-column,
+        .right-column {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            transition: all 0.3s ease;
+        }
+
+        .left-column:hover,
+        .right-column:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Styles pour les composants */
+        app-balance,
+        app-income-expenses,
+        app-transaction-list,
+        app-add-transaction {
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: #b4c6b1;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Style pour les composants individuels */
+        app-balance h2,
+        app-income-expenses h2,
+        app-transaction-list h2,
+        app-add-transaction h2 {
+            font-size: 1.8em;
+            margin: 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #509345;
+            color: #f51212;
+            transition: all 0.3s ease;
+        }
+
+        app-balance:hover,
+        app-income-expenses:hover,
+        app-transaction-list:hover,
+        app-add-transaction:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        app-balance:hover h2,
+        app-income-expenses:hover h2,
+        app-transaction-list:hover h2,
+        app-add-transaction:hover h2 {
+            color: #4caf50;
+        }
+
+        app-balance,
+        app-income-expenses,
+        app-transaction-list,
+        app-add-transaction {
+            transition: all 0.3s ease;
+        }
+
+        /* Ajout d'une animation de survol */
+        .container:hover .left-column {
+            transform: translateX(-10px);
+        }
+
+        .container:hover .right-column {
+            transform: translateX(10px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-column">
+            <app-balance>
+                <h2>Balance</h2>
+            </app-balance>
+            <app-income-expenses>
+                <h2>Income & Expenses</h2>
+            </app-income-expenses>
+        </div>
+        <div class="right-column">
+            <app-transaction-list>
+                <h2>Transaction List</h2>
+            </app-transaction-list>
+            <app-add-transaction>
+                <h2>Add Transaction</h2>
+            </app-add-transaction>
+        </div>
+    </div>
+</body>
+</html>

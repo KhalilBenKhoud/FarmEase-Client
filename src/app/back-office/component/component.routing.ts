@@ -9,10 +9,13 @@ import { InvestmentComponent } from './investment/investment.component';
 import { CardsComponent } from './card/card.component';
 
 import { MarketplaceComponent } from './marketplace/marketplace.component';
-import { AdminResolver } from 'src/app/admin.resolver';
 import { PostComponent } from 'src/app/post/post.component';
 import { MortgagebackComponent } from './mortgageback/mortgageback.component';
 import { PostbackComponent } from './postback/postback.component';
+
+import { AdminResolver } from 'src/app/admin.resolver';
+import { MarketPlaceComponent } from './market-place/market-place.component';
+
 
 export const ComponentsRoutes: Routes = [
 	{
@@ -20,7 +23,7 @@ export const ComponentsRoutes: Routes = [
 		children: [
 			{
 				path: 'marketplace',
-				component: MarketplaceComponent,
+				component: MarketPlaceComponent,
 				resolve : {data : AdminResolver }
 			},
 			{

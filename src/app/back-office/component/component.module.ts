@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms'
+import { NgxPaginationModule } from 'ngx-pagination';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ComponentsRoutes } from './component.routing';
 import { InsuranceComponent } from './insurance/insurance.component';
@@ -18,8 +19,14 @@ import { MultiSelectModule } from 'primeng/multiselect';
 import { ButtonModule } from 'primeng/button';
 import { RatingModule } from 'primeng/rating';
 import { PostbackComponent } from './postback/postback.component';
+import { TableModule } from 'primeng/table';
+import { ToastModule } from 'primeng/toast';
+import { MarketPlaceComponent } from './market-place/market-place.component';
+import { MessageService } from 'primeng/api';
 
-@NgModule({declarations:[
+@NgModule({
+  
+  declarations:[
   MortgagebackComponent,
   PostbackComponent,
   
@@ -32,6 +39,7 @@ import { PostbackComponent } from './postback/postback.component';
     ButtonModule,
     ReactiveFormsModule,
     NgbModule,
+    NgxPaginationModule,
     InsuranceComponent,
     LoanComponent,
     NgbdDropdownBasicComponent,
@@ -42,8 +50,21 @@ import { PostbackComponent } from './postback/postback.component';
     MarketplaceComponent,
     DialogModule,
     MultiSelectModule,
-    RatingModule
+    RatingModule,
    
+    MarketplaceComponent ,
+    MarketplaceComponent,
+    TableModule,
+    ButtonModule,
+    ToastModule,
+    DialogModule,
+    MarketplaceComponent,
+
+
   ],
+
+  providers: [
+    MessageService // Add MessageService to providers
+  ]
 })
 export class ComponentsModule { }

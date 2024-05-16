@@ -1,0 +1,44 @@
+<div class="card">
+    <div class="search-bar mb-3">
+      <input type="text" class="form-control" placeholder="Search by status" [(ngModel)]="searchStatus" (input)="filterInsurances()">
+    </div>
+<div class="card">
+  <p-carousel [value]="insurances" [numVisible]="3" [circular]="true">
+    <ng-template let-product pTemplate="item" style="display: flex; flex-direction: column;">
+      <div class="insurance-card border-1 surface-border border-round m-2 p-3 flex flex-col items-center">
+
+        <div class="insurance-status mb-3 relative mx-auto">
+          <abbr [title]="product.status == 'ACTIVE' ? 'Active' : 'Expired'">
+            <img
+              class="status-icon w-full border-round"
+              [src]="product.status === 'ACTIVE' ? '../../../assets/activeInsurance.png' : '../../../assets/expiredInsurance.png'"
+              [alt]="product.status"
+            />
+          </abbr>
+        </div>
+
+        <div class="insurance-details flex flex-col items-center">
+
+          <p-tag class="insurance-premium absolute" [value]="product.premium" [ngStyle]="{ 'top.px': 5, 'left.px': 5 }" />
+
+          <div class="coverage-info mb-3 font-medium">
+            <p>Started on: {{ product.start_date }}</p>
+            <p>Due: {{ product.end_date }}</p>
+            <p>Premium: {{ product.premium }}</p>
+            <p>Status: {{ product.status }}</p>
+          </div>
+
+          <div class="coverage-amount font-semibold text-xl">
+            Coverage Amount: ${{ product.coverage_amount }}
+          </div>
+
+          <div class="action-buttons mt-3 flex justify-center gap-2">
+            <button class="button-33" [routerLink]="['/addSinister',product.id]">Report Sinister</button>
+            <button class="button-33" [routerLink]="['/viewSinister',product.id]">List of Sinisters</button>
+          </div>
+        </div>
+
+      </div>
+    </ng-template>
+  </p-carousel>
+</div>

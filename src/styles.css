@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
-@import "primeng/resources/themes/lara-light-blue/theme.css";
-@import "primeng/resources/primeng.css";
+
+
 
 
 * {
@@ -8,7 +8,6 @@
     margin: 0;
     box-sizing: border-box;
     font-family: Poppins;
-   
 }
 
 :root {
@@ -238,4 +237,88 @@
   .checkbox-wrapper-55 input:checked:focus + .switch-left + .switch-right {
     color: #333;
   }
+
+
+  .button-30 {
+    align-items: center;
+    appearance: none;
+    background-color: #FCFCFD;
+    border-radius: 4px;
+    border-width: 0;
+    box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+    box-sizing: border-box;
+    color: #36395A;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: "JetBrains Mono",monospace;
+    height: 48px;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    padding-left: 16px;
+    padding-right: 16px;
+    position: relative;
+    text-align: left;
+    text-decoration: none;
+    transition: box-shadow .15s,transform .15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow,transform;
+    font-size: 18px;
+    width: 150px;
+  }
+  
+  .button-30:focus {
+    box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  }
+  
+  .button-30:hover {
+    box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+    transform: translateY(-2px);
+  }
+  
+  .button-30:active {
+    box-shadow: #D6D6E7 0 3px 7px inset;
+    transform: translateY(2px);
+  }
+  
+
+
+
+/* CSS */
+.button-44 {
+  background: var(--secondary-green);
+  border-top: 1px solid green;
+  border-right: 1px solid var(--accent-green);
+  border-bottom: 1px solid var(--accent-green);
+  border-left: 1px solid var(--accent-green);
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  color: #fff;
+  font: bold 16px "helvetica neue", helvetica, arial, sans-serif;
+  line-height: 1;
+padding: 10px 5px;
+  text-align: center;
+
+  -webkit-background-clip: padding-box;
+}
+
+.button-44:hover {
+  -webkit-box-shadow: inset 0 0px 20px 1px green, 0px 1px 0 lightgreen, 0 6px 0px green, 0 8px 4px 1px lightgreen;
+  -moz-box-shadow:  inset 0 0px 20px 1px green, 0px 1px 0 lightgreen, 0 6px 0px green, 0 8px 4px 1px lightgreen;
+  box-shadow:  inset 0 0px 20px 1px green, 0px 1px 0 lightgreen, 0 6px 0px green, 0 8px 4px 1px lightgreen;
+  cursor: pointer;
+}
+
+.button-44:active {
+  -webkit-box-shadow: inset 0 1px 10px 1px green, 0 1px 0 lightgreen, 0 2px 0 green, 0 4px 3px 0 lightgreen;
+  -moz-box-shadow:inset 0 1px 10px 1px green, 0 1px 0 lightgreen, 0 2px 0 green, 0 4px 3px 0 lightgreen;
+  box-shadow: inset 0 1px 10px 1px green, 0 1px 0 lightgreen, 0 2px 0 green, 0 4px 3px 0 lightgreen;
+  transform: translateY(4px);
+}
+
 

@@ -1,4 +1,21 @@
-<app-top-cards></app-top-cards>
+
+<div class="row">
+  <div class="col-md-6 col-lg-3" *ngFor='let topcard of topcards'>
+      <div class="card">
+          <div class="card-body">
+              <div class="d-flex align-items-center">
+                  <div class="btn btn-lg rounded-circle round round-lg fs-6 d-flex align-items-center justify-content-center bg-light-{{topcard.bgcolor}} text-{{topcard.bgcolor}}">
+                      <i class={{topcard.icon}}></i>
+                  </div>
+                  <div class="ms-3">
+                      <h3 class="mb-0 font-weight-bold">{{ topcard.subtitle  == 'Wealth Distribution Index'  ? wealthIndex.toFixed(4) :  totalWallets }}</h3>
+                      <small class="text-muted fs-3">{{topcard.subtitle}}</small>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
 <!-- ============================================================== -->
 <!-- Sales chart -->
 <!-- ============================================================== -->
@@ -6,9 +23,7 @@
   <div class="col-lg-7">
     <app-sales-ratio></app-sales-ratio>
   </div>
-  <div class="col-lg-5">
-    <app-feeds></app-feeds>
-  </div>
+
 </div>
 <!-- ============================================================== -->
 <!-- Sales chart -->
@@ -19,7 +34,68 @@
 <div class="row">
   <!-- column -->
   <div class="col-lg-12">
-    <app-top-selling></app-top-selling>
+    <div class="card">
+      <div class="card-body">
+          <!-- title -->
+                  <h4 class="card-title">User Analytics</h4>
+                  <h5 class="card-subtitle">Overview of the users</h5>
+                  <button class="btn btn-info" style="margin-right: 10px;" (click)="sortByBalance()">By Balance</button>
+                  <button class="btn btn-info" (click)="sortByDate()"  style="margin-right: 10px;">By Registration Date</button>
+                  <button class="btn btn-info" style="margin-right: 10px;" (click)="getAll()">No sort</button>
+
+          <!-- title -->
+          <div class="table-responsive">
+              <table class="table align-middle">
+                  <thead>
+                      <tr>
+                          <th class="text-dark font-medium fs-4">User</th>
+                          <th class="text-dark font-medium fs-4">Email</th>
+                          <th class="text-dark font-medium fs-4">Role</th>
+                          <th class="text-dark font-medium fs-4">Registration Date</th>
+                          <th class="text-dark font-medium fs-4">Balance</th>
+                          <th class="text-dark font-medium fs-4">Status</th>
+
+                          <th style="color: red ;">Operations</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor='let ts of allUsers'>
+                          <td>
+                              <div class="d-flex align-items-center">
+                                <img src="../../../assets/account-avatar-profile-user-11.svg" alt="user" width="45" class="rounded-circle">
+ 
+                                <div class="ms-3">
+                                      <h5 class="mb-0 font-medium">{{ts.firstname}}</h5>
+                                      <span class="text-muted">{{ts.lastname}}</span>
+                                  </div>
+                              </div>
+                          </td>
+                          <td class="fs-4">{{ts.email}}</td>
+                          <td>
+                              <span class="p-2  rounded-circle d-inline-block ms-3">{{ts.role}}</span>
+                          </td>
+                          
+                          <td>
+                              <h5 class="mb-0 fw-normal">{{ts.registrationDate || 'none'}}</h5>
+                          </td>
+
+                          <td>
+                            <h5 class="mb-0 fw-normal">{{ ts.role == 'ADMIN' ? 'none' :  ts.wallet.balance.toFixed(2)}}</h5>
+                        </td>
+                        <td>
+                          <h5 class="mb-0 fw-normal">{{ ts.enabled == true ? 'Permitted' :  'Banned or not verified'}}</h5>
+                      </td>
+                        <td>
+                          <button class=" btn btn-danger"  *ngIf="ts.role != 'ADMIN'" (click)="ban(ts.id)">Ban</button>
+                          <button class=" btn btn-success" (click)="permit(ts.id)"  *ngIf="ts.role != 'ADMIN'">Permit</button>
+                        </td>
+                      </tr>              
+                  </tbody>
+              </table>
+          </div>
+      </div>
+      
+  </div>
   </div>
   
 </div>

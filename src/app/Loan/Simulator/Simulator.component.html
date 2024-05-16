@@ -1,0 +1,92 @@
+
+  <div >
+    <div *ngIf="creditsAndGarantors.length > 0" >
+      <h2>Scan the QR code to access more details about your Garantor from the  LOAN  list</h2>
+      <div class="listContainer" *ngFor="let item of creditsAndGarantors; let i = index" >
+        <div class="box1">
+          <span class="dollar-icon">$ {{ item.credit.amount }}</span>
+          <h3>Garantor Name: {{ item.garantor.nameGarantor }} {{ item.garantor.secondnameGarantor }}</h3>
+          <h3>Monthly Payment : {{ item.credit.monthlyPaymentAmount }}</h3>
+         
+          <div class="bnts" style="display:flex ; gap : 15px;">
+          <button (click)="downloadExcel([item.credit.idCredit])" class="button-33">Télécharger Excel</button>
+          <button (click)="downloadPdf([item.garantor.idGarantor])" class="button-8">Télécharger PDF</button>
+         </div>
+        </div>
+        <div class="qrbox" >
+          <div class="qr-code-frame">
+            <img [src]="item.credit.qrCodeImage" alt="QR Code">
+          </div>
+        </div>
+        <div *ngIf="item.credit.showDetails" class="credit-details-expanded">
+          <p>Date of Request: {{ item.credit.dateDemande }}</p>
+          <p>Date of Obtaining: {{ item.credit.obtainingDate }}</p>
+          <!-- Other credit details to display -->
+        </div>
+      </div>
+    </div>
+  </div>
+  
+    
+  
+
+  
+
+
+
+
+
+
+
+<div class="loan-calculator">
+  <div class="top">
+    <h2>Loan Calculator</h2>
+
+    <form (ngSubmit)="calculateEMI()">
+      <div class="group">
+        <div class="title">Amount</div>
+        <input type="number" [(ngModel)]="loanAmount" name="loanAmount" class="loan-amount" />
+      </div>
+
+      <div class="group">
+        <div class="title">Interest Rate</div>
+        <input type="number" [(ngModel)]="interestRate" name="interestRate" class="interest-rate" />
+      </div>
+
+      <div class="group">
+        <div class="title">Tenure (in months)</div>
+        <input type="number" [(ngModel)]="loanTenure" name="loanTenure" class="loan-tenure" />
+      </div>
+
+      
+    </form>
+    
+    <button type="submit" class="calculate-btn">Calculate</button>  
+  </div>
+ 
+  <div class="result">
+    <div class="left">
+      <div class="loan-emi">
+        <h3>Loan EMI</h3>
+        <div  class="value">{{ loanEMIValue.innerHTML }}</div>
+      </div>
+
+      <div class="total-interest">
+        <h3>Total Interest Payable</h3>
+        <div  class="value">{{ totalInterestValue.innerHTML }}</div>
+      </div>
+
+      <div class="total-amount">
+        <h3>Total Amount</h3>
+        <div  class="value">{{ totalAmountValue.innerHTML }}</div>
+      </div>
+    </div>
+   
+    
+    <div class="right">
+      <canvas id="myChart" width="400" height="400"></canvas>
+    </div>
+   
+  </div>
+  
+</div>

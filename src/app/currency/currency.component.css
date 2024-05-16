@@ -1,0 +1,95 @@
+.container {
+    max-width: 1500px;
+    max-height: 1500px;
+    height: 500px;
+    width: 100%;
+    margin: auto;
+    padding: 0 15px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
+    background-image: url('https://thumbor.forbes.com/thumbor/fit-in/1290x/https://www.forbes.com/advisor/wp-content/uploads/2020/11/what-is-forex-trading.jpg'); /* Remplacer 'path/to/icon.png' par le chemin de votre icône */
+    
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mb-4 {
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.col-md-4 {
+    flex: 0 0 auto;
+    width: 33.333333%;
+    max-width: 33.333333%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + 1.5rem + 2px);
+    padding: .75rem 1.25rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #020203;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+select.form-control:not([size]):not([multiple]) {
+    height: calc(1.5em + 1.5rem + 2px);
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+input[readonly] {
+    background-color: #e9ecef;
+    opacity: 1;
+}
+
+.icon {
+    display: inline-block;
+    margin-left: 10px;
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: transform 0.5s ease;
+}
+
+.icon.rotate {
+    animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}

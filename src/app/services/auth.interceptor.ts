@@ -21,7 +21,8 @@ const unallowedRequests = [
     '/auth/reset-password',
     '/auth/resendVerification',
      '/auth/verifyAccount',
-     '/auth/logout',
+     '/auth/logout'
+     
 ];
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -42,7 +43,7 @@ export class AuthInterceptor implements HttpInterceptor {
         catchError((error) => {
           if (error instanceof HttpErrorResponse && (error.status === 401 || error.status === 403)) {
             const isWhitelisted = !unallowedRequests.includes(request.url.substring(`${environment.BaseApiUrl}`.length));
-            if (isWhitelisted) {
+            if (isWhitelisted ) {
               return this.handleUnauthorized(request, next);
             }
           }

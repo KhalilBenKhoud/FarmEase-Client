@@ -6,14 +6,77 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
-<body>
+<body class="mat-typography">
   <app-root></app-root>
-  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  		<!-- jQuery Plugins -->
+      <script src="assets/template/js/jquery.min.js"></script>
+      <script src="assets/template/js/bootstrap.min.js"></script>
+      <script src="assets/template/js/slick.min.js"></script>
+      <script src="assets/template/js/nouislider.min.js"></script>
+      <script src="assets/template/js/jquery.zoom.min.js"></script>
+      <script src="assets/template/js/main.js"></script>
+      <script src="assets/template/vendor/jquery/jquery-3.2.1.min.js"></script>
+      <!--===============================================================================================-->
+        <script src="assets/template/vendor/animsition/js/animsition.min.js"></script>
+      <!--===============================================================================================-->
+        <script src="assets/template/vendor/bootstrap/js/popper.js"></script>
+        <script src="assets/template/vendor/bootstrap/js/bootstrap.min.js"></script>
+      <!--===============================================================================================-->
+        <script src="assets/template/vendor/select2/select2.min.js"></script>
+        <script>
+          $(".js-select2").each(function(){
+            $(this).select2({
+              minimumResultsForSearch: 20,
+              dropdownParent: $(this).next('.dropDownSelect2')
+            });
+          })
+        </script>
+      <!--===============================================================================================-->
+        <script src="assets/template/vendor/MagnificPopup/jquery.magnific-popup.min.js"></script>
+      <!--===============================================================================================-->
+        <script src="assets/template/vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+        <script>
+          $('.js-pscroll').each(function(){
+            $(this).css('position','relative');
+            $(this).css('overflow','hidden');
+            var ps = new PerfectScrollbar(this, {
+              wheelSpeed: 1,
+              scrollingThreshold: 1000,
+              wheelPropagation: false,
+            });
+      
+            $(window).on('resize', function(){
+              ps.update();
+            })
+          });
+        </script>
+      <!--===============================================================================================-->
+        <script src="assets/template/js/main.js"></script>
+        <!-- ///////////////////// -->
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+              
 </body>
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/662a388da0c6737bd1303f88/1hsaepqh9';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+  </script>
+  <!--End of Tawk.to Script-->
+  
 </html>
+

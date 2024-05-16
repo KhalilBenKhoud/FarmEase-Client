@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  styleUrls: ['./signup.component.css'],
+  providers :  [MessageService]
 })
 export class SignupComponent {
       firstname !: string ;
@@ -15,12 +17,33 @@ export class SignupComponent {
       role !: string ;
       password !: string ;
       repeatPassword !: string ;
-      agree !: boolean ;
-      
-     constructor(private auth : AuthService, private router :Router) {}
+      agree : boolean = false  ;
+      stateOptions: any[] = [{ label: 'farmer', value: 'FARMER' },{ label: 'fisher', value: 'FISHER' }];
+
+
+    
+     constructor(private auth : AuthService, private router :Router,  private messageService: MessageService) {}
+    
+     showWarn(warning : string) {
+      this.messageService.add({ severity: 'warn', summary: 'Warning', detail: warning });
+     }
+
+     showError(error : string) {
+      this.messageService.add({ severity: 'error', summary: 'Warning', detail: error });
+     }
+  
+   showSuccess(message : string) {
+    this.messageService.add({ severity: 'success', summary: 'Success', detail: message });
+
+   }
 
       onSubmit() {
-        if(this.password != this.repeatPassword) { alert('mismatching passwords') ; throw Error() ; } 
+        if(!this.firstname || !this.lastname  || !this.email || !this.password || !this.role) {
+           this.showWarn("fill all the fields !") ;
+           return ;
+        }
+        if(this.password != this.repeatPassword) { this.showWarn("mismatching passwords !") ; return ; }
+        if(!this.agree) {this.showWarn("you have to agree to our terms !") ; return ; }  
         const requestBody = {
          firstname : this.firstname,
          lastname : this.lastname ,
@@ -30,8 +53,8 @@ export class SignupComponent {
         }
         console.log(requestBody)
         this.auth.register(requestBody).subscribe(
-          (data : any) => {alert(data.message) ; this.router.navigate(['/login'])},
-          error => alert(error.error.message)
+          (data : any) => {this.showSuccess(data.message) ; this.router.navigate(['/login'])},
+          error => this.showError("there was a problem signing you up, probably your email is not real")
         )
       }
 
