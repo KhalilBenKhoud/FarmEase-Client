@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams, HttpRequest } from '@angular/common/http';
 import { Observable, catchError, map, throwError } from 'rxjs';
 import { Project } from 'src/app/models/Project';
 import { environment } from 'src/environments/environment';
@@ -17,7 +17,7 @@ interface Page<T> {
   providedIn: 'root'
 })
 export class ProjectService {
-  readonly apiUrl = "http://localhost:8080/api/v1";
+  readonly apiUrl = environment.BaseApiUrl
   readonly projectsEndpoint = "/projects";
   readonly addProjectsEndpoint = "/projects/createproject";
 
@@ -50,23 +50,10 @@ export class ProjectService {
   }
 
   // Create a new project
-  createProject(project: Project, imageFile?: File): Observable<Project> {
-    const formData = new FormData();
-    formData.append('title', project.title);
-    formData.append('description', project.description);
-    formData.append('netIncomeLastYear', project.netIncomeLastYear.toString());
-    formData.append('address', project.address);
-    formData.append('goalAmount', project.goalAmount.toString());
-    //formData.append('deadline', project.deadline.toISOString());
-    formData.append('equityOffered', project.equityOffered.toString());
-    formData.append('dividendPayoutRatio', project.dividendPayoutRatio.toString());
-    formData.append('totalInvestment', project.totalInvestment.toString());
-    formData.append('projectCategory', project.projectCategory.toString());
-    if (imageFile) {
-      formData.append('imageFile', imageFile);
-    }
-    const url = `${this.apiUrl}/projects/createproject`;
-    return this.http.post<Project>(url, formData);
+  createProject(project: any, imageFile?: File) {
+    
+    const url = `${environment.BaseApiUrl}/projects/createProject`;
+    return this.http.post(url, project);
   }
 
   // Update a project

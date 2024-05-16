@@ -14,9 +14,10 @@ export class AuthService {
 
   constructor(private http : HttpClient) { }
   
-   
-  isAuthenticated() {
-    return !!localStorage.getItem('accessToken')  ;
+   isLoggedOut :boolean = true ;
+  
+   isAuthenticated() {
+    return !!localStorage.getItem('accessToken') && this.isLoggedOut == false;
   }
 
   login(requestBody : {email : string , password : string}) {

@@ -86,7 +86,7 @@
                           <h5 class="mb-0 fw-normal">{{ ts.enabled == true ? 'Permitted' :  'Banned or not verified'}}</h5>
                       </td>
                         <td>
-                          <button class=" btn btn-danger" style="margin-bottom : 10px;" *ngIf="ts.role != 'ADMIN'" (click)="ban(ts.id)">Ban</button>
+                          <button class=" btn btn-danger"  *ngIf="ts.role != 'ADMIN'" (click)="ban(ts.id)">Ban</button>
                           <button class=" btn btn-success" (click)="permit(ts.id)"  *ngIf="ts.role != 'ADMIN'">Permit</button>
                         </td>
                       </tr>              

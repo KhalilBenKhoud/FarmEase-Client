@@ -13,10 +13,9 @@
     <li class="nav-link" *ngIf="authService.isAuthenticated()"> <a routerLink="/expenses">Expenses Loan</a></li>
 
         <li class="nav-link" *ngIf="authService.isAuthenticated()"> <a routerLink="/projects">projects</a></li>
-        <li class="nav-link"  *ngIf="authService.isAuthenticated()" > <a routerLink="/mortgage">Mortgage</a></li>
         <li class="nav-link"  *ngIf="authService.isAuthenticated()" > <a routerLink="/Allproduct">Ecommerce</a></li>
         <li class="nav-link" *ngIf="authService.isAuthenticated()">
-            <a (click)="openCartSidebar()" class="cart-icon">
+            <a (click)="openCartSidebar()" class="cart-icon" *ngIf="authService.isAuthenticated()">
                 <i class="fa-solid fa-cart-shopping cart-icon"></i>
                 <span class="cart-item-count" *ngIf="cartDetails && cartDetails.length > 0">{{ cartDetails.length }}</span>
             </a>

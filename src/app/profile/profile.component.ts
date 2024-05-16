@@ -64,7 +64,7 @@ export class ProfileComponent implements OnInit{
   fetchProfile() {
     this.profileService.getProfile().
     subscribe(
-      data => {this.profile = data ; console.log("fetched : "+JSON.stringify(data)) ; },
+      data => {this.profile = data ;  },
       error => alert(error.error.message)
     )
   }
