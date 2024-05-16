@@ -25,6 +25,12 @@
              <li class="nav-link"  *ngIf="authService.isAuthenticated()" > <a routerLink="/sinisterMap">Sinister Distribution</a></li>
              </div>   
              </ul>
+        <li class="nav-link"  *ngIf="authService.isAuthenticated()" > <a routerLink="/Allproduct">Ecommerce</a></li>
+        <li class="nav-link" *ngIf="authService.isAuthenticated()">
+            <a (click)="openCartSidebar()" class="cart-icon" *ngIf="authService.isAuthenticated()">
+                <i class="fa-solid fa-cart-shopping cart-icon"></i>
+                <span class="cart-item-count" *ngIf="cartDetails && cartDetails.length > 0">{{ cartDetails.length }}</span>
+            </a>
         </li>
        
       

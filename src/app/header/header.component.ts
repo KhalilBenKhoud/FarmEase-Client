@@ -140,7 +140,7 @@ removeFromCart(productId: number): void {
 
   logout() {
     this.authService.logout().subscribe(
-      (data : any) => { localStorage.removeItem('accessToken') ;
+      (data : any) => { localStorage.removeItem('accessToken') ; this.authService.isLoggedOut = true ;
       this.router.navigate(["/home"])},
       error => {  console.log(error) ;}
     )

@@ -41,9 +41,7 @@ export class AddProjectFormComponent implements OnInit{
       deadline: [''],
       equityOffered: ['', Validators.required],
       dividendPayoutRatio: ['', Validators.required],
-      totalInvestment: ['', Validators.required],
       projectCategory: ['', Validators.required],
-      projectStatus: ['', Validators.required],
       imageUrl: [null]
     });
   }

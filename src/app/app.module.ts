@@ -23,6 +23,7 @@ import { AuthGuard } from './auth.guard';
 import { ApplyLoanComponent } from './Loan/Apply For Home/loan form/Applyloan.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
 import { SimulatorComponent } from './Loan/Simulator/Simulator.component';
+
 import { packComponent } from './Loan/PackLoan/pack.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -67,8 +68,8 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { CartComponent } from './cart/cart.component';
 import { CartDetailComponent } from './cart-detail/cart-detail.component';
 import { SidebarModule } from 'primeng/sidebar';
-
 import { SliderModule } from 'primeng/slider';
+import { ButtonModule } from 'primeng/button';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { TreeSelectModule } from 'primeng/treeselect';
 import { ImageModule } from 'primeng/image';
@@ -180,10 +181,18 @@ import { TransactionItemComponent } from './Loan/expenses Loan/transaction-list/
     ReactiveFormsModule,
     HttpClientModule ,
     ReactiveFormsModule,
- 
     
+    ToastModule,
+    BrowserAnimationsModule,
+    AccordionModule,
+    NgbModule,
+    NgbPaginationModule,
+    MessagesModule,
+    SidebarModule, SliderModule, RadioButtonModule, TreeSelectModule,ImageModule,DragDropModule,TableModule,CarouselModule,
+    ProgressBarModule,OverlayPanelModule,TimelineModule,CardModule,DialogModule,InputTextModule,AvatarModule,SelectButtonModule,TabViewModule,
+    ButtonModule
   ],
- 
+  
   providers: [    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } , AuthGuard , NonauthGuard ],
 
   bootstrap: [AppComponent]

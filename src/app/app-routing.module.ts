@@ -68,11 +68,11 @@ const routes: Routes = [
   {path : "upload" , component : uploadComponent , canActivate: [AuthGuard]}, 
   {path : "PackLoan" , component : packComponent , canActivate: [AuthGuard]},
   {path : "expenses" , component : expensesComponent , canActivate: [AuthGuard]},
-  {path:"Addproduct" ,component:AddProductComponent},
-  {path:"Cart" ,component:CartComponent},
-  {path:"Cartdetail" ,component:CartDetailComponent},
-  {path:"Allproduct",component:ProductListComponent},
-  { path: 'product/:id', component: ProductDetailsComponent } ,
+  {path:"Addproduct" ,component:AddProductComponent, canActivate: [AuthGuard]},
+  {path:"Cart" ,component:CartComponent, canActivate: [AuthGuard]},
+  {path:"Cartdetail" ,component:CartDetailComponent, canActivate: [AuthGuard]},
+  {path:"Allproduct",component:ProductListComponent, canActivate: [AuthGuard]},
+  { path: 'product/:id', component: ProductDetailsComponent , canActivate: [AuthGuard]} ,
 
   {path : "" , component : FullComponent , canActivate: [AuthGuard] ,children : [
     

@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Project, ProjectCategory, ProjectStatus } from '../models/Project';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class Project2Service {
 
-  private apiUrl = 'http://localhost:8080/api/v1/projects';
+  private apiUrl = `${environment.BaseApiUrl}/projects`;
 
   constructor(private http: HttpClient) { }
 
