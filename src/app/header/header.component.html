@@ -5,18 +5,12 @@
         <li class="nav-link" *ngIf="authService.isAuthenticated()"> <a routerLink="/profile">Profile</a></li>
 
  
-    <li class="nav-link" *ngIf="authService.isAuthenticated()"> <a routerLink="/mortgage">Mortgage</a></li>
-    <li class="nav-link" *ngIf="authService.isAuthenticated()"> <a routerLink="/ApplyLoan" >ApplyLoan</a></li>
-    <li class="nav-link" *ngIf="authService.isAuthenticated()"> <a href="http://localhost:5000/" >Prediction</a></li>
-    <li class="nav-link" *ngIf="authService.isAuthenticated()"> <a routerLink="/PackLoan">Pack</a></li>
-    <li class="nav-link" *ngIf="authService.isAuthenticated()"> <a routerLink="/Simulator">Simulator</a></li>
-    <li class="nav-link" *ngIf="authService.isAuthenticated()"> <a routerLink="/expenses">Expenses Loan</a></li>
+
 
         <li class="nav-link" *ngIf="authService.isAuthenticated()"> <a routerLink="/projects">projects</a></li>
-        <li class="nav-link"  *ngIf="authService.isAuthenticated()" > <a routerLink="/mortgage">Mortgage</a></li>
        
-        <li class="nav-link">
-           <span style=" color :teal ;"(click)="showInsuranceDropdown = !showInsuranceDropdown" >Insurance</span> 
+        <li class="nav-link" *ngIf="authService.isAuthenticated()">
+           <span style=" color :teal ;"(click)="showInsuranceDropdown = !showInsuranceDropdown ; showLoanDropDown = false;" >Insurance</span> 
             <ul class="nav-link" aria-placeholder="Insurance" *ngIf="showInsuranceDropdown">
           
                 <div class="ulItems">
@@ -25,6 +19,23 @@
              <li class="nav-link"  *ngIf="authService.isAuthenticated()" > <a routerLink="/sinisterMap">Sinister Distribution</a></li>
              </div>   
              </ul>
+        </li>
+
+        <li class="nav-link" *ngIf="authService.isAuthenticated()">
+        
+            <span style=" color :teal ;"(click)="showLoanDropDown = !showLoanDropDown ; showInsuranceDropdown = false" >Loans</span> 
+            <ul class="nav-link" *ngIf="showLoanDropDown">
+              <div class="ulItems">
+          
+        <li class="nav-link" *ngIf="authService.isAuthenticated()"> <a routerLink="/ApplyLoan" >ApplyLoan</a></li>
+        <li class="nav-link" *ngIf="authService.isAuthenticated()"> <a href="http://localhost:5000/" >Prediction</a></li>
+        <li class="nav-link" *ngIf="authService.isAuthenticated()"> <a routerLink="/PackLoan">Pack</a></li>
+        <li class="nav-link" *ngIf="authService.isAuthenticated()"> <a routerLink="/Simulator">Simulator</a></li>
+        <li class="nav-link" *ngIf="authService.isAuthenticated()"> <a routerLink="/expenses">Expenses Loan</a></li>
+      </div> 
+      </ul>  
+        
+        </li>
         <li class="nav-link"  *ngIf="authService.isAuthenticated()" > <a routerLink="/Allproduct">Ecommerce</a></li>
         <li class="nav-link" *ngIf="authService.isAuthenticated()">
             <a (click)="openCartSidebar()" class="cart-icon" *ngIf="authService.isAuthenticated()">

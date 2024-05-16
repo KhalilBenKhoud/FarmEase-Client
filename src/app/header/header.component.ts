@@ -19,6 +19,7 @@ export class HeaderComponent implements OnInit  {
   
   
 showInsuranceDropdown : boolean = false ;
+showLoanDropDown : boolean = false ;
 
   @HostListener('window:scroll', ['$event'])
   onScroll() {

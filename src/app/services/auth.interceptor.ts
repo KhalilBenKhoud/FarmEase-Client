@@ -31,7 +31,7 @@ export class AuthInterceptor implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    if (!unallowedRequests.includes(request.url.substring(`${environment.BaseApiUrl}`.length))) {
+    if (!unallowedRequests.includes(request.url.substring(`${environment.BaseApiUrl}`.length)) && this.authService.isLoggedOut == false) {
       const token = localStorage.getItem('accessToken');
       if (token) {
         request = request.clone({
@@ -43,7 +43,7 @@ export class AuthInterceptor implements HttpInterceptor {
         catchError((error) => {
           if (error instanceof HttpErrorResponse && (error.status === 401 || error.status === 403)) {
             const isWhitelisted = !unallowedRequests.includes(request.url.substring(`${environment.BaseApiUrl}`.length));
-            if (isWhitelisted) {
+            if (isWhitelisted && this.authService.isLoggedOut == false) {
               return this.handleUnauthorized(request, next);
             }
           }

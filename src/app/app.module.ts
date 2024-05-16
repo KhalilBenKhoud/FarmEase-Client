@@ -190,7 +190,9 @@ import { TransactionItemComponent } from './Loan/expenses Loan/transaction-list/
     MessagesModule,
     SidebarModule, SliderModule, RadioButtonModule, TreeSelectModule,ImageModule,DragDropModule,TableModule,CarouselModule,
     ProgressBarModule,OverlayPanelModule,TimelineModule,CardModule,DialogModule,InputTextModule,AvatarModule,SelectButtonModule,TabViewModule,
-    ButtonModule
+    ButtonModule,
+    TagModule,
+    CalendarModule
   ],
   
   providers: [    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true } , AuthGuard , NonauthGuard ],

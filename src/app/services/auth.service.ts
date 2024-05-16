@@ -17,7 +17,7 @@ export class AuthService {
    isLoggedOut :boolean = true ;
   
    isAuthenticated() {
-    return !!localStorage.getItem('accessToken') && this.isLoggedOut == false;
+    return !!localStorage.getItem('accessToken') ;
   }
 
   login(requestBody : {email : string , password : string}) {
